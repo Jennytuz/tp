@@ -1,12 +1,12 @@
 <style>
-    .top-nav{ min-width: 1440px; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #fff;}
-    .top-nav section{ width: 1440px; margin: 0 auto; border-bottom: 2px solid #ededed;}
-    .top-nav section .logo{ margin: 20px 0 15px 0; float: left; cursor: pointer;}
+    .top-nav{ width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #000;}
+    .top-nav section{ width: 100%; padding: 0 60px;display: flex;justify-content: space-between}
+    .top-nav section .logo{ margin: 29px 0 15px 0; float: left; cursor: pointer;}
     .top-nav section nav{ float: left; margin-left: 60px;}
     .top-nav section nav .first-level{ display: flex; margin-top: 23px;}
     .top-nav section nav .first-level>li{ margin-right: 30px; position: relative; padding-bottom: 18px;}
     .top-nav section nav .first-level>li.active:before{ content: ''; width: 64px; height: 3px; background-color: #171918; position: absolute; top: -23px; left: 50%; margin-left: -32px;}
-    .top-nav section nav .first-level>li>a{ width: 65px; font-size: 14px; color: #010101;  text-align: center; display: block;}
+    .top-nav section nav .first-level>li>a{ width: 65px; font-size: 14px; color: #fff;  text-align: center; display: block;}
     .top-nav section nav .first-level>li>a span{ transform: scale(0.7,0.7); display:block;}
     .top-nav section nav .first-level>li .second-level{ width: 90px; background-color: #000; position: absolute; top:56px; left: 50%; margin-left: -45px; display: none;}
     .top-nav section nav .first-level>li:hover .second-level{ display: block;}
@@ -18,33 +18,27 @@
 
 <template>
     <header class="top-nav">
-        <section class="clearfix">
-            <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo.png" width="115"> </div>
+        <section>
+            <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png" height="56"> </div>
             <nav>
                 <ul class="first-level hkLight">
+                    <li>
+                        <a href="/index">首页
+                            <span>HOME</span>
+                        </a>
+                    </li>
                     <li :class="activeIndex == -2 ? 'active' : ''">
                         <a href="javascript:;"
                            @click="getList(-2,0,0)">
-                            全部
-                            <span>ALL</span>
+                            案例
+                            <span>WORKS</span>
                         </a>
                     </li>
-                    <li v-for="(item,index) in cateList"
-                        :class="activeIndex == index ? 'active' : ''">
-                        <a href="javascript:;"
-                           @click="getList(index,item.id,0)">
-                            {{item.cname}}
-                            <span>{{item.code}}</span>
-                        </a>
-                        <ul class="second-level"
-                            v-if="item.child.length != 0">
-                            <li v-for="listItem in item.child"><a href="javascript:;" @click="getList(index,item.id,listItem.id)">{{listItem.cname}}</a> </li>
-                        </ul>
-                    </li>
+                    
                     <li :class="activeIndex == -3 ? 'active' : ''">
                         <a href="javascript:;"
                            @click="gotoPage('/about',-3)">
-                            關於
+                            关于
                             <span>ABOUT</span>
                         </a>
                     </li>

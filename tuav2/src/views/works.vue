@@ -1,11 +1,31 @@
 <style>
-
+.works-nav {display: flex;justify-content: center; color: #fff;margin-bottom: 50px}
+.works-nav li{width: 90px; }
+.works-nav li a{color: #fff;letter-spacing: 15px}
+.works-nav li a div {letter-spacing: normal;transform: scale(0.7,0.7);}
 </style>
 
 <template>
     <div>
         <top-nav @getID="getListData"></top-nav>
         <body-frame>
+            <ul class="works-nav tc">
+                <li :class="activeIndex == -2 ? 'active' : ''">
+                    <a href="javascript:;"
+                        @click="getList(-2,0,0)">
+                        全部
+                        <div class="f12">ALL</div>
+                    </a>
+                </li>
+                <li v-for="(item,index) in cateList"
+                    :class="activeIndex == index ? 'active' : ''">
+                    <a href="javascript:;"
+                       @click="getList(index,item.id,0)">
+                        {{item.cname}}
+                        <div class="f12">{{item.code}}</div>
+                    </a>
+                </li>
+            </ul>
             <div class="item-list clearfix"  v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoading" infinite-scroll-distance="10">
                 <work-item v-for="item in proList"
                            :data="item"
@@ -36,7 +56,8 @@
                 domain_url:"",
                 proList:[],
                 isListEnd:false,
-                isLoading:false
+                isLoading:false,
+                activeIndex2: -4//首页-1，全部-2，关于页-3
             }
         },
         methods:{
@@ -45,6 +66,15 @@
                 this.pageNo = 1;
                 this.isListEnd = false;
                 this.doGetProList('refresh');
+            },
+            getList(index,id,id2){
+                this.$store.commit('setNavActiveIndex',index);
+                this.$store.commit('setCateID',[id,id2]);
+                if(this.$route.name != 'works'){
+                    this.$router.push('/works');
+                }else{
+                    this.$emit('getID',[id,id2]);
+                }
             },
             doGetProList(load){
                 let self = this;
@@ -81,6 +111,14 @@
                 if(this.isListEnd) return;
                 this.pageNo ++;
                 this.doGetProList('loadmore');
+            }
+        },
+        computed:{
+            cateList(){
+                return this.$store.state.cateList
+            },
+            activeIndex(){
+                return this.$store.state.navActiveIndex
             }
         }
     }

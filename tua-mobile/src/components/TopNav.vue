@@ -1,5 +1,5 @@
 <style>
-    .top-nav{ width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #fff;}
+    .top-nav{ width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #000;}
     .top-nav section{ height: 50px; border-bottom: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: center; padding: 0 3%;}
     .top-nav section .logo{ width: 80px;}
     .top-nav section a{ width: 30px; display: block;}
