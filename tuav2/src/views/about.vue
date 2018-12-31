@@ -1,7 +1,9 @@
 <style>
-    .about-tag{ width: 1440px; height: 120px; border-bottom: 2px solid #ededed; position: absolute; top: 790px; left: 50%; margin-left: -720px; display: flex; justify-content: space-around; align-items: center; background-color: #fff; z-index: 500;}
+    .img {background-size: contain; background-position: top right;background-repeat: no-repeat; width: 1260px;height: 710px}
+    section {color: #fff;}
+    .about-tag{height: 120px;  position: absolute; top: 790px; left: 50%; margin-left: -720px; display: flex; justify-content: space-around; align-items: center; z-index: 500;color: #fff;}
     .about-tag li{ width: 150px; height: 30px; display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer;}
-    .about-tag li.active{ background-color: #000; color: #fff;}
+    .about-tag li.active{ border-bottom: 1px solid #FF7200;}
     .about-tag li:hover{ background-color: #000; color: #fff;}
 
     .profile{ margin-top: 155px;}
@@ -41,7 +43,7 @@
     <div>
         <top-nav></top-nav>
         <body-frame>
-            <section style="font-size: 0;"><img :src="aboutData.domain_url+aboutData.cover" width="1440" height="665"> </section>
+            <section class="img" :style="{backgroundImage:'url('+aboutData.domain_url+aboutData.cover+')'}"></section>
             <ul class="about-tag" ref="aboutTag">
                 <li :class="activeIndex == 1 ? 'active':''" @click="setTop(710)">公司簡介</li>
                 <li :class="activeIndex == 2 ? 'active':''" @click="setTop(1075)">聯繫方式</li>

@@ -56,7 +56,14 @@ input, select {
 .pa{ position:absolute;}
 .none{ display: none;}
 a{ text-decoration: none;}
-
+.flex_v_c {
+    display: flex;
+    align-items: center;
+}
+.flex_sb {
+    display: flex;
+    justify-content: space-between;
+}
 
 /*边距*/
 .mt5{ margin-top: 5px;}

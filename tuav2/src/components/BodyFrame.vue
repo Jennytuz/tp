@@ -5,7 +5,7 @@
 <template>
     <section class="body-frame" :style="{'min-height':minHeight+'px'}">
         <slot></slot>
-        <a href="javascript:;" class="btn-top" @click="backTop"><img src="../assets/images/btn-top.png"> </a>
+        <!-- <a href="javascript:;" class="btn-top" @click="backTop"><img src="../assets/images/btn-top.png"> </a> -->
     </section>
 </template>
 
