@@ -1,6 +1,6 @@
 <style>
-    .bottom-nav{ width: 100%; min-width: 1800px; padding:30px 60px; overflow: hidden;}
-    .bottom-nav section{ width: 1800px; margin: 30px auto 0 auto; position: relative;display: flex;}
+    .bottom-nav{ max-width: 1800px; padding:30px 60px; overflow: hidden;}
+    .bottom-nav section{ width: 1800px; position: relative;display: flex;}
     .bottom-nav .infos{ width:100%;display: flex; margin-top: 40px;}
     .bottom-nav .infos li{  position: relative; display: flex;}
     .bottom-nav .infos li p{ font-size: 14px; line-height: 1.5; color: #707070;}

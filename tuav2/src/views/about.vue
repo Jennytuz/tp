@@ -1,15 +1,16 @@
 <style>
+    .body-frame {padding-top: 57px;}
     .img {background-size: contain; background-position: top right;background-repeat: no-repeat; width: 1260px;height: 710px}
     section {color: #fff;}
     .about-tag{ display: flex; align-items: center; z-index: 500;color: #fff;}
-    .about-tag li{ width: 150px; height: 30px; display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer;}
+    .about-tag li{ width: 135px; height: 30px; font-size: 14px; cursor: pointer;}
     .about-tag li.active{ border-bottom: 1px solid #FF7200;}
     .about-tag li:hover{ background-color: #000; color: #fff;}
 
     .profile,.contact,.team{ margin-top: 68px; width: 480px}
-    .profile .hkLight{ font-size: 14px; line-height: 1.8; letter-spacing: 3px;}
+    .profile .hkLight{ font-size: 14px; line-height: 1.8; letter-spacing: 3px;color:#969696;}
     .about-title p{ font-size: 14px; margin-bottom: 25px; font-weight: bold; letter-spacing: 3px;}
-    .about-title h3{ font-size: 40px; letter-spacing: 3px;}
+    .about-title h3{ font-size: 40px; letter-spacing: 3px;margin-bottom: 68px;}
     .about-title h3 span{ font-size: 12px; display: block; transform: scale(0.7,0.7); transform-origin: 0 0; letter-spacing: 3px;}
 
     .contact .infos li{ font-size: 14px; margin-bottom: 25px; display: flex;}

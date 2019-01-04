@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <section class="body-frame" :style="{'min-height':minHeight+'px'}">
+    <section class="body-frame">
         <slot></slot>
         <!-- <a href="javascript:;" class="btn-top" @click="backTop"><img src="../assets/images/btn-top.png"> </a> -->
     </section>

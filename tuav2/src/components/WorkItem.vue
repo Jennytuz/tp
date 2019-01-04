@@ -1,5 +1,5 @@
 <style>
-    .works-item{ width: 270px; margin: 0 34px 28px 0px; float: left; box-sizing: border-box;  overflow: hidden; position: relative;}
+    .works-item{ width: 270px; margin: 0 34px 28px 0px;display: block; box-sizing: border-box;  overflow: hidden; position: relative;}
     .works-item .img{width: 270px;height: 270px;background-size: cover; background-position: center center;}
     .works-item .img:hover:after{ content: ''; width: 270px; height: 270px; position: absolute; top: 0; left: 0; background-color: rgba(0,0,0,0.5);}
     .works-item .item-title {color: #fff;margin-top: 9px}
