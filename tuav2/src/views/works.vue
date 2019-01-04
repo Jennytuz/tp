@@ -3,6 +3,8 @@
 .works-nav li{width: 90px; }
 .works-nav li a{color: #fff;letter-spacing: 15px}
 .works-nav li a div {letter-spacing: normal;transform: scale(0.7,0.7);}
+.item-list {width: 1000px;height:300px}
+.swiper-container-vertical > .swiper-wrapper {flex-direction: row;flex-wrap: wrap;}
 </style>
 
 <template>
@@ -26,12 +28,14 @@
                     </a>
                 </li>
             </ul>
-            <div class="item-list"  v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoading" infinite-scroll-distance="10">
-                <work-item v-for="item in proList"
-                           :data="item"
-                           :mainUrl="domain_url"
-                           :key="item.id"></work-item>
-            </div>
+                <swiper :options="swiperOption" class="item-list">
+                    <work-item v-for="item in proList"
+                            :data="item"
+                            :mainUrl="domain_url"
+                            :key="item.id" class="swiper-slide"></work-item>
+                <div class="swiper-button-prev" slot="button-prev"></div>
+                <div class="swiper-button-next" slot="button-next"></div>
+                </swiper>
         </body-frame>
         <bottom-nav></bottom-nav>
     </div>
@@ -57,6 +61,13 @@
                 proList:[],
                 isListEnd:false,
                 isLoading:false,
+                swiperOption:{
+                    direction: 'vertical',
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    } 
+                },
                 activeIndex2: -4//首页-1，全部-2，关于页-3
             }
         },
