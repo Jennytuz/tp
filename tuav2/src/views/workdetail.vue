@@ -1,5 +1,5 @@
 <style>
-    .swiper-frame{ position: relative; margin-bottom: 80px; overflow: hidden;}
+    .swiper-frame{ width:1085px;position: relative; margin-bottom: 80px; overflow: hidden;}
     .swiper-frame .arrow{ width: 100px; height: 665px; position: absolute; top: 0; z-index: 100; display: block;}
     .swiper-frame .arrow a{ width: 40px; height: 100%; background-color: #fff; display: block;}
     .swiper-frame:hover .arrow a{ display: block;}
@@ -14,14 +14,13 @@
     .swiper-frame .dots li{ width: 6px; height: 6px; border-radius: 50%; background-color: #181a19; margin-right: 20px; cursor: pointer;}
     .swiper-frame .dots li.active{ width: 12px; height: 12px; background-color: #c29836;}
 
-    .detail-infos{ width: 850px; margin-top: 25px;}
-    .detail-infos h3{ font-size: 28px; letter-spacing: 1.3px; margin-bottom: 25px;}
-    .detail-infos p{ font-size: 16px;  line-height: 1.8; margin-bottom: 25px;}
-    .detail-infos .time{ padding-top: 15px; color: rgb(127,127,127); position: relative; font-size: 14px; margin-bottom: 25px;}
-    .detail-infos .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
+    .detail-infos{ width: 820px;color:white;}
+    .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
+    .detail-infos p{ font-size: 12px;  line-height: 1.8; margin-bottom: 25px;}
+    .detail-infos .time{ padding-top: 15px; position: relative; font-size: 14px; margin-bottom: 25px;}
     .detail-infos .time span{ margin-right: 30px;}
-    .detail-infos .author-list{ width: 500px; display: flex; flex-wrap: wrap; margin: 80px 0;}
-    .detail-infos .author-list li{ font-size: 14px; color: rgb(158,159,159); margin-bottom: 15px; display: flex;}
+    .detail-infos .author-list{ width: 500px;margin: 80px 0;}
+    .detail-infos .author-list li{ font-size: 14px; margin-bottom: 15px; display: flex;}
     .detail-infos .author-list li span{ width: 100px;}
 
     .audio-frame{ margin: 50px 0 60px 0;}
@@ -30,7 +29,36 @@
 <template>
     <div>
         <top-nav></top-nav>
-        <body-frame>
+        <body-frame class="flex">
+            <div class="detail-infos">
+                <h3>{{detailData.title}}</h3>
+                <p class="t20">{{detailData.title_ext}}</p>
+                
+
+                <div class="audio-frame">
+                    <audio-view
+                        v-if="detailData.audio_link != ''"
+                        :src="domain_url+detailData.audio_link"
+                        :title="detailData.audio_name">
+                    </audio-view>
+                </div>
+
+                <div>
+                    <p class="hkLight" v-html="detailData.goods_desc"></p>
+                </div>
+
+                <ul class="author-list">
+                    <li class="hkLight" v-for="item in detailData.author">
+                        <span>{{item.cname}}</span>
+                        <span>{{item.name}}</span>
+                    </li>
+                </ul>
+                <div class="time hkLight">
+                    <span v-if="detailData.cate2 == ''">{{detailData.catename}}</span>
+                    <span v-if="detailData.cate2 != ''">{{detailData.catename}} / {{detailData.catename2}}</span>
+                    <span>{{new Date(parseInt(detailData.ctime)).format('MM/yyyy')}}</span>
+                </div>
+            </div>
             <div class="swiper-frame"  v-if="!showVideo">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide v-for="(item,index) in bannerList" :key="index"><img :src="domain_url+item" width="1440" height="665"> </swiper-slide>
@@ -59,42 +87,7 @@
                          :postImg="vPostImg"></video-view>
 
 
-            <div class="detail-infos">
-                <h3>{{detailData.title}}<br> {{detailData.title_ext}}</h3>
-                <div class="time hkLight">
-                    <span v-if="detailData.cate2 == ''">{{detailData.catename}}</span>
-                    <span v-if="detailData.cate2 != ''">{{detailData.catename}} / {{detailData.catename2}}</span>
-                    <span>項目時間 {{new Date(parseInt(detailData.ctime)).format('MM/dd')}}</span>
-                </div>
-
-                <div class="audio-frame">
-                    <audio-view
-                        v-if="detailData.audio_link != ''"
-                        :src="domain_url+detailData.audio_link"
-                        :title="detailData.audio_name">
-                    </audio-view>
-                </div>
-
-                <div>
-                    <p class="hkLight" v-html="detailData.goods_desc"></p>
-                </div>
-
-                <ul class="author-list">
-                    <li class="hkLight" v-for="item in detailData.author">
-                        <span>{{item.cname}}</span>
-                        <span>{{item.name}}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="recommend-title">推薦案例</div>
-            <div class="clearfix item-list">
-                <work-item v-for="item in recommendList"
-                           :data="item"
-                           @refresh="refresh"
-                           :mainUrl="domain_url"
-                           :key="item.id"></work-item>
-            </div>
+            
         </body-frame>
         <bottom-nav></bottom-nav>
     </div>

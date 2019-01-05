@@ -1,5 +1,5 @@
 <style>
-    .swiper-frame-index{ position: relative; margin-bottom: 80px;}
+    .swiper-frame-index{ position: relative; margin-bottom: 20px;}
     .swiper-item .link{  display: block; font-size: 28px; letter-spacing: 1.3px; margin-top: 10px; color: #000; white-space:nowrap; text-overflow: ellipsis; overflow: hidden;}
     .swiper-item .link:hover{ color: #7f7f7f;}
     .swiper-item .img{ height: 730px;background-size: cover; background-position: center center;}
@@ -25,7 +25,7 @@
     .swiper-frame-index .right a{ margin-left: 255px;}
     .swiper-frame-index .right img{ margin-left: -40px;}
 
-    .recommend-item{ height: 124px; margin-bottom: 25px;}
+    .recommend-item{ height: 124px;}
     .recommend-item .imgs{display: block; height: 100%;background-size: cover; background-position: center center;}
     .recommend-item .imgs:after{ content: ''; background-color: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
     .recommend-item:hover .imgs:after{ background-color: rgba(0,0,0,0);}
@@ -41,6 +41,7 @@
         /* .slide-fade-leave-active for below version 2.1.8 */ {
         opacity: 0;
     }
+    .more-container {width: 1500px;}
 </style>
 
 <template>
@@ -75,12 +76,14 @@
                 </swiper>
             </div>
 
-            <div class="recommend-title">推薦案例</div>
-            <div>
-                <swiper :options="recommendSwiperOpt" ref="mySwiper">
+            <div class="flex_sb">
+                <div class="recommend-title">MORE</div>
+                <swiper class="more-container" :options="recommendSwiperOpt" ref="mySwiper">
                     <swiper-slide class="recommend-item" v-for="item in recommendList">
                         <router-link :to="'/works/detail/'+item.id" class="imgs" :style="{backgroundImage:'url('+mainUrl+item.recomm_cover+')'}"></router-link>
                     </swiper-slide>
+                    <div class="swiper-button-prev" slot="button-prev"></div>
+                    <div class="swiper-button-next" slot="button-next"></div>
                 </swiper>
             </div>
         </body-frame>
@@ -152,7 +155,8 @@
                 activeIndex:0,
                 recommendSwiperOpt:{
                     width: 222,
-                    spaceBetween: 12
+                    spaceBetween: 12,
+                    slidesPerGroup:6,
                 }
             }
         },

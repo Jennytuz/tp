@@ -1,9 +1,10 @@
 <style>
 .works-nav {display: flex;justify-content: center; color: #fff;margin-bottom: 50px}
 .works-nav li{width: 90px; }
+.works-nav li.active {border-bottom: 1px solid #FF7200}
 .works-nav li a{color: #fff;letter-spacing: 15px}
 .works-nav li a div {letter-spacing: normal;transform: scale(0.7,0.7);}
-.item-list {width: 1000px;height:300px}
+.item-list {width: 1800px;height:650px}
 .swiper-container-vertical > .swiper-wrapper {flex-direction: row;flex-wrap: wrap;}
 </style>
 
@@ -11,7 +12,7 @@
     <div>
         <top-nav @getID="getListData"></top-nav>
         <body-frame>
-            <ul class="works-nav tc">
+            <ul class="works-nav tc f12">
                 <li :class="activeIndex == -2 ? 'active' : ''">
                     <a href="javascript:;"
                         @click="getList(-2,0,0)">
@@ -62,6 +63,9 @@
                 isListEnd:false,
                 isLoading:false,
                 swiperOption:{
+                    // notNextTick: true,
+                    slidesPerView:2,
+                    slidesPerGroup:2,
                     direction: 'vertical',
                     navigation: {
                         nextEl: '.swiper-button-next',

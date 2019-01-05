@@ -24,6 +24,7 @@ input, select {
 }
 
 /* 文字排版 */
+.f10{ font-size: 10px;}
 .f12{ font-size: 12px;}
 .f13{ font-size: 13px;}
 .f14{ font-size: 14px;}
@@ -56,6 +57,7 @@ input, select {
 .pa{ position:absolute;}
 .none{ display: none;}
 a{ text-decoration: none;}
+.flex {display: flex;}
 .flex_v_c {
     display: flex;
     align-items: center;
