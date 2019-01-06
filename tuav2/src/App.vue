@@ -19,7 +19,7 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .body-frame{ width: 1800px; min-width: 1800px; margin: 90px auto 0px auto; position: relative;}
+    .body-frame{ width: 1800px; min-width: 1800px; margin: 60px auto 0px auto; position: relative;}
 
     .recommend-title{ font-size: 20px; padding: 8px 0;color:white;}
 

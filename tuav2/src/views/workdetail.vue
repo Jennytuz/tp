@@ -1,48 +1,40 @@
 <style>
-    .swiper-frame{ width:1085px;position: relative; margin-bottom: 80px; overflow: hidden;}
+    .swiper-frame{ width:1085px;position: relative; overflow: hidden;}
     .swiper-frame .arrow{ width: 100px; height: 665px; position: absolute; top: 0; z-index: 100; display: block;}
-    .swiper-frame .arrow a{ width: 40px; height: 100%; background-color: #fff; display: block;}
+    .swiper-frame .arrow a{ width: 40px; height: 100%; display: block;}
     .swiper-frame:hover .arrow a{ display: block;}
     .swiper-frame .arrow img{ margin-top: 295px;}
-    .swiper-frame .left{ left: -40px; opacity: 0; transition: all 0.2s linear;}
-    .swiper-frame .right{ right: -40px; opacity: 0; transition: all 0.2s linear;}
-    .swiper-frame:hover .left{ left: 0; opacity: 1;}
-    .swiper-frame:hover .right{ right: 0; opacity: 1;}
+    .swiper-frame .left{ left: -40px;  transition: all 0.2s linear;}
+    .swiper-frame .right{ right: -40px;  transition: all 0.2s linear;}
     .swiper-frame .right a{ margin-left: 60px;}
     .swiper-frame .right img{ margin-left: -40px;}
     .swiper-frame .dots{ display: flex; align-items: center; margin-top: 25px;}
     .swiper-frame .dots li{ width: 6px; height: 6px; border-radius: 50%; background-color: #181a19; margin-right: 20px; cursor: pointer;}
     .swiper-frame .dots li.active{ width: 12px; height: 12px; background-color: #c29836;}
-
+    .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: top center;}
+    .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
     .detail-infos{ width: 820px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
-    .detail-infos p{ font-size: 12px;  line-height: 1.8; margin-bottom: 25px;}
+    .detail-infos .sub-title {margin-bottom: 20px;}
+    .detail-infos p{ font-size: 12px;  line-height: 1.8;color:#969696; margin-bottom: 25px;padding-right: 12px;margin-right: 60px;max-height: 320px;overflow: scroll;}
     .detail-infos .time{ padding-top: 15px; position: relative; font-size: 14px; margin-bottom: 25px;}
     .detail-infos .time span{ margin-right: 30px;}
-    .detail-infos .author-list{ width: 500px;margin: 80px 0;}
+    .detail-infos .author-list{ width: 500px;margin: 30px 0;}
     .detail-infos .author-list li{ font-size: 14px; margin-bottom: 15px; display: flex;}
     .detail-infos .author-list li span{ width: 100px;}
 
-    .audio-frame{ margin: 50px 0 60px 0;}
+    .audio-frame{ position: absolute;bottom: 0;margin: 20px;}
 </style>
 
 <template>
     <div>
         <top-nav></top-nav>
+        <second-nav></second-nav>
         <body-frame class="flex">
             <div class="detail-infos">
                 <h3>{{detailData.title}}</h3>
-                <p class="t20">{{detailData.title_ext}}</p>
+                <div class="sub-title f20">{{detailData.title_ext}}</div>
                 
-
-                <div class="audio-frame">
-                    <audio-view
-                        v-if="detailData.audio_link != ''"
-                        :src="domain_url+detailData.audio_link"
-                        :title="detailData.audio_name">
-                    </audio-view>
-                </div>
-
                 <div>
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
@@ -61,7 +53,15 @@
             </div>
             <div class="swiper-frame"  v-if="!showVideo">
                 <swiper :options="swiperOption" ref="mySwiper">
-                    <swiper-slide v-for="(item,index) in bannerList" :key="index"><img :src="domain_url+item" width="1440" height="665"> </swiper-slide>
+                    <swiper-slide v-for="(item,index) in bannerList" :key="index" :style="{backgroundImage:'url('+domain_url+item+')'}" :class="{'audio':detailData.audio_link != ''}">
+                    <div class="audio-frame" v-if="detailData.audio_link != ''">
+                    <audio-view
+                        v-if="detailData.audio_link != ''"
+                        :src="domain_url+detailData.audio_link"
+                        :title="detailData.audio_name">
+                    </audio-view>
+                </div>
+                    </swiper-slide>
                 </swiper>
                 <div class="arrow left">
                     <a href="javascript:;"
@@ -77,9 +77,9 @@
                         <img src="../assets/images/arrow-right.png" width="76">
                     </a>
                 </div>
-                <ul class="dots" v-if="bannerList.length > 1">
+                <!-- <ul class="dots" v-if="bannerList.length > 1">
                     <li v-for="(item,index) in bannerList" :class="activeIndex == index ? 'active' : ''" @click="dotChange(index)"></li>
-                </ul>
+                </ul> -->
             </div>
 
             <video-view  v-if="showVideo"
@@ -95,6 +95,7 @@
 
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
+    import SecondNav from '@/components/SecondNav.vue'
     import BottomNav from '@/components/BottomNav.vue'
     import WorkItem from '@/components/WorkItem.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
@@ -102,12 +103,13 @@
     import VideoView from '@/components/VideoView.vue'
     export default{
         name: 'App',
-        components:{TopNav,BottomNav,WorkItem,BodyFrame,AudioView,VideoView},
+        components:{TopNav,SecondNav,BottomNav,WorkItem,BodyFrame,AudioView,VideoView},
         data(){
             let self = this;
             return{
                 swiperOption:{
                     simulateTouch : false,
+                    width:'auto',
                     on: {
                         slideChangeTransitionStart: function(){
                             self.activeIndex = this.activeIndex;

@@ -1,6 +1,6 @@
 <style>
     .top-nav{ width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #000;}
-    .top-nav section{ width: 1800px; margin: 0 auto;display: flex;justify-content: space-between}
+    .top-nav section{ max-width: 1800px; margin: 0 auto;display: flex;justify-content: space-between}
     .top-nav section .logo{ margin:15px 0; float: left; cursor: pointer;}
     .top-nav section nav{ float: left; margin-left: 60px;}
     .top-nav section nav .first-level{ display: flex; margin-top: 23px;}

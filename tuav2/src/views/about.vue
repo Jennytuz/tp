@@ -55,8 +55,10 @@
                     <div class="about-title">
                         <h3>公司簡介</h3>
                     </div>
+                    <div>
                     <div class="hkLight" v-html="aboutData.intro"></div>
                     <div class="hkLight" v-html="aboutData.idea"></div>
+                    </div>
                 </section>
 
                 <section class="contact none">

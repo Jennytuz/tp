@@ -1,9 +1,4 @@
 <style>
-.works-nav {display: flex;justify-content: center; color: #fff;margin-bottom: 50px}
-.works-nav li{width: 90px; }
-.works-nav li.active {border-bottom: 1px solid #FF7200}
-.works-nav li a{color: #fff;letter-spacing: 15px}
-.works-nav li a div {letter-spacing: normal;transform: scale(0.7,0.7);}
 .item-list {width: 1800px;height:650px}
 .swiper-container-vertical > .swiper-wrapper {flex-direction: row;flex-wrap: wrap;}
 </style>
@@ -11,24 +6,8 @@
 <template>
     <div>
         <top-nav @getID="getListData"></top-nav>
+        <second-nav @getID="getListData"></second-nav>
         <body-frame>
-            <ul class="works-nav tc f12">
-                <li :class="activeIndex == -2 ? 'active' : ''">
-                    <a href="javascript:;"
-                        @click="getList(-2,0,0)">
-                        全部
-                        <div class="f12">ALL</div>
-                    </a>
-                </li>
-                <li v-for="(item,index) in cateList"
-                    :class="activeIndex == index ? 'active' : ''">
-                    <a href="javascript:;"
-                       @click="getList(index,item.id,0)">
-                        {{item.cname}}
-                        <div class="f12">{{item.code}}</div>
-                    </a>
-                </li>
-            </ul>
                 <swiper :options="swiperOption" class="item-list">
                     <work-item v-for="item in proList"
                             :data="item"
@@ -44,12 +23,13 @@
 
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
+    import SecondNav from '@/components/SecondNav.vue'
     import BottomNav from '@/components/BottomNav.vue'
     import WorkItem from '@/components/WorkItem.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
     export default{
         name: 'App',
-        components:{TopNav,BottomNav,WorkItem,BodyFrame},
+        components:{TopNav,SecondNav,BottomNav,WorkItem,BodyFrame},
         mounted(){
             this.getListData(this.$store.state.cateID);
         },
