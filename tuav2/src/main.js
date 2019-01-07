@@ -7,7 +7,11 @@ import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import axios from 'axios'
 import infiniteScroll from 'vue-infinite-scroll'
+import BaiduMap from 'vue-baidu-map'
 Vue.use(infiniteScroll)
+Vue.use(BaiduMap, {
+    ak:'3Z118EsGzhwSSckxiiZAGuOAbh3FVdbQ'
+})
 
 Date.prototype.format = function(format)
 {

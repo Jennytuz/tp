@@ -3,17 +3,18 @@
     .img {background-size: contain; background-position: top right;background-repeat: no-repeat; width: 1260px;height: 710px}
     section {color: #fff;}
     .about-tag{ display: flex; align-items: center; z-index: 500;color: #fff;}
-    .about-tag li{ width: 135px; height: 30px; font-size: 14px; cursor: pointer;}
+    .about-tag li{ margin-right: 70px; font-size: 12px; cursor: pointer;}
     .about-tag li.active{ border-bottom: 1px solid #FF7200;}
     .about-tag li:hover{ background-color: #000; color: #fff;}
 
+    .about-content {max-height:500px;overflow: scroll;}
     .profile,.contact,.team{ margin-top: 68px; width: 480px}
     .profile .hkLight{ font-size: 14px; line-height: 1.8; letter-spacing: 3px;color:#969696;}
     .about-title p{ font-size: 14px; margin-bottom: 25px; font-weight: bold; letter-spacing: 3px;}
     .about-title h3{ font-size: 40px; letter-spacing: 3px;margin-bottom: 68px;}
     .about-title h3 span{ font-size: 12px; display: block; transform: scale(0.7,0.7); transform-origin: 0 0; letter-spacing: 3px;}
 
-    .contact .infos li{ font-size: 14px; margin-bottom: 25px; display: flex;}
+    .contact .infos li{ font-size: 12px; margin-bottom: 20px; display: flex;}
     .contact .infos li p:first-child{ width: 225px;}
     .contact .infos li p{ line-height: 1.8;}
     .contact .wechat{ margin-top: 58px;}
@@ -21,22 +22,21 @@
     .contact .wechat p span{ color: #c29832; display: block;}
     .contact .qrcode{ position: absolute; bottom: 0; left: 230px;}
 
-    .team .content{ width: 500px; font-size: 14px; line-height: 1.8; margin-bottom: 40px; letter-spacing: 3px;}
+    .team .content{ font-size: 14px; line-height: 1.8; margin-bottom: 40px; letter-spacing: 3px;}
 
-    .member-item{ position: relative; float: left; margin: 0 14px 28px 14px; font-size: 0;}
-    .member-item div{ width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); font-size: 30px; display: flex; justify-content: center; align-items: center; position: absolute; top: 0; left: 0; color: #fff; opacity: 0;}
-    .member-item:hover div{ opacity: 1;}
-
+    .member-item{ width: 194px; margin: 0 30px 28px 0px; font-size: 0;}
+    /* .member-item:nth-child(2n){margin-right: 0px} */
+    .member-item div{margin-top: 20px; color:#fff;}
+    .member-item p{ color:#969696;font-size: 10px;margin-top: 17px;line-height: 1.5;}
+    .item-list {display: flex;flex-wrap: wrap;max-height: 500px;overflow-y: scroll}
     .services{ border-bottom: none; margin-bottom: 0;}
-    .pro-tag-list{ overflow: hidden; margin: 0 -100px;}
-    .pro-tag-list li{ width: 25%; float: left; display: flex; justify-content: center;}
+    .pro-tag-list{ }
+    .pro-tag-list li{ }
     /*.pro-tag-list li:nth-child(4n+2){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+3){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}*/
     .pro-tag-list li a{ display: flex; align-items: flex-end;}
-    .pro-tag-list li h3{ color: #fff; font-size: 200px; -webkit-text-stroke:2px #9ea09f;}
-    .pro-tag-list li div{ color: #000; font-size: 32px; margin-bottom: 40px; margin-left: -20px;}
-    .pro-tag-list li a:hover h3{-webkit-text-stroke:2px #be9833; color: #be9833;}
+    .pro-tag-list li div{ color: #fff; font-size: 32px; margin-bottom: 40px;}
 </style>
 
 <template>
@@ -45,27 +45,26 @@
         <body-frame class="flex_sb">
             <section>
                 <ul class="about-tag" ref="aboutTag">
-                    <li :class="activeIndex == 1 ? 'active':''" @click="setTop(710)">公司簡介</li>
-                    <li :class="activeIndex == 2 ? 'active':''" @click="setTop(1075)">聯繫方式</li>
-                    <li :class="activeIndex == 3 ? 'active':''" @click="setTop(1685)">團隊成員</li>
-                    <li :class="activeIndex == 4 ? 'active':''" @click="setTop(2150)">業務範圍</li>
+                    <li :class="activeIndex == 1 ? 'active':''" @click="setList(0)">公司簡介</li>
+                    <li :class="activeIndex == 2 ? 'active':''" @click="setList(1)">聯繫方式</li>
+                    <li :class="activeIndex == 3 ? 'active':''" @click="setList(2)">團隊成員</li>
+                    <li :class="activeIndex == 4 ? 'active':''" @click="setList(3)">業務範圍</li>
                 </ul>
 
-                <section class="profile">
+                <section class="about-list profile">
                     <div class="about-title">
                         <h3>公司簡介</h3>
                     </div>
-                    <div>
-                    <div class="hkLight" v-html="aboutData.intro"></div>
-                    <div class="hkLight" v-html="aboutData.idea"></div>
+                    <div class="about-content">
+                        <div class="hkLight" v-html="aboutData.intro"></div>
+                        <div class="hkLight" v-html="aboutData.idea"></div>
                     </div>
                 </section>
 
-                <section class="contact none">
+                <section class="about-list contact none">
                     <div class="about-title">
                         <h3>聯繫方式</h3>
                     </div>
-                    <img :src="aboutData.domain_url+aboutData.mapimg" width="500" height="450">
                     <div style="width: 625px; position: relative;">
                         <ul class="infos hkLight">
                             <li>
@@ -85,39 +84,40 @@
                                 <p>{{aboutData.address}}</p>
                             </li>
                         </ul>
-                        <div class="wechat">
+                        <!-- <div class="wechat">
                             <img src="../assets/images/icon-wechat.png">
                             <p><span>TAU</span>头牌文化传播</p>
                         </div>
-                        <div class="qrcode"><img :src="aboutData.domain_url+aboutData.ewm_url" width="100" height="100"> </div>
+                        <div class="qrcode"><img :src="aboutData.domain_url+aboutData.ewm_url" width="100" height="100"> </div> -->
                     </div>
+                    <b-map></b-map>
                 </section>
 
-                <section class="team none">
+                <section class="about-list team none">
                     <div class="about-title">
-                        <h3>團隊成員</h3>
+                        <h3 style="margin-bottom:24px;">團隊成員</h3>
                     </div>
-                    <div style=" width: 1280px;">
-                        <div class="content">{{aboutData.team}}</div>
-                        <ul class="item-list clearfix">
+                    <div style="width: 480px;">
+                        <!-- <div class="content">{{aboutData.team}}</div> -->
+                        <ul class="item-list">
                             <li class="member-item" v-for="(item,index) in teamList" :key="index">
-                                <img :src="aboutData.domain_url+item.cover" width="265" height="210">
-                                <div>{{item.name}}</div>
+                                <img :src="aboutData.domain_url+item.cover" width="194" height="194">
+                                <div class="f14">{{item.name}}</div>
+                                <p>团队成员，平面设计的就是对未来企业文化的或推测或引导的思辨过程。我们认为前卫的设计，不应该是离经叛道和脱离现实的；反之，真正意义上的前卫设计应该是熟知现实而不断超越和激发生活风尚的惊喜。n</p>
+                                
                             </li>
                         </ul>
                     </div>
                 </section>
 
-                <section class="team services none">
+                <section class="about-list team services none">
                     <div class="about-title">
                         <h3>業務範圍</h3>
                     </div>
-                    <div style=" width: 1280px;">
-                        <div class="content">{{aboutData.range}}</div>
+                    <div style=" width: 480px;">
                         <ul class="pro-tag-list">
                             <li v-for="(item,index) in cateList">
                                 <a href="javascript:;" @click="getList(index,item.id,0)">
-                                    <h3>{{index+1}}</h3>
                                     <div>{{item.cname}}</div>
                                 </a>
                             </li>
@@ -130,20 +130,16 @@
         <bottom-nav @clickWechat="backContact"></bottom-nav>
     </div>
 </template>
-
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
     import BottomNav from '@/components/BottomNav.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
+    import BMap from '@/components/BMap.vue'
     export default{
         name: 'App',
-        components:{TopNav,BottomNav,BodyFrame},
+        components:{TopNav,BottomNav,BodyFrame,BMap},
         mounted(){
-            // this.tCheck = setInterval(this.intervalCheck,60);
-            let top = this.$route.params.top || 0;
-            document.body.scrollTop = top;
-            document.documentElement.scrollTop = top;
-
+            this.setList(0)
             this.$store.dispatch('doGetCate');
             this.$store.dispatch('doGetAbout');
         },
@@ -169,28 +165,17 @@
             }
         },
         methods:{
-            intervalCheck(){
-                var st = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                if(st >= 710){
-                    this.$refs.aboutTag.style.position = 'fixed';
-                    this.$refs.aboutTag.style.top = '80px';
-                    if(st >= 710 && st < 1075){
-                        this.activeIndex = 1;
-                    }else if(st >= 1075 && st < 1685){
-                        this.activeIndex = 2;
-                    }else if(st >= 1685 && st < 2150){
-                        this.activeIndex = 3;
-                    }else if(st >= 2150){
-                        this.activeIndex = 4;
+            setList(index){
+                var el = document.getElementsByClassName('about-list');
+                for(var i = 0; i < el.length; i++){
+                    if(i == index){
+                        el[i].style.display = 'block';
+                        this.activeIndex = i+1;
                     }
-                }else{
-                    this.$refs.aboutTag.style.position = 'absolute';
-                    this.$refs.aboutTag.style.top = '665px';
+                    else {
+                        el[i].style.display = 'none';
+                    }
                 }
-            },
-            setTop(pos){
-                document.body.scrollTop = pos;
-                document.documentElement.scrollTop = pos;
             },
             getList(index,id,id2){
                 this.$store.commit('setNavActiveIndex',index);
@@ -202,7 +187,7 @@
                 }
             },
             backContact(){
-                this.setTop(1075)
+                
             }
         },
         beforeRouteLeave (to, from, next){

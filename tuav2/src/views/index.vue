@@ -47,7 +47,7 @@
 <template>
     <div>
         <top-nav></top-nav>
-        <body-frame>
+        <body-frame style="margin-top:100px">
             <div class="swiper-frame-index">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <!-- slides -->
