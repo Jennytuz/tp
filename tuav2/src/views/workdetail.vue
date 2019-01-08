@@ -1,27 +1,26 @@
 <style>
-    .swiper-frame{ width:1085px;position: relative; overflow: hidden;}
-    .swiper-frame .arrow{ width: 100px; height: 665px; position: absolute; top: 0; z-index: 100; display: block;}
+    .swiper-frame{ width:1045px;position: relative;}
+    .swiper-container {width: 1040px;position: static;margin: 0 auto;}
+    .swiper-frame .arrow{ width: 50px;position: absolute; top: 45%; z-index: 100; display: block;}
     .swiper-frame .arrow a{ width: 40px; height: 100%; display: block;}
     .swiper-frame:hover .arrow a{ display: block;}
-    .swiper-frame .arrow img{ margin-top: 295px;}
-    .swiper-frame .left{ left: -40px;  transition: all 0.2s linear;}
+    .swiper-frame .arrow a:after,.swiper-frame .arrow a:before {border: solid transparent;content: ' ';height: 0;left: 100%;position: absolute;width: 0;}
+    .swiper-frame .arrow a:after {border-width: 9px;border-left-color: #000;top: 15px;}
+    .swiper-frame .arrow a:before {border-width: 14px;border-left-color: #fff;top: 10px;}
+    .swiper-frame .left{ left: -70px;  transition: all 0.2s linear;}
     .swiper-frame .right{ right: -40px;  transition: all 0.2s linear;}
-    .swiper-frame .right a{ margin-left: 60px;}
-    .swiper-frame .right img{ margin-left: -40px;}
-    .swiper-frame .dots{ display: flex; align-items: center; margin-top: 25px;}
-    .swiper-frame .dots li{ width: 6px; height: 6px; border-radius: 50%; background-color: #181a19; margin-right: 20px; cursor: pointer;}
-    .swiper-frame .dots li.active{ width: 12px; height: 12px; background-color: #c29836;}
     .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: top center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
-    .detail-infos{ width: 820px;color:white;}
+    .detail-infos{ width: 700px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
     .detail-infos .sub-title {margin-bottom: 20px;}
-    .detail-infos p{ font-size: 12px;  line-height: 1.8;color:#969696; margin-bottom: 25px;padding-right: 12px;margin-right: 60px;max-height: 320px;overflow: scroll;}
+    .detail-infos p{ font-size: 12px;  line-height: 1.8;color:#969696; width:465px;margin-bottom: 25px;padding-right: 12px;margin-right: 60px;max-height: 152px;overflow: scroll;}
     .detail-infos .time{ padding-top: 15px; position: relative; font-size: 14px; margin-bottom: 25px;}
     .detail-infos .time span{ margin-right: 30px;}
-    .detail-infos .author-list{ width: 500px;margin: 30px 0;}
-    .detail-infos .author-list li{ font-size: 14px; margin-bottom: 15px; display: flex;}
-    .detail-infos .author-list li span{ width: 100px;}
+    .detail-infos .author-title {margin-top: 60px}
+    .detail-infos .author-list{ width: 500px;margin: 10px 0 60px;color:#969696;}
+    .detail-infos .author-list li{ font-size: 14px; margin-bottom: 8px; line-height: 1.5}
+    .detail-infos .author-list li span{ }
 
     .audio-frame{ position: absolute;bottom: 0;margin: 20px;}
 </style>
@@ -38,56 +37,46 @@
                 <div>
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
-
+                <div class="f14 author-title">制作名单 :</div>
                 <ul class="author-list">
                     <li class="hkLight" v-for="item in detailData.author">
-                        <span>{{item.cname}}</span>
-                        <span>{{item.name}}</span>
+                        <span>{{item.cname}} : {{item.name}}</span>
                     </li>
                 </ul>
                 <div class="time hkLight">
                     <span v-if="detailData.cate2 == ''">{{detailData.catename}}</span>
                     <span v-if="detailData.cate2 != ''">{{detailData.catename}} / {{detailData.catename2}}</span>
-                    <span>{{new Date(parseInt(detailData.ctime)).format('MM/yyyy')}}</span>
+                    <div style="margin-top:8px">{{new Date(parseInt(detailData.ctime)).format('MM/yyyy')}}</div>
                 </div>
             </div>
             <div class="swiper-frame"  v-if="!showVideo">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide v-for="(item,index) in bannerList" :key="index" :style="{backgroundImage:'url('+domain_url+item+')'}" :class="{'audio':detailData.audio_link != ''}">
                     <div class="audio-frame" v-if="detailData.audio_link != ''">
-                    <audio-view
-                        v-if="detailData.audio_link != ''"
-                        :src="domain_url+detailData.audio_link"
-                        :title="detailData.audio_name">
-                    </audio-view>
-                </div>
+                        <audio-view
+                            v-if="detailData.audio_link != ''"
+                            :src="domain_url+detailData.audio_link"
+                            :title="detailData.audio_name">
+                        </audio-view>
+                    </div>
                     </swiper-slide>
                 </swiper>
-                <div class="arrow left">
-                    <a href="javascript:;"
-                       @click="bannerPrev"
-                       v-if="activeIndex != 0">
-                        <img src="../assets/images/arrow-left.png" width="76">
-                    </a>
-                </div>
-                <div class="arrow right">
-                    <a href="javascript:;"
-                       @click="bannerNext"
-                       v-if="activeIndex != bannerList.length - 1">
-                        <img src="../assets/images/arrow-right.png" width="76">
-                    </a>
-                </div>
-                <!-- <ul class="dots" v-if="bannerList.length > 1">
-                    <li v-for="(item,index) in bannerList" :class="activeIndex == index ? 'active' : ''" @click="dotChange(index)"></li>
-                </ul> -->
+                 <div class="arrow left">
+                        <a href="javascript:;"
+                        @click="bannerPrev"
+                        v-if="activeIndex != 0">
+                        </a>
+                    </div>
+                    <div class="arrow right">
+                        <a href="javascript:;"
+                        @click="bannerNext"
+                        v-if="activeIndex != bannerList.length - 1">
+                        </a>
+                    </div>
             </div>
-
             <video-view  v-if="showVideo"
                          :vid="vid"
                          :postImg="vPostImg"></video-view>
-
-
-            
         </body-frame>
         <bottom-nav></bottom-nav>
     </div>
@@ -109,7 +98,6 @@
             return{
                 swiperOption:{
                     simulateTouch : false,
-                    width:'auto',
                     on: {
                         slideChangeTransitionStart: function(){
                             self.activeIndex = this.activeIndex;
@@ -139,9 +127,6 @@
             },
             bannerNext(){
                 this.swiper.slideNext();
-            },
-            dotChange(index){
-                this.swiper.slideTo(index);
             },
             getData(id){
                 let self = this;
