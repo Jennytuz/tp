@@ -1,16 +1,16 @@
 <style scoped>
-    .swiper-frame{ position: relative; margin-bottom: 40px; margin-right: -3%; margin-top: 70px;}
-    .swiper-item .infos .title{ font-size: 18px; font-weight: bold; letter-spacing: 1.5px; margin-top: 10px; color: #000; display: block; margin-bottom: 10px;}
-    .swiper-item .detail{ font-size: 12px; letter-spacing: 1.5px; line-height: 1.8; overflow: hidden; height: 40px;}
-    .swiper-item .btn{ width: 30%; font-size: 12px; text-align: center; padding: 7px 0; display: block; border: 1px solid #000; color: #000; border-radius: 20px; margin-top: 10px;}
-
-    .recommend-item{ margin-bottom: 25px; display: flex; justify-content: space-between;}
-    .recommend-item .imgs{ width: 45%;}
-    .recommend-item .infos{ width: 52%; display: flex; flex-direction: column; justify-content: space-between;}
-    .recommend-item .infos a{ display: block;  font-size: 16px; letter-spacing: 1.5px; margin-bottom: 10px; color: #000; overflow:hidden;}
+    .swiper-frame{ position: relative; margin-bottom: 40px; margin-right: -3%;}
+    .swiper-item {width: calc(100vw - 6%);height: 422px;background-size: cover;background-repeat: no-repeat;background-position: center center;}
+    .swiper-item .infos .title{ font-size: 30px; margin-top: 10px;}
+    .swiper-item .infos h4 {font-size: 14px;font-weight: normal;}
+    .swiper-item .item-mask {color: white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 165px;position: absolute;bottom: 0px;width: 100%;padding: 12px;display: flex;flex-direction: column;justify-content: flex-end;}
+    .recommend-container {display: flex; justify-content: space-between;flex-wrap: wrap;}
+    .recommend-item{ margin-bottom: 24px; width: calc((100vw - 6% - 10px)/2)}
+    .recommend-item .imgs{ background-size: cover;background-repeat: no-repeat;background-position: center center;padding-bottom: 100%;}
+    .recommend-item .infos{margin-top: 10px; display: flex; justify-content: space-between;font-size: 10px;color: #fff;}
+    .recommend-item .infos a{ display: block; font-size: 16px; letter-spacing: 1.5px; margin-bottom: 10px; color: #fff; overflow:hidden;}
     .recommend-item .infos .detail{ font-size: 10px; letter-spacing: 1.5px; line-height: 1.8; margin-bottom: 90px; overflow:hidden;}
-    .recommend-item .infos .time{ padding-top: 10px; color: rgb(127,127,127); position: relative; font-size: 10px;}
-    .recommend-item .infos .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
+    .recommend-item .infos .time{display: flex; justify-content: space-between; padding-top: 10px; color: #fff; font-size: 10px;}
     .recommend-item .infos .time span{ margin-right: 10px;}
 
     .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;}
@@ -34,32 +34,27 @@
             <div class="swiper-frame" style="margin-left: 0;">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <!-- slides -->
-                    <swiper-slide v-for="(item,index) in bannerList">
-                        <section class="swiper-item">
-                            <div><router-link :to="'/works/detail/'+item.id"><img :src="mainUrl+item.banner_cover"> </router-link></div>
-                            <div v-if="activeIndex == index" class="infos">
-                                <div class="title">{{item.title}} <br> {{item.title_ext}}</div>
-                                <div class="detail" v-html="item.goods_desc"></div>
-                                <router-link :to="'/works/detail/'+item.id" class="btn">More</router-link>
+                    <swiper-slide v-for="(item,index) in bannerList" class="swiper-item" :style="{'backgroundImage':'url('+mainUrl+item.banner_cover +')'}">
+                        <div><router-link :to="'/works/detail/'+item.id"></router-link></div>
+                            <div class="infos item-mask">
+                                <div class="title">{{item.title}}</div>
+                                <h4>{{item.title_ext}}</h4>
                             </div>
-                        </section>
                     </swiper-slide>
                 </swiper>
             </div>
-
-            <div class="recommend-title">推薦案例</div>
-
-            <div>
+            <div class="recommend-container">
                 <div class="recommend-item" v-for="item in recommendList">
-                    <div class="imgs"><router-link :to="'/works/detail/'+item.id"><img :src="mainUrl+item.recomm_cover"></router-link> </div>
+                    <router-link :to="'/works/detail/'+item.id">
+                    <div class="imgs" :style="{'backgroundImage':'url('+mainUrl+item.recomm_cover +')'}"><router-link :to="'/works/detail/'+item.id"></router-link> </div>
                     <div class="infos">
-                        <router-link :to="'/works/detail/'+item.id">{{item.title}}<br> {{item.title_ext}}</router-link>
-                        <div class="time hkLight">
-                            <span v-if="item.cate2 == ''">{{item.catename}}</span>
-                            <span v-if="item.cate2 != ''">{{item.catename}} / {{item.catename2}}</span>
-                            <span>項目時間 {{new Date(parseInt(item.ctime)).format('MM/dd')}}</span>
-                        </div>
+                        <span>{{item.title}}</span> <span> {{item.title_ext}}</span>
                     </div>
+                    <div class="time hkLight">
+                            <span>項目時間 {{new Date(parseInt(item.ctime)).format('MM/dd')}}</span>
+                            <span>{{item.catename}}</span>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </body-frame>
@@ -102,7 +97,7 @@
             let self = this;
             return{
                 swiperOption: {
-                    width: window.innerWidth*0.8,
+                    width: window.innerWidth*0.94,
                     spaceBetween:15,
                     on: {
                         slideChangeTransitionStart: function(){
