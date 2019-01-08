@@ -4,9 +4,8 @@
     .top-nav section .logo{ margin:15px 0; float: left; cursor: pointer;}
     .top-nav section nav{ float: left; margin-left: 60px;}
     .top-nav section nav .first-level{ display: flex; margin-top: 23px;}
-    .top-nav section nav .first-level>li{ margin-right: 30px; position: relative; padding-bottom: 18px;}
-    .top-nav section nav .first-level>li.active:before{ content: ''; width: 64px; height: 3px; background-color: #171918; position: absolute; top: -23px; left: 50%; margin-left: -32px;}
-    .top-nav section nav .first-level>li>a{ width: 65px; font-size: 14px; color: #fff;  text-align: center; display: block;}
+    .top-nav section nav .first-level>li{ margin-left: 70px; position: relative; padding-bottom: 18px;}
+    .top-nav section nav .first-level>li>a{ width: 45px; font-size: 14px; color: #fff;  text-align: center; display: block; text-align-last: justify;}
     .top-nav section nav .first-level>li>a span{ transform: scale(0.5,0.5); display:block;}
     .top-nav section nav .first-level>li .second-level{ width: 90px; background-color: #000; position: absolute; top:56px; left: 50%; margin-left: -45px; display: none;}
     .top-nav section nav .first-level>li:hover .second-level{ display: block;}

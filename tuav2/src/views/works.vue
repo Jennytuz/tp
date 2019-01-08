@@ -1,6 +1,9 @@
 <style>
 .item-list {width: 1800px;height:650px}
 .swiper-container-vertical > .swiper-wrapper {flex-direction: row;flex-wrap: wrap;}
+.swiper-button-prev,.swiper-button-next {background-image: none;}
+.swiper-button-prev.arrow.left{  bottom: 10px;left: 48%;transform: rotate(-90deg);}  
+.swiper-button-next.arrow.right{  bottom: 10px;left: 52%;transform: rotate(90deg);}  
 </style>
 
 <template>
@@ -13,8 +16,8 @@
                             :data="item"
                             :mainUrl="domain_url"
                             :key="item.id" class="swiper-slide"></work-item>
-                <div class="swiper-button-prev" slot="button-prev"></div>
-                <div class="swiper-button-next" slot="button-next"></div>
+                <div class="swiper-button-prev arrow left" slot="button-prev"></div>
+                <div class="swiper-button-next arrow right" slot="button-next"></div>
                 </swiper>
         </body-frame>
         <bottom-nav></bottom-nav>

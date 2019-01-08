@@ -284,7 +284,7 @@ a{ text-decoration: none;}
 .pr95{ padding-right: 95px;}
 .pr100{ padding-right: 100px;}
 
-.arrow {display: block;width: 40px;height: 40px;}
+.arrow {display: block;width: 40px;height: 40px;cursor: pointer;}
 .arrow:after, .arrow:before {border: solid transparent;content: ' ';height: 0;left: 100%;position: absolute;width: 0;left:50%;top: 80%;}
 .arrow:after {border-width: 9px;border-left-color: #000;top: 15px;}
 .arrow:before {border-width: 14px;border-left-color: #fff;top: 10px;}

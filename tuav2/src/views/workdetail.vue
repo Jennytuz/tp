@@ -9,7 +9,7 @@
     /* .arrow.left:before {border-width: 14px;border-left:none;border-right-color: #fff;top: 10px;} */
     .swiper-frame .left{ left: -70px; }
     .swiper-frame .right{ right: -70px; }
-    .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: top center;}
+    .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: center center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
     .detail-infos{ width: 700px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
@@ -82,7 +82,7 @@
                          :postImg="vPostImg"></video-view>
 
             <div class="back_btn">
-                <i class="arrow left" @click=''></i>
+                <i class="arrow left" @click='backHistory'></i>
             </div>
         
         </body-frame>
@@ -136,6 +136,9 @@
             },
             bannerNext(){
                 this.swiper.slideNext();
+            },
+            backHistory(){
+                window.history.back();
             },
             getData(id){
                 let self = this;
