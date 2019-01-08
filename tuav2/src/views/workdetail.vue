@@ -4,11 +4,11 @@
     .swiper-frame .arrow{ width: 50px;position: absolute; top: 45%; z-index: 100; display: block;}
     .swiper-frame .arrow a{ width: 40px; height: 100%; display: block;}
     .swiper-frame:hover .arrow a{ display: block;}
-    .swiper-frame .arrow a:after,.swiper-frame .arrow a:before {border: solid transparent;content: ' ';height: 0;left: 100%;position: absolute;width: 0;}
-    .swiper-frame .arrow a:after {border-width: 9px;border-left-color: #000;top: 15px;}
-    .swiper-frame .arrow a:before {border-width: 14px;border-left-color: #fff;top: 10px;}
-    .swiper-frame .left{ left: -70px;  transition: all 0.2s linear;}
-    .swiper-frame .right{ right: -40px;  transition: all 0.2s linear;}
+    
+    /* .arrow.left:after {border-width: 9px;border-left:none;border-right-color: #000;top: 15px;} */
+    /* .arrow.left:before {border-width: 14px;border-left:none;border-right-color: #fff;top: 10px;} */
+    .swiper-frame .left{ left: -70px; }
+    .swiper-frame .right{ right: -70px; }
     .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: top center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
     .detail-infos{ width: 700px;color:white;}
@@ -20,11 +20,12 @@
     .detail-infos .author-title {margin-top: 60px}
     .detail-infos .author-list{ width: 500px;margin: 10px 0 60px;color:#969696;}
     .detail-infos .author-list li{ font-size: 14px; margin-bottom: 8px; line-height: 1.5}
-    .audio_container {width: 614px;height: 614px;position: relative;background-size: cover;background-repeat: no-repeat;background-position: center center;}
+    .audio_container {width: 614px;height: 614px;position: relative;background-size: cover;background-repeat: no-repeat;background-position: center center;margin-left: 200px;}
     .audio-frame{ position: absolute;bottom: 0;margin: 20px;}
     .qrcode_container {text-align: center; width:121px;height:140px;position: absolute;bottom: 120px;left: 400px;}
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
+    .back_btn {position: absolute;top: -10px;left: 0;}
 </style>
 
 <template>
@@ -61,18 +62,10 @@
                    
                     </swiper-slide>
                 </swiper>
-                 <div class="arrow left">
-                        <a href="javascript:;"
-                        @click="bannerPrev"
-                        v-if="activeIndex != 0">
-                        </a>
-                    </div>
-                    <div class="arrow right">
-                        <a href="javascript:;"
-                        @click="bannerNext"
-                        v-if="activeIndex != bannerList.length - 1">
-                        </a>
-                    </div>
+                 <div class="arrow left" @click="bannerPrev" v-if="activeIndex != 0">
+                </div>
+                <div class="arrow right" @click="bannerNext" v-if="activeIndex != bannerList.length - 1">
+                </div>
             </div>
             <div class="audio_container" v-if="detailData.audio_link != ''" :style="{backgroundImage:'url('+domain_url+bannerList[0]+')'}">
                 <div class="audio-frame">
@@ -87,9 +80,10 @@
             <video-view  v-if="showVideo"
                          :vid="vid"
                          :postImg="vPostImg"></video-view>
-        
 
-        
+            <div class="back_btn">
+                <i class="arrow left" @click=''></i>
+            </div>
         
         </body-frame>
         <bottom-nav></bottom-nav>

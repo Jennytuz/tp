@@ -1,29 +1,32 @@
 <style>
     .swiper-frame-index{ position: relative; margin-bottom: 20px;}
-    .swiper-item .link{  display: block; font-size: 28px; letter-spacing: 1.3px; margin-top: 10px; color: #000; white-space:nowrap; text-overflow: ellipsis; overflow: hidden;}
-    .swiper-item .link:hover{ color: #7f7f7f;}
-    .swiper-item .img{ height: 730px;background-size: cover; background-position: center center;}
-    .swiper-item .img a{ position: relative; font-size: 0; display: block;height: 100%}
-    .swiper-item .img:hover .detail{ display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transition: all .8s ;}
-    .swiper-item .item-mask {color:white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 365px;position:absolute;bottom: 0px;width: 100%;padding: 16px;display: flex;flex-direction: column;justify-content: flex-end;}
-    .swiper-item .detail{ color:white;height: 100%; font-size: 16px; letter-spacing: 3px; line-height: 1.8; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);display:flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;display:none;}
-    .swiper-item .detail h2 {font-size: 28px}
-    .swiper-item .detail p {font-size: 20px}
-    .swiper-item .detail span {position: absolute;top: 16px;right: 16px;}
-    .swiper-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical;}
-    .swiper-item .time{ padding-top: 15px;color: rgb(127,127,127);position: relative; font-size: 14px;}
-    .swiper-item .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
-    .swiper-item .time span{ margin-right: 30px;}
-    .swiper-item .time span a{color: rgb(127,127,127);}
-    .swiper-item .time span a:hover{color: #000;}
-    .swiper-frame-index .arrow{ width: 295px; height: 560px; position: absolute; top: 0; z-index: 100; display: block;}
-    .swiper-frame-index .arrow:hover a{ display: block;}
-    .swiper-frame-index .arrow a{ width: 40px; height: 100%; background-color: #fff; display: none;}
-    .swiper-frame-index .arrow img{ margin-top: 256px;}
-    .swiper-frame-index .left{ left: 0;}
-    .swiper-frame-index .right{ right: 0;}
-    .swiper-frame-index .right a{ margin-left: 255px;}
-    .swiper-frame-index .right img{ margin-left: -40px;}
+    .banner-item {width:584px}
+    .banner-item .link{  display: block; font-size: 28px; letter-spacing: 1.3px; margin-top: 10px; color: #000; white-space:nowrap; text-overflow: ellipsis; overflow: hidden;}
+    .banner-item .link:hover{ color: #7f7f7f;}
+    .banner-item .img{ height: 730px;background-size: cover; background-position: center center;}
+    .banner-item .img a{ position: relative; font-size: 0; display: block;height: 100%}
+    .banner-item .img:hover .detail{ display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transition: all .8s ;}
+    .banner-item .item-mask {color:white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 365px;position:absolute;bottom: 0px;width: 100%;padding: 16px;display: flex;flex-direction: column;justify-content: flex-end;}
+    .banner-item .item-mask h2 {font-size: 37px;}
+    .banner-item .item-mask p {font-size: 21px;}
+    .banner-item .detail{ color:white;height: 100%; font-size: 16px; line-height: 1.3; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);display:flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;display:none;}
+    .banner-item .detail h2 {font-size: 37px}
+    .banner-item .detail p {font-size: 21px}
+    .banner-item .detail span {position: absolute;top: 16px;right: 16px;}
+    .banner-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical; line-height: 1.7;}
+    .banner-item .time{ padding-top: 15px;color: rgb(127,127,127);position: relative; font-size: 14px;}
+    .banner-item .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
+    .banner-item .time span{ margin-right: 30px;}
+    .banner-item .time span a{color: rgb(127,127,127);}
+    .banner-item .time span a:hover{color: #000;}
+    .banner-frame-index .arrow{ width: 295px; height: 560px; position: absolute; top: 0; z-index: 100; display: block;}
+    .banner-frame-index .arrow:hover a{ display: block;}
+    .banner-frame-index .arrow a{ width: 40px; height: 100%; background-color: #fff; display: none;}
+    .banner-frame-index .arrow img{ margin-top: 256px;}
+    .banner-frame-index .left{ left: 0;}
+    .banner-frame-index .right{ right: 0;}
+    .banner-frame-index .right a{ margin-left: 255px;}
+    .banner-frame-index .right img{ margin-left: -40px;}
 
     .recommend-item{ height: 124px;}
     .recommend-item .imgs{display: block; height: 100%;background-size: cover; background-position: center center;}
@@ -42,22 +45,24 @@
         opacity: 0;
     }
     .more-container {width: 1500px;}
+    .swiper-container{position: static;}
+    .swiper-button-prev,.swiper-button-next {background-image: none;}
+    .swiper-button-prev {left:120px;top:43%;}
+    .swiper-button-disabled {display: none;}
 </style>
 
 <template>
     <div>
         <top-nav></top-nav>
         <body-frame style="margin-top:100px">
-            <div class="swiper-frame-index">
-                <swiper :options="swiperOption" ref="mySwiper">
+            <div class="swiper-frame-index flex_sb">
                     <!-- slides -->
-                    <swiper-slide v-for="(item,index) in bannerList">
-                        <section class="swiper-item">
+                        <section class="banner-item" v-for="(item,index) in bannerList" v-if="index<3">
                             <div class="img" :style="{backgroundImage:'url('+mainUrl+item.banner_cover+')'}">
                                 <router-link :to="'/works/detail/'+item.id">
                                 <div class="item-mask">
-                                    <h2 class="f30">{{item.title}}</h2>
-                                    <p class="f20">{{item.title_ext}}</p>
+                                    <h2>{{item.title}}</h2>
+                                    <p>{{item.title_ext}}</p>
                                 </div>
                                 <div class="detail ">
                                     <div>
@@ -72,18 +77,22 @@
                                 </router-link>
                             </div>
                         </section>
-                    </swiper-slide>
-                </swiper>
             </div>
-
-            <div class="flex_sb">
+            <div class="flex_sb" style="position:relative">
                 <div class="recommend-title">MORE</div>
                 <swiper class="more-container" :options="recommendSwiperOpt" ref="mySwiper">
                     <swiper-slide class="recommend-item" v-for="item in recommendList">
                         <router-link :to="'/works/detail/'+item.id" class="imgs" :style="{backgroundImage:'url('+mainUrl+item.recomm_cover+')'}"></router-link>
                     </swiper-slide>
-                    <div class="swiper-button-prev" slot="button-prev"></div>
-                    <div class="swiper-button-next" slot="button-next"></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
+
+                    <div class="swiper-button-prev arrow left" slot="button-prev"></div>
+                    <div class="swiper-button-next arrow right" slot="button-next"></div>
                 </swiper>
             </div>
         </body-frame>
@@ -141,32 +150,21 @@
         data(){
             let self = this;
             return{
-                swiperOption: {
-                    width: 584,
-                    spaceBetween:25,
-                    simulateTouch : false,
-                    on: {
-                        slideChangeTransitionStart: function(){
-                            self.activeIndex = this.activeIndex;
-                        }
-                    }
-                },
                 swiper:null,
                 activeIndex:0,
                 recommendSwiperOpt:{
-                    width: 222,
-                    spaceBetween: 12,
+                    width: 1500,
+                    spaceBetween: 30,
+                    slidesPerView:6,
                     slidesPerGroup:6,
+                    navigation: {
+                        nextEl: '.arro.right',
+                        prevEl: '.arrow.left'
+                    } 
                 }
             }
         },
         methods: {
-            bannerPrev(){
-                this.swiper.slidePrev();
-            },
-            bannerNext(){
-                this.swiper.slideNext();
-            },
             getList(id,id2){
                 for(let i=0;i<this.cateList.length;i++){
                     if(this.cateList[i].id == id){
