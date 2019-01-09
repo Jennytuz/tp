@@ -1,13 +1,19 @@
 <style>
+    .header{height: 50px; display: flex; justify-content: space-between; align-items: center; padding:0 3%;}
+    .header .logo{ width: 80px;}
     .body-frame .bgCover{ width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5);  position: fixed; top: 0; left: 0; z-index: 1050}
     .nav-frame{ width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 1100; }
-    .nav-frame .btn-close{ height: 52px; display: flex; padding: 0 5%; justify-content: flex-end; align-items: center;}
-    .nav-frame .btn-close img{ width: 20px;}
-    .nav-frame nav{ width: 70%; position: absolute; top: 0; right: 0; bottom: 0; background-color: #fff; padding:0 15px;overflow-y: scroll;}
-    .nav-frame nav .first-level>li{  border-top: 1px solid #e5e5e5;}
-    .nav-frame nav .first-level>li>a{ font-size: 16px; color: #000; display: block;padding: 15px 0 15px 40px;}
+    .nav-frame .btn-close{ height: 50px; display: flex; justify-content: flex-end; align-items: center;}
+    .nav-frame .btn-close span{ width: 22px;height: 1px;border-top: 2px solid #fff;transform: rotate(45deg);}
+    .nav-frame .btn-close span:first-child{ transform: rotate(-45deg);position: relative;left: 22px}
+    .nav-frame nav{ width: 100%; position: absolute; top: 0; right: 0; bottom: 0; background-color: #000; padding-left:3%;overflow-y: scroll;}
+    .nav-frame nav a{font-size:16px;letter-spacing: 15px;color: #fff;}
+    .nav-frame nav a span{font-size:9px;letter-spacing: 5px;transform: scale(0.9,0.8);display: inline-block;}
+    .nav-frame nav .first-level {margin-top: 50px}
+    .nav-frame nav .first-level>li {margin-bottom: 20px}
+    .nav-frame nav .first-level>li>a{ font-size: 16px;  display: block;padding: 15px 0 15px 20px;}
     .nav-frame nav .first-level>li .second-level{ margin-left: 40px; }
-    .nav-frame nav .first-level>li .second-level li a{ padding: 15px 0 15px 40px; color: #000; display: block;}
+    .nav-frame nav .first-level>li .second-level li a{ padding: 15px 0 15px 10px; color: #fff; display: block;}
 
     .fade-enter-active, .fade-leave-active {
         transition: opacity 0.3s;
@@ -32,28 +38,40 @@
         <transition name="slide">
         <div class="nav-frame" v-if="showMenu" @touchmove.prevent="move($event)">
             <nav @touchmove.stop="move($event)">
-                <a href="javascript:;" class="btn-close" @click="doHideMenu"><img src="../assets/images/btn-close.png"> </a>
+                <div class="header">
+                    <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png"> </div>
+                    <a href="javascript:;" class="btn-close" @click="doHideMenu"><span></span><span></span></a>
+                </div>
                 <ul class="first-level hkLight">
+                    <li>
+                        <a href="/">
+                        首页<span>HOME</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="javascript:;"
                            @click="getList(-2,0,0)">
-                            全部
+                            案例<span>WORKS</span>
                         </a>
-                    </li>
-                    <li v-for="(item,index) in cateList">
-                        <a href="javascript:;"
-                           @click="getList(index,item.id,0)">
-                            {{item.cname}}
-                        </a>
-                        <ul class="second-level"
-                            v-if="item.child.length != 0">
-                            <li v-for="listItem in item.child"><a href="javascript:;" @click="getList(index,item.id,listItem.id)">{{listItem.cname}}</a> </li>
+                        <ul class="second-level">
+                            <li>
+                                <a href="javascript:;"
+                                    @click="getList(-2,0,0)">
+                                        全部<span>ALL</span>
+                                </a>
+                            </li>
+                            <li v-for="(item,index) in cateList">
+                                <a href="javascript:;"
+                                @click="getList(index,item.id,0)">
+                                    {{item.cname}}<span>{{item.code}}</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;"
                            @click="gotoPage('/about',-3)">
-                            關於
+                            关于<span>ABOUT</span>
                         </a>
                     </li>
                 </ul>

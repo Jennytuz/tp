@@ -44,18 +44,11 @@
                 </swiper>
             </div>
             <div class="recommend-container">
-                <div class="recommend-item" v-for="item in recommendList">
-                    <router-link :to="'/works/detail/'+item.id">
-                    <div class="imgs" :style="{'backgroundImage':'url('+mainUrl+item.recomm_cover +')'}"><router-link :to="'/works/detail/'+item.id"></router-link> </div>
-                    <div class="infos">
-                        <span>{{item.title}}</span> <span> {{item.title_ext}}</span>
-                    </div>
-                    <div class="time hkLight">
-                            <span>項目時間 {{new Date(parseInt(item.ctime)).format('MM/dd')}}</span>
-                            <span>{{item.catename}}</span>
-                        </div>
-                    </router-link>
-                </div>
+                <work-item v-for="item in recommendList"
+                           :data="item"
+                           :mainUrl="mainUrl"
+                           :cover="item.recomm_cover"
+                           :key="item.id"></work-item>
             </div>
         </body-frame>
 
@@ -68,9 +61,10 @@
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
+    import WorkItem from '@/components/WorkItem.vue'
     export default{
         name: 'App',
-        components:{TopNav,BodyFrame},
+        components:{TopNav,BodyFrame,WorkItem},
         computed:{
             isGuide(){
                 return this.$store.state.isGuide

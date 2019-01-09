@@ -9,6 +9,7 @@
             <div class="item-list"  v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoading" infinite-scroll-distance="10">
                 <work-item v-for="item in proList"
                            :data="item"
+                           :cover="item.cover"
                            :mainUrl="domain_url"
                            :key="item.id"></work-item>
             </div>
