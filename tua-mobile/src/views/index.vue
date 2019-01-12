@@ -25,6 +25,8 @@
         /* .slide-fade-leave-active for below version 2.1.8 */ {
         opacity: 0;
     }
+    .more-btn{display: flex;flex-direction: column;align-items: center}
+    .more-btn img {width: 30px;color: #fff;}
 </style>
 <!--static/mobile_v1/static/-->
 <template>
@@ -50,10 +52,16 @@
                            :cover="item.recomm_cover"
                            :key="item.id"></work-item>
             </div>
+            <div>
+                <div @click="gotoPage('/works')" class="more-btn">
+                    <span>MORE</span>
+                    <img src="../assets/images/arrow-down.png" width="30">
+                </div>
+            </div>
         </body-frame>
 
         <transition name="slide-fade">
-        <div class="welcome" v-if="isGuide"><img src="../assets/images/loading.gif"> </div>
+        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ +')'}"><img src="../assets/images/loading.gif"> </div>
         </transition>
     </div>
 </template>
@@ -114,6 +122,11 @@
 
             }
             this.$store.dispatch('doGetIndex');
+        },
+        methods:{
+            gotoPage(name){
+                this.$router.push(name)
+            },
         }
     }
 
