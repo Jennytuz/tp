@@ -1,37 +1,33 @@
 <style scoped>
-    .about-tag{ width: 94%; height: 60px; border-bottom: 1px solid #e5e5e5; position: absolute; top: 190px; left: 3%; display: flex; justify-content: space-around; align-items: center; background-color: #fff; z-index: 500;}
+    .about-tag{ width: 94%; height: 60px;  left: 3%; display: flex; justify-content: space-around; align-items: center; color: #fff; z-index: 500;}
     .about-tag li{ width: 80px; height: 20px; display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer;}
-    .about-tag li.active{ background-color: #000; color: #fff;}
+    .about-tag li.active{ border-bottom: 1px solid #ff7200;}
 
-    .profile{ margin-top: 90px;}
-    .profile,.contact,.team{ border-bottom: 1px solid #e5e5e5; padding-bottom: 40px; margin-bottom: 40px; padding-left: 3%; padding-right: 3%;}
-    .profile div{ font-size: 14px; line-height: 1.8; margin-bottom: 20px; letter-spacing: 1.5px;}
+    .about-list{ margin-top: 48px;}
+    .profile,.contact,.team{  padding-bottom: 40px; margin-bottom: 40px; padding-left: 3%; padding-right: 3%;}
+    .profile .hkLight { font-size: 11px;color:#969696; line-height: 1.8;letter-spacing: 1.5px;}
 
     .about-title{ margin-bottom: 20px;}
     .about-title p{ font-size: 20px; margin-bottom: 15px;}
-    .about-title h3{ font-size: 16px; font-weight: normal; letter-spacing: 1.5px;}
-    .about-title h3 span{ font-size: 10px; display: block;}
+    .about-title h3{ font-size:21px; font-weight: bold; letter-spacing: 1.5px;}
 
     .contact{ padding-bottom: 0;}
-    .contact .infos li{ font-size: 14px; margin-bottom: 30px;}
-    .contact .infos li p:first-child{ margin-bottom: 15px;}
+    .contact .infos li{ font-size: 13px; margin-bottom: 20px;display: flex}
+    .contact .infos li p:first-child{ margin-bottom: 15px;width: 48%;}
     .contact .infos li p{ line-height: 1.8;}
-    .contact .infos li p a{ padding: 2px 16px; border: 1px solid #000; border-radius: 20px; color: #000; margin-bottom: 10px; display: inline-block;}
+    .contact .infos li p a{ color: #fff; margin-bottom: 5px; display: inline-block;}
 
     .team .content{font-size: 14px; line-height: 1.8; margin-bottom: 20px; letter-spacing: 1.5px;}
 
-    .member-item{ position: relative; width: 49%; margin-bottom: 2%; font-size: 0;}
-    .member-item div{ color: #000; font-size: 12px; margin-top: 3%;}
-
+    .member-item{ margin-bottom: 30px;}
+    .member-item div{ color: #fff; font-size: 12px; margin-top: 8px;margin-bottom: 16px;}
+    .member-item .title {font-size:14px;display: flex;justify-content: space-between;align-items: center;}
+    .member-item p {font-size: 13px;color: #969696;line-height: 1.5;}
     .services{ border-bottom: none; margin-bottom: 0;}
-    .pro-tag-list{ display: flex; flex-wrap: wrap; overflow: hidden;}
-    .pro-tag-list li{ width: 48%; display: flex; margin-bottom: 4%;}
-    .pro-tag-list li:nth-child(4n+2){ justify-content: center;}
-    .pro-tag-list li:nth-child(4n+3){ justify-content: center;}
-    .pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}
+    .pro-tag-list{ display: flex; flex-wrap: wrap;margin-top:63px;}
+    .pro-tag-list li{ width:40%;display: flex; margin-bottom: 4%;}
     .pro-tag-list li a{ display: flex; align-items: flex-end;}
-    .pro-tag-list li h3{ color: #fff; font-size: 140px; -webkit-text-stroke:2px #9ea09f;}
-    .pro-tag-list li div{ color: #000; font-size: 20px; margin-bottom: 30px; margin-left: -10px;}
+    .pro-tag-list li div{ color: #fff; font-size: 34px; margin-bottom: 30px; margin-left: 13px;}
     .pro-tag-list li a:hover h3{-webkit-text-stroke:2px #be9833; color: #be9833;}
 </style>
 
@@ -43,25 +39,55 @@
                 <img :src="aboutData.domain_url+aboutData.cover">
             </section>
             <ul class="about-tag" ref="aboutTag">
-                <li :class="activeIndex == 1 ? 'active':''" @click="setTop(710)">公司簡介</li>
-                <li :class="activeIndex == 2 ? 'active':''" @click="setTop(1075)">聯繫方式</li>
-                <li :class="activeIndex == 3 ? 'active':''" @click="setTop(1685)">團隊成員</li>
-                <li :class="activeIndex == 4 ? 'active':''" @click="setTop(2150)">業務範圍</li>
+                <li :class="activeIndex == 1 ? 'active':''" @click="setList(0)">公司简介</li>
+                <li :class="activeIndex == 2 ? 'active':''" @click="setList(1)">业务范围</li>
+                <li :class="activeIndex == 3 ? 'active':''" @click="setList(2)">我们的团队</li>
+                <li :class="activeIndex == 4 ? 'active':''" @click="setList(3)">联系方式</li>
+
             </ul>
 
-            <section class="profile">
+            <section class="about-list profile">
                 <div class="about-title">
-                    <p>01</p>
-                    <h3>公司簡介<span>profile</span></h3>
+                    <h3>公司简介</h3>
                 </div>
-                <div v-html="aboutData.intro"></div>
+                <div class="hkLight" v-html="aboutData.intro"></div>
                 <div class="hkLight" v-html="aboutData.idea"></div>
             </section>
-
-            <section class="contact">
+            <section class="about-list team services">
                 <div class="about-title">
-                    <p>02</p>
-                    <h3>聯繫方式<span>contact</span></h3>
+                    <h3>业务范围</h3>
+                </div>
+                <div>
+                    <ul class="pro-tag-list">
+                        <li v-for="(item,index) in cateList">
+                            <a href="javascript:;"  @click="getList(index,item.id,0)">
+                                <div>{{item.cname}}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="about-list team" ref="team">
+                <div class="about-title">
+                    <h3>我们的团队</h3>
+                </div>
+                <div>
+                    <!-- <div class="content">{{aboutData.team}}</div> -->
+                    <ul class="">
+                        <li class="member-item" v-for="(item,index) in teamList" :key="index">
+                            <img :src="aboutData.domain_url+item.cover">
+                            <div class="title">
+                                <span>{{item.title}}</span>
+                                <span>{{item.name}}</span>
+                            </div>
+                            <p>{{item.intro}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="about-list contact">
+                <div class="about-title">
+                    <h3>联系我们</h3>
                 </div>
                 <div style=" position: relative;">
                     <ul class="infos hkLight">
@@ -82,40 +108,7 @@
                             <p>{{aboutData.address}}</p>
                         </li>
                     </ul>
-                </div>
-            </section>
-
-            <section class="team" ref="team">
-                <div class="about-title">
-                    <p>03</p>
-                    <h3>團隊成員<span>team</span></h3>
-                </div>
-                <div>
-                    <div class="content">{{aboutData.team}}</div>
-                    <ul class="item-list clearfix">
-                        <li class="member-item" v-for="(item,index) in teamList" :key="index">
-                            <img :src="aboutData.domain_url+item.cover">
-                            <div>{{item.name}}</div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="team services">
-                <div class="about-title">
-                    <p>04</p>
-                    <h3>業務範圍<span>services</span></h3>
-                </div>
-                <div>
-                    <div class="content">{{aboutData.range}}</div>
-                    <ul class="pro-tag-list">
-                        <li v-for="(item,index) in cateList">
-                            <a href="javascript:;"  @click="getList(index,item.id,0)">
-                                <h3>{{index+1}}</h3>
-                                <div>{{item.cname}}</div>
-                            </a>
-                        </li>
-                    </ul>
+                    <b-map></b-map>
                 </div>
             </section>
         </body-frame>
@@ -125,26 +118,24 @@
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
+    import BMap from '@/components/BMap.vue'
     export default{
         name: 'App',
-        components:{TopNav,BodyFrame},
+        components:{TopNav,BodyFrame,BMap},
         mounted(){
-            this.tCheck = setInterval(this.intervalCheck,60);
-            let top = this.$route.params.top || 0;
-            document.body.scrollTop = top;
-            document.documentElement.scrollTop = top;
             this.$store.dispatch('doGetAbout');
         },
         data(){
             return{
-                activeIndex:0,
+                activeIndex:1,
                 tCheck:0
             }
         },
         computed:{
             cateList(){
                 return this.$store.state.cateList
-            },aboutData(){
+            },
+            aboutData(){
                 return this.$store.state.aboutData;
             },
             teamList(){
@@ -159,31 +150,17 @@
             getPhone(phone){
                 return phone.replace(/\s/g,'').replace(/-/g,'');
             },
-            intervalCheck(){
-                var st = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                console.log(st);
-                let bh = this.$refs.banner.offsetHeight;
-                let teamH = this.$refs.team.offsetHeight;
-                if(st >= bh){
-                    this.$refs.aboutTag.style.position = 'fixed';
-                    this.$refs.aboutTag.style.top = '50px';
-                    if(st >= bh && st < 1080){
-                        this.activeIndex = 1;
-                    }else if(st >= 1080 && st < 1740){
-                        this.activeIndex = 2;
-                    }else if(st >= 1740 && st < 1780 + teamH){
-                        this.activeIndex = 3;
-                    }else if(st >= 1780 + teamH){
-                        this.activeIndex = 4;
+            setList(index){
+                var el = document.getElementsByClassName('about-list');
+                for(var i = 0; i < el.length; i++){
+                    if(i == index){
+                        el[i].style.display = 'block';
+                        this.activeIndex = i+1;
                     }
-                }else{
-                    this.$refs.aboutTag.style.position = 'absolute';
-                    this.$refs.aboutTag.style.top = 50+bh+'px';
+                    else {
+                        el[i].style.display = 'none';
+                    }
                 }
-            },
-            setTop(pos){
-                document.body.scrollTop = pos;
-                document.documentElement.scrollTop = pos;
             },
             getList(index,id,id2){
                 this.$store.commit('setNavActiveIndex',index);

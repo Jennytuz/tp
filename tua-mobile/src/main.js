@@ -6,7 +6,11 @@ import router from './router'
 import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import infiniteScroll from 'vue-infinite-scroll'
+import BaiduMap from 'vue-baidu-map'
 Vue.use(infiniteScroll);
+Vue.use(BaiduMap, {
+    ak:'3Z118EsGzhwSSckxiiZAGuOAbh3FVdbQ'
+})
 import axios from 'axios'
 
 // require styles

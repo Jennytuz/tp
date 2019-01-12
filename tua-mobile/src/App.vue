@@ -14,13 +14,13 @@
     @import "assets/css/reset.css";
 
     #app {
-        background-color: #000;
         font-family:'hkMedium',"Helvetica Neue","Helvetica","Arial",sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+    body{background-color: #000;color:#fff;}
     img{ width: 100%;}
     .body-frame{margin: 50px 3% 60px 3%;}
 
-    .item-list{ display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 70px;}
+    .item-list{ display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 60px;}
 </style>
