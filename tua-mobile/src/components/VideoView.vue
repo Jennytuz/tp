@@ -1,20 +1,19 @@
 <style>
-    .vframe{ width:100%; position: relative; }
+    .vframe{ width:100%; position: relative; height: 210px;}
     .mod_player,.tenvideo_player{ width: 100%; height: 100%;}
     .postImg{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-repeat: no-repeat; background-position: center center; background-size: cover;}
-    .postImg a{ width: 60px; position: absolute; top: 50%; left: 50%; margin: -30px 0 0 -30px;}
+    .postImg a{ width: 30px; position: absolute; top: 50%; left: 50%;transform: translate(-50%,-50%);}
     .postImg .cover{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5);}
 </style>
 
 <template>
-    <div class="vframe" :style="{height:postHeight+'px'}">
+    <div class="vframe">
         <div id="mod_player" class="mod_player">
             <div id="mod_player_skin">&nbsp;</div>
         </div>
         <div class="postImg" :style="{'background-image':'url('+postImg+')'}" v-if="!isPlay">
-            <img :src="postImg" @load="imgLoad" ref="postImg" />
             <div class="cover"></div>
-            <a href="javascript:;" @click="doPlay"><img src="../assets/images/btn-play.png" width="60" height="60"></a>
+            <a href="javascript:;" @click="doPlay"><img src="../assets/images/btn-play.png" width="30" height="30"></a>
         </div>
     </div>
 </template>

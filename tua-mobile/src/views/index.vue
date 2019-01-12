@@ -1,9 +1,16 @@
 <style scoped>
-    .swiper-frame{ position: relative; margin-bottom: 40px; margin-right: -3%;}
+    .swiper-frame{ position: relative; margin-bottom: 10px; margin-right: -3%;}
     .swiper-item {width: calc(100vw - 6%);height: 422px;background-size: cover;background-repeat: no-repeat;background-position: center center;}
+    .swiper-item a {height: 100%;width: 100%;display: block;}
     .swiper-item .infos .title{ font-size: 30px; margin-top: 10px;}
     .swiper-item .infos h4 {font-size: 14px;font-weight: normal;}
     .swiper-item .item-mask {color: white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 165px;position: absolute;bottom: 0px;width: 100%;padding: 12px;display: flex;flex-direction: column;justify-content: flex-end;}
+    
+    .dots {display: flex;margin: 10px 3% 10px 0}
+    .dots li{ width:100%;background-color: #373737;height:4px;}
+    .dots li:not(:last-child){margin-right: 10px;}
+    .dots li.active{background-color: #FF7200;}
+
     .recommend-container {display: flex; justify-content: space-between;flex-wrap: wrap;}
     .recommend-item{ margin-bottom: 24px; width: calc((100vw - 6% - 10px)/2)}
     .recommend-item .imgs{ background-size: cover;background-repeat: no-repeat;background-position: center center;padding-bottom: 100%;}
@@ -37,13 +44,17 @@
                 <swiper :options="swiperOption" ref="mySwiper">
                     <!-- slides -->
                     <swiper-slide v-for="(item,index) in bannerList" class="swiper-item" :style="{'backgroundImage':'url('+mainUrl+item.banner_cover +')'}">
-                        <div><router-link :to="'/works/detail/'+item.id"></router-link></div>
+                        <router-link :to="'/works/detail/'+item.id">
                             <div class="infos item-mask">
                                 <div class="title">{{item.title}}</div>
                                 <h4>{{item.title_ext}}</h4>
                             </div>
+                        </router-link>
                     </swiper-slide>
                 </swiper>
+                <ul class="dots" v-if="bannerList.length > 1">
+                    <li v-for="(item,index) in bannerList" :class="activeIndex == index ? 'active' : ''"></li>
+                </ul>
             </div>
             <div class="recommend-container">
                 <work-item v-for="item in recommendList"
@@ -82,7 +93,7 @@
             },
             bannerList(){
                 try{
-                    return this.$store.state.indexData.banner.list
+                    return this.$store.state.indexData.banner.list.slice(0,3)
                 }catch(err){
                     return []
                 }

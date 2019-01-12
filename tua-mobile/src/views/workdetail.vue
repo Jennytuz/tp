@@ -1,15 +1,12 @@
 <style scoped>
-    .tool-container {height: 45px;}
-    .swiper-frame{ position: relative;  margin: 0 -3% 40px -3%;}
-    .swiper-frame .dots{ display: flex; align-items: center; margin-top: 10px; margin-left: 3%;}
-    .swiper-frame .dots li{ width: 4px; height: 4px; border-radius: 50%; background-color: #181a19; margin-right: 10px;}
-    .swiper-frame .dots li.active{ width: 8px; height: 8px; background-color: #c29836;}
-    .swiper-frame .banner-img{ margin:0 3%; padding-bottom:100%;background-repeat: no-repeat; background-size: cover; background-position: center center; font-size: 0;}
-    .swiper-frame .banner-img img{ width: 100%;}
+    .tool-container {height: 45px; display: flex;justify-content: space-between;}
+    .tool-container .next-btn{margin-left: 40px}
 
+    .image-container img{width: 100%;margin-bottom: 3%;margin-top: 20px;}
+    .audio_container {width:100%;position: relative;padding-bottom: 100%;background-position: center center;background-size: cover;}
     .detail-infos{ margin-top: 25px;color:#fff;position:relative;}
-    .detail-infos h3{ font-size: 25px;  margin-bottom: 5px;}
-    .detail-infos h4 {font-size: 12px;}
+    .detail-infos h3{ font-size: 25px;  margin-bottom: 5px;font-weight: 500;}
+    .detail-infos h4 {font-size: 12px;font-weight: 500;}
     .detail-infos p{ font-size: 11px; letter-spacing: 1.5px; line-height: 1.8; margin-top: 20px;color: #969696;}
     .detail-infos .time{ padding-top: 15px; color: #fff; position: relative; font-size: 10px; margin-bottom: 15px;}
     .detail-infos .time span{ margin-right: 30px;}
@@ -29,48 +26,35 @@
         <top-nav></top-nav>
         <body-frame>
             <div class="tool-container">
-
-            </div>
-            <div class="swiper-frame"  v-if="!showVideo">
-                <div class="banner-img"
-                     v-if="bannerList.length == 1"
-                     :style="{'background-image':'url('+domain_url+bannerList[0]+')'}">
-                    <div class="audio-frame">
-                        <audio-view
-                            v-if="detailData.audio_link != ''"
-                            :src="domain_url+detailData.audio_link"
-                            :title="detailData.audio_name">
-                        </audio-view>
-                    </div>
+                <div class="back-btn" @click="backHistory">
+                    <img src="../assets/images/arrow-left.png" width="25">
                 </div>
-                <swiper :options="swiperOption" ref="mySwiper" v-show="bannerList.length > 1">
-                    <swiper-slide v-for="(item,index) in bannerList"
-                                    class="banner-img"
-                                    :style="{'background-image':'url(\''+domain_url+item+'\')'}"
-                                  :key="index">
-                        <img :src="domain_url+item" />
-                    </swiper-slide>
-                </swiper>
-                <ul class="dots" v-if="bannerList.length > 1">
-                    <li v-for="(item,index) in bannerList" :class="activeIndex == index ? 'active' : ''"></li>
-                </ul>
+                <div class="">
+                    <img src="../assets/images/prev.png" width="25">
+                    <img class="next-btn" src="../assets/images/next.png" width="25">
+                </div>
             </div>
-
+            
+            <div class="audio_container" v-if="detailData.audio_link != ''" :style="{backgroundImage:'url('+domain_url+bannerList[0]+')'}">
+                <div class="audio-frame">
+                    <audio-view
+                        v-if="detailData.audio_link != ''"
+                        :src="domain_url+detailData.audio_link"
+                        :title="detailData.audio_name">
+                    </audio-view>
+                </div>
+            </div>
             <div style="margin: 0 -3%">
                 <video-view  v-if="showVideo"
                              :vid="vid"
                              :postImg="vPostImg"></video-view>
             </div>
-
-
             <div class="detail-infos">
                 <h3>{{detailData.title}} </h3>
                 <h4>{{detailData.title_ext}}</h4>
                 <div>
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
-                
-
                 
                 <ul class="author-list" v-if="detailData.author">
                     <h5>制作名单 :</h5>
@@ -88,6 +72,9 @@
                    <span>观看完整案例</span>
                    </a>
             </div>
+            <div class="image-container" v-if="!showVideo && !detailData.audio_link">
+                <img v-for="(item,index) in bannerList" :src="domain_url+item" />
+            </div>
         </body-frame>
     </div>
 </template>
@@ -104,16 +91,8 @@
         data(){
             let self = this;
             return{
-                swiperOption:{
-                    simulateTouch : false,
-                    on: {
-                        slideChangeTransitionStart: function(){
-                            self.activeIndex = this.activeIndex;
-                        }
-                    }
-                },
+                
                 bannerList:[],
-                swiper:null,
                 activeIndex:0,
                 vid:'',//k0015trfczz
                 vPostImg:'',
@@ -123,8 +102,6 @@
             }
         },
         mounted(){
-            this.swiper = this.$refs.mySwiper.swiper;
-            this.activeIndex = this.swiper.activeIndex;
             let id = this.$route.params.id;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
@@ -154,6 +131,9 @@
             refresh(id){
                 console.log(id);
                 this.getData(id);
+            },
+            backHistory(){
+                window.history.back();
             }
         },
         computed:{
