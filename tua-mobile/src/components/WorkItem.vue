@@ -36,7 +36,7 @@
         methods:{
             toDetail(id){
                 this.$emit('refresh',id);
-                this.$emit('transferIdList',this.idList)
+                this.$emit('getIdList',this.idList)
                 this.$router.push({ name: 'workdetail', params: { id: id }})
             }
         }

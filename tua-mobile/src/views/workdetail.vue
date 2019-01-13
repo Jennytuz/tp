@@ -24,7 +24,7 @@
 <template>
     <div>
         <top-nav></top-nav>
-        <body-frame @transferIdList="getIdList">
+        <body-frame @getIdList="getIdList">
             <div class="tool-container">
                 <div class="back-btn" @click="backHistory">
                     <img src="../assets/images/arrow-left.png" width="25">
@@ -76,9 +76,8 @@
                 <img v-for="(item,index) in bannerList" :src="domain_url+item" />
             </div>
                 <work-item  :data="detailData"
-                            :mainUrl="mainUrl"
                             @refresh="refresh"
-                            @transferIdList="transferIdList"
+                            @getIdList="getIdList"
                            :cover="detailData.recomm_cover"
                            :key="detailData.id">
                 </work-item>

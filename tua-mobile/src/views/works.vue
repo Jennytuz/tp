@@ -84,7 +84,7 @@
                 })
             },
             sendList(){
-                this.$emit('transferIdList',tthis.idList);
+                this.$emit('getIdList',tthis.idList);
             },
             loadMore(){
                 if(this.isListEnd) return;
