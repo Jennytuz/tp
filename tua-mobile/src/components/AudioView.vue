@@ -1,11 +1,11 @@
 <style scoped>
     .audio{ width: 100%; height: 45px; overflow: hidden; position: relative;}
     .audio>a{ width: 40px; height: 40px; position: absolute; top: 0; left: 0;}
-    .audio .mid{ margin: 0 55px;}
+    .audio .mid{ margin: 20px 55px;}
     .audio .mid .name{ font-size: 14px;}
-    .audio .mid .line{ height: 3px; background-color:  rgba(158,159,159,1); position: relative; margin-top: 14px;}
-    .audio .mid .line .bar{ width: 50%; height: 3px; background-color: #bc9e44;}
-    .audio .time-name{ position: absolute; top: 25px; right: 0;font-size: 14px;}
+    .audio .mid .line{ height: 3px; background-color:  #fff; position: relative; margin-top: 14px;}
+    .audio .mid .line .bar{ width: 50%; height: 3px; background-color: #FF8E00;}
+    .audio .time-name{ position: absolute; top: 14px; right: 0;font-size: 14px;}
 </style>
 
 <template>
@@ -13,7 +13,6 @@
         <a href="javascript:;" v-if="paused" @click="doPlay"><img src="../assets/images/music-play.png" width="42" height="42"> </a>
         <a href="javascript:;" v-if="!paused" @click="doPause"><img src="../assets/images/music-pause.png" width="42" height="42"> </a>
         <div class="mid">
-            <div class="name">{{title}}</div>
             <div class="line">
                 <div class="bar" :style="{width:progress+'%'}"></div>
             </div>

@@ -27,7 +27,7 @@
 <script type="es6">
     export default{
         name: 'App',
-        props:['data','mainUrl','cover'],
+        props:['data','mainUrl','cover','idList',],
         data(){
             return{
 
@@ -36,6 +36,7 @@
         methods:{
             toDetail(id){
                 this.$emit('refresh',id);
+                this.$emit('transferIdList',this.idList)
                 this.$router.push({ name: 'workdetail', params: { id: id }})
             }
         }

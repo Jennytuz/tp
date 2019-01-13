@@ -24,7 +24,7 @@
 <template>
     <div>
         <top-nav></top-nav>
-        <body-frame>
+        <body-frame @transferIdList="getIdList">
             <div class="tool-container">
                 <div class="back-btn" @click="backHistory">
                     <img src="../assets/images/arrow-left.png" width="25">
@@ -75,6 +75,13 @@
             <div class="image-container" v-if="!showVideo && !detailData.audio_link">
                 <img v-for="(item,index) in bannerList" :src="domain_url+item" />
             </div>
+                <work-item  :data="detailData"
+                            :mainUrl="mainUrl"
+                            @refresh="refresh"
+                            @transferIdList="transferIdList"
+                           :cover="detailData.recomm_cover"
+                           :key="detailData.id">
+                </work-item>
         </body-frame>
     </div>
 </template>
@@ -91,9 +98,9 @@
         data(){
             let self = this;
             return{
-                
                 bannerList:[],
                 activeIndex:0,
+                idList:[],
                 vid:'',//k0015trfczz
                 vPostImg:'',
                 detailData:{},
@@ -134,6 +141,9 @@
             },
             backHistory(){
                 window.history.back();
+            },
+            getIdList(list){
+                this.idList = list;
             }
         },
         computed:{

@@ -13,7 +13,7 @@
         </div>
         <div class="postImg" :style="{'background-image':'url('+postImg+')'}" v-if="!isPlay">
             <div class="cover"></div>
-            <a href="javascript:;" @click="doPlay"><img src="../assets/images/btn-play.png" width="30" height="30"></a>
+            <a href="javascript:;" @click="doPlay"><img src="../assets/images/music-play.png" width="30" height="30"></a>
         </div>
     </div>
 </template>

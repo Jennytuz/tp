@@ -11,7 +11,8 @@
                            :data="item"
                            :cover="item.cover"
                            :mainUrl="domain_url"
-                           :key="item.id"></work-item>
+                           :key="item.id"
+                           :idList="idList"></work-item>
             </div>
         </body-frame>
     </div>
@@ -35,6 +36,7 @@
                 pageSize:20,
                 domain_url:"",
                 proList:[],
+                idList:[],
                 isListEnd:false,
                 isLoading:false
             }
@@ -62,11 +64,15 @@
                     self.domain_url = data.domain_url;
                     if(load == 'refresh'){
                         self.proList = data.data.list;
+                        self.idList = data.data.list.map(function(val){return val.id;});
+                        self.sendList()
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
                                 self.proList.push(item)
+                                self.idList.push(item.id)
                             })
+                            self.sendList()
                         }
                     }
                     if(self.proList.length == data.data.nums){
@@ -76,6 +82,9 @@
                 }).catch((error)=>{
                     console.log(error);
                 })
+            },
+            sendList(){
+                this.$emit('transferIdList',tthis.idList);
             },
             loadMore(){
                 if(this.isListEnd) return;
