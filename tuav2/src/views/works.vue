@@ -1,10 +1,9 @@
 <style>
-.container {width: 1800px;height:650px;overflow: hidden}
+.container {width: 1800px;height:677px;overflow: hidden}
 .list {display: flex;flex-wrap: wrap;}
-.container-vertical > .wrapper {flex-direction: row;flex-wrap: wrap;}
-.button-prev,.button-next {position:absolute; bottom: 70px;}
-.button-prev{ left: 49%;}  
-.button-next{ left: 51%;}  
+.button-prev,.button-next {margin: 5px}
+.button-prev{ }  
+.button-next{ }  
 </style>
 
 <template>
@@ -12,21 +11,24 @@
         <top-nav @getID="getListData"></top-nav>
         <second-nav @getID="getListData"></second-nav>
         <body-frame>
-            <div style="height:750px;position:relative">
+            <div style="height:800px;position:relative">
                 <section class="container">
-                    <div class="list">
+                    <div id="list" class="list">
                         <work-item v-for="item in proList"
                                 :data="item"
                                 :mainUrl="domain_url"
                                 :key="item.id" class="slide"></work-item>
                     </div>
                 </section>
-                <div class="button-prev">
+                <div class="flex_v_c" style="justify-content:center">
+                    <div class="button-prev" v-show="showPrev" @click="prevPage">
                     <img src="../assets/images/arrow-up.png" width="30" alt="">
                 </div>
-                <div class="button-next">
+                <div class="button-next" v-show="showNext" @click="nextPage">
                     <img src="../assets/images/arrow-down.png" width="30" alt="">
                 </div>
+                </div>
+                
             </div>
         </body-frame>
         <bottom-nav></bottom-nav>
@@ -49,29 +51,14 @@
             return{
                 cateID:[0,0],
                 pageNo:1,
+                showPrev:false,
+                showNext:true,
+                // container: ,
                 pageSize:24,
                 domain_url:"",
                 proList:[],
                 isListEnd:false,
                 isLoading:false,
-                // swiperOption:{
-                //     // notNextTick: true,
-                //     slidesPerView:'auto',
-                //     slidesPerColumn:1,
-                //     slidesPerGroup:2,
-                //     height:650,
-                //     direction: 'vertical',
-                //     navigation: {
-                //         nextEl: '.button-next',
-                //         prevEl: '.button-prev'
-                //     },
-                //     on: {
-                //         slideNextTransitionEnd: function() {
-                //             if(this.slides.length < )
-                //             that.imgIndex = this.realIndex + 1;
-                //         }
-                //     }
-                // },
                 activeIndex2: -4//首页-1，全部-2，关于页-3
             }
         },
@@ -116,6 +103,7 @@
                     }
                     if(self.proList.length == data.data.nums){
                         self.isListEnd = true;
+                        self.initBtn()
                     }
                     self.isLoading = false;
                 }).catch((error)=>{
@@ -124,12 +112,33 @@
             },
             loadMore(){
                 if(this.isListEnd) return;
-                this.pageNo ++;
                 this.doGetProList('loadmore');
+                this.pageNo ++;
             },
             initBtn(){
-
-            }
+                if(this.pageNo == 1){
+                    this.showPrev = false;
+                }
+                if(document.getElementById('list').offsetHeight < this.pageNo * 682){
+                    this.showNext = false
+                }
+                else {
+                    this.showNext = true
+                }
+            },
+            prevPage(){
+                var el = document.getElementById('list')
+                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.pageNo - 2) +'px, 0px); transition-duration: 500ms;';
+                this.pageNo --;
+                this.initBtn()
+            },
+            nextPage(){
+                this.loadMore()
+                this.showPrev = true;
+                var el = document.getElementById('list')
+                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.pageNo - 1 ) +'px, 0px); transition-duration: 500ms;';
+                this.initBtn()
+            },
         },
         computed:{
             cateList(){
