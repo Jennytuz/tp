@@ -22,11 +22,11 @@
                 </section>
                 <div class="flex_v_c" style="justify-content:center">
                     <div class="button-prev" v-show="showPrev" @click="prevPage">
-                    <img src="../assets/images/arrow-up.png" width="30" alt="">
-                </div>
-                <div class="button-next" v-show="showNext" @click="nextPage">
-                    <img src="../assets/images/arrow-down.png" width="30" alt="">
-                </div>
+                        <img src="../assets/images/arrow-up.png" width="30" alt="">
+                    </div>
+                    <div class="button-next" v-show="showNext" @click="nextPage">
+                        <img src="../assets/images/arrow-down.png" width="30" alt="">
+                    </div>
                 </div>
                 
             </div>

@@ -1,14 +1,11 @@
 <style>
     .swiper-frame{ width:1045px;position: relative;}
     .swiper-container {width: 1040px;position: static;margin: 0 auto;}
-    .swiper-frame .arrow{ width: 50px;position: absolute; top: 45%; z-index: 100; display: block;}
-    .swiper-frame .arrow a{ width: 40px; height: 100%; display: block;}
-    .swiper-frame:hover .arrow a{ display: block;}
-    
+    .swiper-button-next,.swiper-button-prev {background-image: none}
     /* .arrow.left:after {border-width: 9px;border-left:none;border-right-color: #000;top: 15px;} */
     /* .arrow.left:before {border-width: 14px;border-left:none;border-right-color: #fff;top: 10px;} */
-    .swiper-frame .left{ left: -70px; }
-    .swiper-frame .right{ right: -70px; }
+    .swiper-button-prev{ left: -70px; }
+    .swiper-button-next{ right: -70px; }
     .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: center center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
     .detail-infos{ width: 700px;color:white;}
@@ -40,15 +37,15 @@
                 <div>
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
-                <div class="f14 author-title">制作名单 :</div>
+
+                <div class="f14 author-title" v-if="detailData.author != ''">制作名单 :</div>
                 <ul class="author-list">
                     <li class="hkLight" v-for="item in detailData.author">
                         <span>{{item.cname}} : {{item.name}}</span>
                     </li>
                 </ul>
                 <div class="time hkLight">
-                    <span v-if="detailData.cate2 == ''">{{detailData.catename}}</span>
-                    <span v-if="detailData.cate2 != ''">{{detailData.catename}} / {{detailData.catename2}}</span>
+                    <span v-if="detailData.cate !== ''">{{detailData.catename}}</span>
                     <div style="margin-top:8px">{{new Date(parseInt(detailData.ctime)).format('MM/yyyy')}}</div>
                 </div>
                 <div class="qrcode_container tr" v-if='detailData.h5_link'>
@@ -62,9 +59,11 @@
                    
                     </swiper-slide>
                 </swiper>
-                 <div class="arrow left" @click="bannerPrev" v-if="activeIndex != 0">
+                <div class="swiper-button-prev" slot="button-prev" @click="bannerPrev" v-if="activeIndex != 0">
+                    <img src="../assets/images/arrow-left.png" width="30" alt="">
                 </div>
-                <div class="arrow right" @click="bannerNext" v-if="activeIndex != bannerList.length - 1">
+                <div class="swiper-button-next" slot="button-next" @click="bannerNext" v-if="activeIndex != bannerList.length - 1">
+                    <img src="../assets/images/arrow-right.png" width="30" alt="">
                 </div>
             </div>
             <div class="audio_container" v-if="detailData.audio_link != ''" :style="{backgroundImage:'url('+domain_url+bannerList[0]+')'}">

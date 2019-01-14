@@ -36,7 +36,7 @@
     .recommend-item .imgs:after{ content: ''; background-color: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
     .recommend-item:hover .imgs:after{ background-color: rgba(0,0,0,0);}
 
-    .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;}
+    .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;background-size:cover;background-repeat: no-repeat }
     .slide-fade-enter-active {
         transition: all 1s ease;
     }
@@ -102,7 +102,7 @@
         <bottom-nav></bottom-nav>
 
         <transition name="slide-fade">
-        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ +')'}"><img src="../assets/images/loading.gif"> </div>
+        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+mainUrl+loadingImg +')'}"><img src="../assets/images/loading.gif"> </div>
         </transition>
     </div>
 </template>
@@ -148,6 +148,9 @@
             },
             cateList(){
                 return this.$store.state.cateList
+            },
+            loadingImg(){
+                return this.$store.state.aboutData.loading
             }
         },
         data(){

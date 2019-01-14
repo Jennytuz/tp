@@ -3,9 +3,9 @@
     .audio>a{ position: absolute; top: 0; left: 0;}
     .audio .mid{ margin: 0 55px;}
     .audio .mid .name{ font-size: 14px;}
-    .audio .mid .line{ height: 3px; background-color:  rgba(158,159,159,1); position: relative; margin-top: 14px;}
-    .audio .mid .line .bar{ width: 50%; height: 3px; background-color: #bc9e44;}
-    .audio .time-name{ position: absolute; top: 25px; right: 0;font-size: 14px;}
+    .audio .mid .line{ height: 3px; background-color: #fff; position: relative; margin-top: 19px;}
+    .audio .mid .line .bar{ width: 50%; height: 3px; background-color: #FF8E00;}
+    .audio .time-name{ position: absolute; top: 13px; right: 0;font-size: 14px;color: #fff;}
 </style>
 
 <template>

@@ -56,7 +56,7 @@
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
                 
-                <ul class="author-list" v-if="detailData.author">
+                <ul class="author-list" v-if="detailData.author != ''">
                     <h5>制作名单 :</h5>
                     <li class="hkLight" v-for="item in detailData.author">
                         <span>{{item.cname}} : {{item.name}}</span>
