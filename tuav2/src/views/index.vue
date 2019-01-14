@@ -90,13 +90,6 @@
                     <swiper-slide class="recommend-item" v-for="item in recommendList">
                         <router-link :to="'/works/detail/'+item.id" class="imgs" :style="{backgroundImage:'url('+mainUrl+item.recomm_cover+')'}"></router-link>
                     </swiper-slide>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-                    <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
-
                     <div class="swiper-button-prev" slot="button-prev">
                         <img src="../assets/images/arrow-left.png" width="30" alt="">
                     </div>
