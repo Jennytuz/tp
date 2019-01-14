@@ -14,7 +14,7 @@
     .banner-item .detail{ color:white;height: 100%; font-size: 16px; line-height: 1.3; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);display:flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;display:none;}
     .banner-item .detail h2 {font-size: 37px}
     .banner-item .detail p {font-size: 21px}
-    .banner-item .detail span {position: absolute;top: 16px;right: 16px;}
+    .banner-item .detail .cate-name {position: absolute;top: 16px;right: 16px;}
     .banner-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical; line-height: 1.7;}
     .banner-item .time{ padding-top: 15px;color: rgb(127,127,127);position: relative; font-size: 14px;}
     .banner-item .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
@@ -73,7 +73,7 @@
                                     <div>
                                         <h2>{{item.title}}</h2>
                                         <p>{{item.title_ext}}</p>
-                                        <span class="f12">{{item.catename}}</span>
+                                        <span class="f12 cate-name">{{item.catename}}</span>
                                     </div>
                                     <div>
                                         <div class="desc f12" v-html="item.goods_desc"></div>
@@ -168,8 +168,8 @@
                     slidesPerView:6,
                     slidesPerGroup:6,
                     navigation: {
-                        nextEl: '.arro.right',
-                        prevEl: '.arrow.left'
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
                     } 
                 }
             }

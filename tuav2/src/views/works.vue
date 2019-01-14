@@ -1,6 +1,6 @@
 <style>
 .container {width: 1800px;height:650px;overflow: hidden}
-.item-list {display: flex;flex-wrap: wrap;}
+.list {display: flex;flex-wrap: wrap;}
 .container-vertical > .wrapper {flex-direction: row;flex-wrap: wrap;}
 .button-prev,.button-next {position:absolute; bottom: 70px;}
 .button-prev{ left: 49%;}  
@@ -14,7 +14,7 @@
         <body-frame>
             <div style="height:750px;position:relative">
                 <section class="container">
-                    <div class="item-list">
+                    <div class="list">
                         <work-item v-for="item in proList"
                                 :data="item"
                                 :mainUrl="domain_url"
@@ -98,7 +98,7 @@
                 self.$ajax.get('admin/api_v2/product_list',{
                     params: {
                         page: self.pageNo,
-                        pageSize:10,
+                        pageSize:12,
                         cate: self.cateID[0],
                         cate2: self.cateID[1]
                     }
@@ -128,7 +128,7 @@
                 this.doGetProList('loadmore');
             },
             initBtn(){
-                
+
             }
         },
         computed:{

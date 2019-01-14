@@ -35,8 +35,8 @@
     /*.pro-tag-list li:nth-child(4n+2){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+3){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}*/
-    .pro-tag-list li a{ display: flex; align-items: flex-end;}
-    .pro-tag-list li div{ color: #fff; font-size: 32px; margin-bottom: 40px;}
+    .pro-tag-list li a{ display: flex; align-items: flex-end;margin-bottom: 40px}
+    .pro-tag-list li div{ color: #fff; font-size: 32px; margin-left: 40px;}
 </style>
 
 <template>
@@ -102,9 +102,8 @@
                         <ul class="item-list">
                             <li class="member-item" v-for="(item,index) in teamList" :key="index">
                                 <img :src="aboutData.domain_url+item.cover" width="194" height="194">
-                                <div class="f14">{{item.name}}</div>
-                                <p>团队成员，平面设计的就是对未来企业文化的或推测或引导的思辨过程。我们认为前卫的设计，不应该是离经叛道和脱离现实的；反之，真正意义上的前卫设计应该是熟知现实而不断超越和激发生活风尚的惊喜。n</p>
-                                
+                                <div class="f14 flex_sb flex_v_c"><span>{{item.title}}</span><span>{{item.name}}</span></div>
+                                <p>{{item.intro}}</p>
                             </li>
                         </ul>
                     </div>
@@ -117,8 +116,8 @@
                     <div style=" width: 480px;">
                         <ul class="pro-tag-list">
                             <li v-for="(item,index) in cateList">
-                                <a href="javascript:;" @click="getList(index,item.id,0)">
-                                    <div>{{item.cname}}</div>
+                                <a href="javascript:;" class="flex_v_c" @click="getList(index,item.id,0)">
+                                    <img :src="aboutData.domain_url+item.icon" width="75"> <div>{{item.cname}}</div>
                                 </a>
                             </li>
                         </ul>
