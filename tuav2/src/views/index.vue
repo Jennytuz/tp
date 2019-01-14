@@ -6,9 +6,11 @@
     .banner-item .img{ height: 730px;background-size: cover; background-position: center center;}
     .banner-item .img a{ position: relative; font-size: 0; display: block;height: 100%}
     .banner-item .img:hover .detail{ display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transition: all .8s ;}
+    .banner-item .img:hover .item-mask {display: none}
     .banner-item .item-mask {color:white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 365px;position:absolute;bottom: 0px;width: 100%;padding: 16px;display: flex;flex-direction: column;justify-content: flex-end;}
     .banner-item .item-mask h2 {font-size: 37px;}
     .banner-item .item-mask p {font-size: 21px;}
+    .banner-item .item-mask span {position: absolute;right: 12px;}
     .banner-item .detail{ color:white;height: 100%; font-size: 16px; line-height: 1.3; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);display:flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;display:none;}
     .banner-item .detail h2 {font-size: 37px}
     .banner-item .detail p {font-size: 21px}
@@ -19,6 +21,7 @@
     .banner-item .time span{ margin-right: 30px;}
     .banner-item .time span a{color: rgb(127,127,127);}
     .banner-item .time span a:hover{color: #000;}
+    .banner-item img {margin-top: 10px}
     .banner-frame-index .arrow{ width: 295px; height: 560px; position: absolute; top: 0; z-index: 100; display: block;}
     .banner-frame-index .arrow:hover a{ display: block;}
     .banner-frame-index .arrow a{ width: 40px; height: 100%; background-color: #fff; display: none;}
@@ -46,8 +49,9 @@
     }
     .more-container {width: 1500px;}
     .swiper-container{position: static;}
-    .swiper-button-prev,.swiper-button-next {background-image: none;}
-    .swiper-button-prev {left:120px;top:43%;}
+    .swiper-button-prev,.swiper-button-next {top:53%;background-image: none;}
+    .swiper-button-prev {left:120px;}
+    .swiper-button-next {right:60px;}
     .swiper-button-disabled {display: none;}
 </style>
 
@@ -63,6 +67,7 @@
                                 <div class="item-mask">
                                     <h2>{{item.title}}</h2>
                                     <p>{{item.title_ext}}</p>
+                                    <span class="f12 fr">{{item.catename}}</span>
                                 </div>
                                 <div class="detail ">
                                     <div>
@@ -72,6 +77,7 @@
                                     </div>
                                     <div>
                                         <div class="desc f12" v-html="item.goods_desc"></div>
+                                        <img v-if="item.catename =='音乐'" src="../assets/images/music-play.png" width="30" alt="">
                                     </div>
                                 </div>
                                 </router-link>
@@ -91,8 +97,12 @@
                     <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
                     <div class="recommend-item swiper-slide swiper-slide-next" style="width: 222px; margin-right: 12px;"><a href="#/works/detail/18" class="imgs" style="background-image: url(&quot;http://tau.pc-online.cc/upload/11/2018/0712/1531362189899.jpg&quot;);"></a></div>
 
-                    <div class="swiper-button-prev arrow left" slot="button-prev"></div>
-                    <div class="swiper-button-next arrow right" slot="button-next"></div>
+                    <div class="swiper-button-prev" slot="button-prev">
+                        <img src="../assets/images/arrow-left.png" width="30" alt="">
+                    </div>
+                    <div class="swiper-button-next" slot="button-next">
+                        <img src="../assets/images/arrow-right.png" width="30" alt="">
+                    </div>
                 </swiper>
             </div>
         </body-frame>

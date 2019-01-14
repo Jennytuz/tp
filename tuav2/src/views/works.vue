@@ -1,9 +1,10 @@
 <style>
-.item-list {width: 1800px;height:650px}
-.swiper-container-vertical > .swiper-wrapper {flex-direction: row;flex-wrap: wrap;}
-.swiper-button-prev,.swiper-button-next {background-image: none;}
-.swiper-button-prev.arrow.left{  bottom: 10px;left: 48%;transform: rotate(-90deg);}  
-.swiper-button-next.arrow.right{  bottom: 10px;left: 52%;transform: rotate(90deg);}  
+.container {width: 1800px;height:650px;overflow: hidden}
+.item-list {display: flex;flex-wrap: wrap;}
+.container-vertical > .wrapper {flex-direction: row;flex-wrap: wrap;}
+.button-prev,.button-next {position:absolute; bottom: 70px;}
+.button-prev{ left: 49%;}  
+.button-next{ left: 51%;}  
 </style>
 
 <template>
@@ -11,14 +12,22 @@
         <top-nav @getID="getListData"></top-nav>
         <second-nav @getID="getListData"></second-nav>
         <body-frame>
-                <swiper :options="swiperOption" class="item-list">
-                    <work-item v-for="item in proList"
-                            :data="item"
-                            :mainUrl="domain_url"
-                            :key="item.id" class="swiper-slide"></work-item>
-                <div class="swiper-button-prev arrow left" slot="button-prev"></div>
-                <div class="swiper-button-next arrow right" slot="button-next"></div>
-                </swiper>
+            <div style="height:750px;position:relative">
+                <section class="container">
+                    <div class="item-list">
+                        <work-item v-for="item in proList"
+                                :data="item"
+                                :mainUrl="domain_url"
+                                :key="item.id" class="slide"></work-item>
+                    </div>
+                </section>
+                <div class="button-prev">
+                    <img src="../assets/images/arrow-up.png" width="30" alt="">
+                </div>
+                <div class="button-next">
+                    <img src="../assets/images/arrow-down.png" width="30" alt="">
+                </div>
+            </div>
         </body-frame>
         <bottom-nav></bottom-nav>
     </div>
@@ -40,21 +49,29 @@
             return{
                 cateID:[0,0],
                 pageNo:1,
-                pageSize:20,
+                pageSize:24,
                 domain_url:"",
                 proList:[],
                 isListEnd:false,
                 isLoading:false,
-                swiperOption:{
-                    // notNextTick: true,
-                    slidesPerView:2,
-                    slidesPerGroup:2,
-                    direction: 'vertical',
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev'
-                    } 
-                },
+                // swiperOption:{
+                //     // notNextTick: true,
+                //     slidesPerView:'auto',
+                //     slidesPerColumn:1,
+                //     slidesPerGroup:2,
+                //     height:650,
+                //     direction: 'vertical',
+                //     navigation: {
+                //         nextEl: '.button-next',
+                //         prevEl: '.button-prev'
+                //     },
+                //     on: {
+                //         slideNextTransitionEnd: function() {
+                //             if(this.slides.length < )
+                //             that.imgIndex = this.realIndex + 1;
+                //         }
+                //     }
+                // },
                 activeIndex2: -4//首页-1，全部-2，关于页-3
             }
         },
@@ -109,6 +126,9 @@
                 if(this.isListEnd) return;
                 this.pageNo ++;
                 this.doGetProList('loadmore');
+            },
+            initBtn(){
+                
             }
         },
         computed:{
