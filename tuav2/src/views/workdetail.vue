@@ -23,6 +23,16 @@
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
     .back_btn {position: absolute;top: -10px;left: 0;}
+    @keyframes scaleAnim {
+        0% {
+        transform: translate(100%,0px)
+        }
+        100% {
+        transform: translate(0,0)
+        }
+    }
+    .animation-box {display:inline-block;width:auto;overflow:hidden}
+    .animation-box span {display:inline-block;animation: scaleAnim 1s linear;}
 </style>
 
 <template>
@@ -31,8 +41,8 @@
         <second-nav></second-nav>
         <body-frame class="flex" style="padding:0 60px">
             <div class="detail-infos">
-                <h3>{{detailData.title}}</h3>
-                <div class="sub-title f20">{{detailData.title_ext}}</div>
+                <h3 class="animation-box"><span>{{detailData.title}}</span></h3>
+                <div class="animation-box sub-title f20"><span>{{detailData.title_ext}}</span></div>
                 
                 <div>
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
