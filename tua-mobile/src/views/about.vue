@@ -25,9 +25,9 @@
     .member-item p {font-size: 13px;color: #969696;line-height: 1.5;}
     .services{ border-bottom: none; margin-bottom: 0;}
     .pro-tag-list{ display: flex; flex-wrap: wrap;margin-top:63px;}
-    .pro-tag-list li{ width:40%;display: flex; margin-bottom: 4%;}
+    .pro-tag-list li{ width:45%;margin-bottom: 4%;}
     .pro-tag-list li a{ display: flex; align-items: flex-end;}
-    .pro-tag-list li div{ color: #fff; font-size: 34px; margin-bottom: 30px; margin-left: 13px;}
+    .pro-tag-list li div{ color: #fff; font-size: 34px; margin-left: 13px;}
     .pro-tag-list li a:hover h3{-webkit-text-stroke:2px #be9833; color: #be9833;}
 </style>
 
@@ -61,6 +61,7 @@
                     <ul class="pro-tag-list">
                         <li v-for="(item,index) in cateList">
                             <a href="javascript:;"  @click="getList(index,item.id,0)">
+                                <img :src="aboutData.domain_url+item.icon" width="50" height="50">
                                 <div>{{item.cname}}</div>
                             </a>
                         </li>

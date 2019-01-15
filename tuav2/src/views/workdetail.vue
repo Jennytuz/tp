@@ -41,7 +41,9 @@
         <second-nav></second-nav>
         <body-frame class="flex" style="padding:0 60px">
             <div class="detail-infos">
+                <div>
                 <h3 class="animation-box"><span>{{detailData.title}}</span></h3>
+                </div>
                 <div class="animation-box sub-title f20"><span>{{detailData.title_ext}}</span></div>
                 
                 <div>

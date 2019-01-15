@@ -72,7 +72,7 @@
         </body-frame>
 
         <transition name="slide-fade">
-        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ +')'}"><img src="../assets/images/loading.gif"> </div>
+        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ mainUrl+loadingImg +')'}"><img src="../assets/images/loading.gif"> </div>
         </transition>
     </div>
 </template>

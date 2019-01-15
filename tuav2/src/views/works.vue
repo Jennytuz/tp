@@ -103,8 +103,8 @@
                     }
                     if(self.proList.length == data.data.nums){
                         self.isListEnd = true;
-                        self.initBtn()
                     }
+                        self.initBtn()
                     self.isLoading = false;
                 }).catch((error)=>{
                     console.log(error);
@@ -112,19 +112,21 @@
             },
             loadMore(){
                 if(this.isListEnd) return;
-                this.doGetProList('loadmore');
                 this.pageNo ++;
+                this.doGetProList('loadmore');
             },
             initBtn(){
                 if(this.currentPage == 1){
                     this.showPrev = false;
                 }
-                if(document.getElementById('list').offsetHeight < this.currentPage * 682){
+                if(this.isListEnd && this.proList.length /12 < this.currentPage){
                     this.showNext = false
                 }
                 else {
                     this.showNext = true
                 }
+                console.log('offset:'+document.getElementById('list').offsetHeight)
+                console.log(this.currentPage-1 * -682)
             },
             prevPage(){
                 var el = document.getElementById('list')
@@ -138,7 +140,6 @@
                 this.currentPage ++;
                 var el = document.getElementById('list')
                 el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 1 ) +'px, 0px); transition-duration: 500ms;';
-                this.initBtn()
             },
         },
         computed:{
