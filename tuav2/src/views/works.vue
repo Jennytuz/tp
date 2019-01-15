@@ -51,10 +51,10 @@
             return{
                 cateID:[0,0],
                 pageNo:1,
+                currentPage:1,
                 showPrev:false,
                 showNext:true,
                 // container: ,
-                pageSize:24,
                 domain_url:"",
                 proList:[],
                 isListEnd:false,
@@ -116,10 +116,10 @@
                 this.pageNo ++;
             },
             initBtn(){
-                if(this.pageNo == 1){
+                if(this.currentPage == 1){
                     this.showPrev = false;
                 }
-                if(document.getElementById('list').offsetHeight < this.pageNo * 682){
+                if(document.getElementById('list').offsetHeight < this.currentPage * 682){
                     this.showNext = false
                 }
                 else {
@@ -128,15 +128,16 @@
             },
             prevPage(){
                 var el = document.getElementById('list')
-                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.pageNo - 2) +'px, 0px); transition-duration: 500ms;';
-                this.pageNo --;
+                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 2) +'px, 0px); transition-duration: 500ms;';
+                this.currentPage --;
                 this.initBtn()
             },
             nextPage(){
                 this.loadMore()
                 this.showPrev = true;
+                this.currentPage ++;
                 var el = document.getElementById('list')
-                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.pageNo - 1 ) +'px, 0px); transition-duration: 500ms;';
+                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 1 ) +'px, 0px); transition-duration: 500ms;';
                 this.initBtn()
             },
         },
