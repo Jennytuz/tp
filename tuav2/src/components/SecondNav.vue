@@ -41,8 +41,6 @@
                 if(this.$route.name != 'works'){
                     this.$router.push('/works');
                 }else{
-                console.log(index,id,id2)
-
                     this.$emit('getID',[id,id2]);
                 }
             },
