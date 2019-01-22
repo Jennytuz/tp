@@ -23,7 +23,7 @@
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
     .back_btn {position: absolute;left: -9px;top: 0;}
-    .next-btn,.prev-btn{top: 50%;position: absolute;}
+    .next-btn,.prev-btn{top: 50%;position: absolute;cursor:pointer}
     .next-btn{right: 0;}
     .prev-btn{left: 0;}
     @keyframes scaleAnim {
@@ -152,14 +152,12 @@
             this.$bus.once('once', () => console.log('This listener will only fire once'));
         },
         mounted(){
-
             this.swiper = this.$refs.mySwiper.swiper;
             this.activeIndex = this.swiper.activeIndex;
             let id = this.$route.params.id;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
             this.initPageBtn();
-
         },
         methods: {
             bannerPrev(){
@@ -199,7 +197,7 @@
             initPageBtn(){
                 var id = this.$route.params.id;
                 if(this.idList){
-                    this.idList.indexOf(id) == 0 ? this.showPrev = false: this.showPrev =true;
+                    this.idList.indexOf(id) <= 0 ? this.showPrev = false: this.showPrev =true;
                     this.idList.indexOf(id) == this.idList.length - 1? this.showNext = false: this.showNext =true;
                 }
             },
