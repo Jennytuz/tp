@@ -65,14 +65,12 @@
                     if(load == 'refresh'){
                         self.proList = data.data.list;
                         self.idList = data.data.list.map(function(val){return val.id;});
-                        self.sendList()
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
                                 self.proList.push(item)
                                 self.idList.push(item.id)
                             })
-                            self.sendList()
                         }
                     }
                     if(self.proList.length == data.data.nums){
@@ -83,14 +81,15 @@
                     console.log(error);
                 })
             },
-            sendList(){
-                this.$emit('getIdList',tthis.idList);
-            },
             loadMore(){
                 if(this.isListEnd) return;
                 this.pageNo ++;
                 this.doGetProList('loadmore');
             }
+        },
+        destroyed(){
+            this.$bus.$emit('getIdList',this.idList);
+            this.$bus.$emit('once');
         }
     }
 

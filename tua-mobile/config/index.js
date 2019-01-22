@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
       proxyTable: {
           '/admin':{
-              target:'http://tau.pc-online.cc/admin',
+              target:'http://taupai.com/index.php/admin',
               changeOrigin:true,
               pathRewrite:{
                   '^/admin':''

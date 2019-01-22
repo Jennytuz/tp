@@ -1,6 +1,7 @@
 <style scoped>
-    .tool-container {height: 45px; display: flex;justify-content: space-between;}
-    .tool-container .next-btn{margin-left: 40px}
+    .tool-container {height: 45px; display: flex;justify-content: space-between;position: relative;}
+    .tool-container .next-btn{right: 3%;position: absolute;}
+    .tool-container .prev-btn{right: 17%;position: absolute;}
 
     .image-container img{width: 100%;margin-bottom: 3%;margin-top: 20px;}
     .audio_container {width:100%;position: relative;padding-bottom: 100%;background-position: center center;background-size: cover;}
@@ -24,14 +25,14 @@
 <template>
     <div>
         <top-nav></top-nav>
-        <body-frame @getIdList="getIdList">
+        <body-frame>
             <div class="tool-container">
                 <div class="back-btn" @click="backHistory">
                     <img src="../assets/images/arrow-left.png" width="25">
                 </div>
                 <div class="">
-                    <img src="../assets/images/prev.png" width="25">
-                    <img class="next-btn" src="../assets/images/next.png" width="25">
+                    <img class="prev-btn" src="../assets/images/prev.png" width="25" v-show="showPrev" @click="goToPrev">
+                    <img class="next-btn" src="../assets/images/next.png" width="25" v-show="showNext" @click="goToNext">
                 </div>
             </div>
             
@@ -75,27 +76,19 @@
             <div class="image-container" v-if="!showVideo && !detailData.audio_link">
                 <img v-for="(item,index) in bannerList" :src="domain_url+item" />
             </div>
-                <work-item  :data="detailData"
-                            @refresh="refresh"
-                            @getIdList="getIdList"
-                           :cover="detailData.recomm_cover"
-                           :key="detailData.id">
-                </work-item>
         </body-frame>
     </div>
 </template>
 
 <script type="es6">
     import TopNav from '@/components/TopNav.vue'
-    import WorkItem from '@/components/WorkItem.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
     import AudioView from '@/components/AudioView.vue'
     import VideoView from '@/components/VideoView.vue'
     export default{
         name: 'App',
-        components:{TopNav,WorkItem,BodyFrame,AudioView,VideoView},
+        components:{TopNav,BodyFrame,AudioView,VideoView},
         data(){
-            let self = this;
             return{
                 bannerList:[],
                 activeIndex:0,
@@ -104,13 +97,25 @@
                 vPostImg:'',
                 detailData:{},
                 domain_url:'',
-                showVideo:false
+                showVideo:false,
+                showPrev:false,
+                showNext:false
             }
         },
+        created:function(){
+            this.$bus.on('getIdList',(params)=>{
+                // console.log(params)
+                this.idList = params
+            });
+            this.$bus.once('once', () => console.log('This listener will only fire once'));
+        },
         mounted(){
-            let id = this.$route.params.id;
+            let id = this.$route.params.id,
+                self = this;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
+            console.log(this.idList)
+            this.initPageBtn();
         },
         methods: {
             getData(id){
@@ -141,8 +146,29 @@
             backHistory(){
                 window.history.back();
             },
-            getIdList(list){
-                this.idList = list;
+            initPageBtn(){
+                var id = this.$route.params.id;
+                if(this.idList){
+                    this.idList.indexOf(id) == 0 ? this.showPrev = false: this.showPrev =true;
+                    this.idList.indexOf(id) == this.idList.length - 1? this.showNext = false: this.showNext =true;
+                }
+            },
+            goToPrev(){
+                var index = this.idList.indexOf(this.$route.params.id),
+                    target_id = this.idList[index-1];
+
+                this.loadPage(target_id);
+            },
+            goToNext(){
+                var index = this.idList.indexOf(this.$route.params.id),
+                    target_id = this.idList[index+1];
+                
+                this.loadPage(target_id);
+            },
+            loadPage(target_id){
+                this.$router.push({ name: 'workdetail', params: { id: target_id }})
+                this.getData(target_id)
+                this.initPageBtn()
             }
         },
         computed:{
