@@ -22,7 +22,10 @@
     .qrcode_container {text-align: center; width:121px;height:140px;position: absolute;bottom: 120px;left: 400px;}
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
-    .back_btn {position: absolute;top: -10px;left: 0;}
+    .back_btn {position: absolute;left: -9px;top: 0;}
+    .next-btn,.prev-btn{top: 50%;position: absolute;}
+    .next-btn{right: 0;}
+    .prev-btn{left: 0;}
     @keyframes scaleAnim {
         0% {
         transform: translate(100%,0px)
@@ -93,9 +96,14 @@
                          :postImg="vPostImg"></video-view>
 
             <div class="back_btn">
-                <i class="arrow left" @click='backHistory'></i>
+                <img src="../assets/images/arrow-left.png" width="30" alt=""  @click='backHistory'>
             </div>
-        
+            <div class="prev-btn">
+                <img src="../assets/images/prev.png" width="25" v-show="showPrev" @click="goToPrev">
+            </div>
+            <div class="next-btn">
+                <img src="../assets/images/next.png" width="25" v-show="showNext" @click="goToNext">
+            </div>
         </body-frame>
         <bottom-nav></bottom-nav>
     </div>

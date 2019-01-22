@@ -128,8 +128,6 @@
                 else {
                     this.showNext = true
                 }
-                console.log('offset:'+document.getElementById('list').offsetHeight)
-                console.log(this.currentPage-1 * -682)
             },
             prevPage(){
                 var el = document.getElementById('list')
