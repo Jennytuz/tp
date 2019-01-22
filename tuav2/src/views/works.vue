@@ -57,6 +57,7 @@
                 // container: ,
                 domain_url:"",
                 proList:[],
+                idList:[],
                 isListEnd:false,
                 isLoading:false,
                 activeIndex2: -4//首页-1，全部-2，关于页-3
@@ -94,10 +95,12 @@
                     self.domain_url = data.domain_url;
                     if(load == 'refresh'){
                         self.proList = data.data.list;
+                        self.idList = data.data.list.map(function(val){return val.id;});
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
-                                self.proList.push(item)
+                                self.proList.push(item);
+                                self.idList.push(item.id);
                             })
                         }
                     }
@@ -149,7 +152,12 @@
             activeIndex(){
                 return this.$store.state.navActiveIndex
             }
+        },
+        destroyed(){
+            this.$bus.$emit('getIdList',this.idList);
+            this.$bus.$emit('once');
         }
+
     }
 
 </script>

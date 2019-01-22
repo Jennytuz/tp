@@ -18,7 +18,8 @@
     "vue-baidu-map": "^0.21.16",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vue-bus":"1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -105,14 +105,13 @@
     import TopNav from '@/components/TopNav.vue'
     import SecondNav from '@/components/SecondNav.vue'
     import BottomNav from '@/components/BottomNav.vue'
-    import WorkItem from '@/components/WorkItem.vue'
     import BodyFrame from '@/components/BodyFrame.vue'
     import AudioView from '@/components/AudioView.vue'
     import VideoView from '@/components/VideoView.vue'
     import Qrcode from '@/components/Qrcode.vue'
     export default{
         name: 'App',
-        components:{TopNav,SecondNav,BottomNav,WorkItem,BodyFrame,AudioView,VideoView,Qrcode},
+        components:{TopNav,SecondNav,BottomNav,BodyFrame,AudioView,VideoView,Qrcode},
         data(){
             let self = this;
             return{
@@ -131,15 +130,28 @@
                 vPostImg:'',
                 detailData:{},
                 domain_url:'',
-                showVideo:false
+                idList:[],
+                showVideo:false,
+                showPrev:false,
+                showNext:false
             }
         },
+        created:function(){
+            this.$bus.on('getIdList',(params)=>{
+                // console.log(params)
+                this.idList = params
+            });
+            this.$bus.once('once', () => console.log('This listener will only fire once'));
+        },
         mounted(){
+
             this.swiper = this.$refs.mySwiper.swiper;
             this.activeIndex = this.swiper.activeIndex;
             let id = this.$route.params.id;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
+            this.initPageBtn();
+
         },
         methods: {
             bannerPrev(){
@@ -175,6 +187,30 @@
             refresh(id){
                 console.log(id);
                 this.getData(id);
+            },
+            initPageBtn(){
+                var id = this.$route.params.id;
+                if(this.idList){
+                    this.idList.indexOf(id) == 0 ? this.showPrev = false: this.showPrev =true;
+                    this.idList.indexOf(id) == this.idList.length - 1? this.showNext = false: this.showNext =true;
+                }
+            },
+            goToPrev(){
+                var index = this.idList.indexOf(this.$route.params.id),
+                    target_id = this.idList[index-1];
+
+                this.loadPage(target_id);
+            },
+            goToNext(){
+                var index = this.idList.indexOf(this.$route.params.id),
+                    target_id = this.idList[index+1];
+                
+                this.loadPage(target_id);
+            },
+            loadPage(target_id){
+                this.$router.push({ name: 'workdetail', params: { id: target_id }})
+                this.getData(target_id)
+                this.initPageBtn()
             }
         },
         computed:{
