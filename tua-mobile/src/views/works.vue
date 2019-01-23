@@ -65,6 +65,7 @@
                     if(load == 'refresh'){
                         self.proList = data.data.list;
                         self.idList = data.data.list.map(function(val){return val.id;});
+                        self.$store.commit('setIdList',self.idList);
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
@@ -72,6 +73,7 @@
                                 self.idList.push(item.id)
                             })
                         }
+                        self.$store.commit('setIdList',self.idList);
                     }
                     if(self.proList.length == data.data.nums){
                         self.isListEnd = true;
@@ -86,10 +88,6 @@
                 this.pageNo ++;
                 this.doGetProList('loadmore');
             }
-        },
-        destroyed(){
-            this.$bus.$emit('getIdList',this.idList);
-            this.$bus.$emit('once');
         }
     }
 

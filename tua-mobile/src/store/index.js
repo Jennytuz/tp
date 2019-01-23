@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
+import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
             }
         ],
         cateID:[0,0],
+        idList:[],
         isGuide:true,
         audio:{},
         aboutData:{},
@@ -35,6 +37,9 @@ const store = new Vuex.Store({
         },
         setCateID(state,data){
             state.cateID = data;
+        },
+        setIdList(state,data){
+            state.idList = data;
         },
         setNavActiveIndex(state,data){
             state.navActiveIndex = data;
@@ -76,6 +81,9 @@ const store = new Vuex.Store({
                 console.log(error);
             })
         }
-    }
+    },
+    plugins: [createPersistedState({
+        storage: window.sessionStorage
+    })]
 });
 export default store

@@ -98,7 +98,6 @@
                         self.proList = data.data.list;
                         self.idList = data.data.list.map(function(val){return val.id;});
                         self.$store.commit('setIdList',self.idList);
-                        console.log(this.$store.state.idList)
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
@@ -107,7 +106,6 @@
                             })
                         }
                         self.$store.commit('setIdList',self.idList);
-                        console.log(this.$store.state.idList)
                     }
                     if(self.proList.length == data.data.nums){
                         self.isListEnd = true;

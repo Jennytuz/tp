@@ -102,19 +102,12 @@
                 showNext:false
             }
         },
-        created:function(){
-            this.$bus.on('getIdList',(params)=>{
-                // console.log(params)
-                this.idList = params
-            });
-            this.$bus.once('once', () => console.log('This listener will only fire once'));
-        },
         mounted(){
             let id = this.$route.params.id,
                 self = this;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
-            console.log(this.idList)
+            this.idList = this.$store.state.idList;
             this.initPageBtn();
         },
         methods: {

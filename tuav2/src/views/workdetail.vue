@@ -1,5 +1,6 @@
 <style>
-    .swiper-frame{ width:1045px;position: relative;}
+    .swiper-frame{ width:1045px;position: relative;display: none;}
+    .swiper-frame.show{display: block;}
     .swiper-container {width: 1040px;position: static;margin: 0 auto;}
     .swiper-button-next,.swiper-button-prev {background-image: none}
     /* .arrow.left:after {border-width: 9px;border-left:none;border-right-color: #000;top: 15px;} */
@@ -53,7 +54,7 @@
                     <p class="hkLight" v-html="detailData.goods_desc"></p>
                 </div>
 
-                <div class="f14 author-title" v-if="detailData.author != ''">制作名单 :</div>
+                <div class="f14 author-title" >制作名单 :</div>
                 <ul class="author-list">
                     <li class="hkLight" v-for="item in detailData.author">
                         <span>{{item.cname}} : {{item.name}}</span>
@@ -68,7 +69,7 @@
                     <div class="mt10 f12">扫码查看案例</div>
                 </div>
             </div>
-            <div class="swiper-frame"  v-if="!showVideo && !detailData.audio_link">
+            <div class="swiper-frame" :class="{'show':!showVideo && !detailData.audio_link}">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide v-for="(item,index) in bannerList" :key="index" :style="{backgroundImage:'url('+domain_url+item+')'}">
                    

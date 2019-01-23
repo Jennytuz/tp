@@ -133,6 +133,12 @@
 
             }
             this.$store.dispatch('doGetIndex');
+
+            this.recommendList.map((item)=>{
+                this.idList.push(item.id);
+            })
+
+            this.$store.commit('setIdList',this.idList);
         },
         methods:{
             gotoPage(name){
