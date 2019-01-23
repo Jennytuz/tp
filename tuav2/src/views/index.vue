@@ -3,17 +3,17 @@
     .banner-item {width:584px}
     .banner-item .link{  display: block; font-size: 28px; letter-spacing: 1.3px; margin-top: 10px; color: #000; white-space:nowrap; text-overflow: ellipsis; overflow: hidden;}
     .banner-item .link:hover{ color: #7f7f7f;}
-    .banner-item .img{ height: 730px;background-size: cover; background-position: center center;}
+    .banner-item .img{overflow: hidden; height: 730px;background-size: cover; background-position: center center;}
     .banner-item .img a{ position: relative; font-size: 0; display: block;height: 100%}
-    .banner-item .img:hover .detail{ display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transition: all .8s ;}
+    .banner-item .img:hover .detail{transform: translateY(0); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
     .banner-item .img:hover .detail h2 {top: 16px;opacity: 1}
     .banner-item .img:hover .item-mask {display: none}
     .banner-item .item-mask {color:white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 365px;position:absolute;bottom: 0px;width: 100%;padding: 16px;display: flex;flex-direction: column;justify-content: flex-end;}
     .banner-item .item-mask h2 {font-size: 37px;}
     .banner-item .item-mask p {font-size: 21px;}
     .banner-item .item-mask span {position: absolute;right: 12px;}
-    .banner-item .detail{ color:white;height: 100%; font-size: 16px; line-height: 1.3; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);display:flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;display:none;}
-    .banner-item .detail h2 {font-size: 37px;position: relative;top: 90%;opacity:0;transition: all .8s 1s}
+    .banner-item .detail{ transition:.3s ease-in-out;display: flex;color:white;height: 100%; font-size: 16px; line-height: 1.3; margin-bottom: 15px; padding: 16px;color:white; background: rgba(0,0,0,.7);flex-direction: column;justify-content: space-between;box-sizing: border-box;transform:translateY(730px)}
+    .banner-item .detail h2 {font-size: 37px;}
     .banner-item .detail p {font-size: 21px}
     .banner-item .detail .cate-name {position: absolute;top: 16px;right: 16px;}
     .banner-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical; line-height: 1.7;}
