@@ -4,11 +4,11 @@
     .swiper-button-next,.swiper-button-prev {background-image: none}
     /* .arrow.left:after {border-width: 9px;border-left:none;border-right-color: #000;top: 15px;} */
     /* .arrow.left:before {border-width: 14px;border-left:none;border-right-color: #fff;top: 10px;} */
-    .swiper-button-prev{ left: -70px; }
-    .swiper-button-next{ right: -70px; }
+    .swiper-button-prev{ left: -30px; }
+    .swiper-button-next{ right: -25px; }
     .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: center center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
-    .detail-infos{ width: 700px;color:white;}
+    .detail-infos{ width: 680px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
     .detail-infos .sub-title {margin-bottom: 20px;}
     .detail-infos p{ font-size: 12px;  line-height: 1.8;color:#969696; width:465px;margin-bottom: 25px;padding-right: 12px;margin-right: 60px;max-height: 152px;overflow: scroll;}
@@ -42,7 +42,7 @@
     <div>
         <top-nav></top-nav>
         <second-nav></second-nav>
-        <body-frame class="flex" style="padding:0 60px">
+        <body-frame class="flex" style="padding:0 60px;overflow-x:visible;">
             <div class="detail-infos">
                 <div>
                 <h3 class="animation-box"><span>{{detailData.title}}</span></h3>
@@ -120,6 +120,7 @@
     export default{
         name: 'App',
         components:{TopNav,SecondNav,BottomNav,BodyFrame,AudioView,VideoView,Qrcode},
+        inject:['reload'],
         data(){
             let self = this;
             return{
@@ -144,20 +145,12 @@
                 showNext:false
             }
         },
-        created:function(){
-            this.$bus.on('getIdList',(params)=>{
-                // console.log(params)
-                this.idList = params
-            });
-            this.$bus.once('once', () => console.log('This listener will only fire once'));
-        },
         mounted(){
-            this.swiper = this.$refs.mySwiper.swiper;
-            this.activeIndex = this.swiper.activeIndex;
             let id = this.$route.params.id;
             this.getData(id);
             this.$store.dispatch('doGetIndex');
-            this.initPageBtn();
+            this.idList = this.$store.state.idList;
+            this.initPageBtn()
         },
         methods: {
             bannerPrev(){
@@ -168,6 +161,10 @@
             },
             backHistory(){
                 window.history.back();
+            },
+            initSwiper(){
+                this.swiper = this.$refs.mySwiper.swiper;
+                this.activeIndex = this.swiper.activeIndex;
             },
             getData(id){
                 let self = this;
@@ -183,6 +180,7 @@
                     self.domain_url = data.domain_url;
                     self.bannerList = data.data.goods_img;
                     self.showVideo = data.data.video_link != '';
+                    !self.showVideo && !self.detailData.audio_link ? self.initSwiper():'';
                     self.vid = data.data.video_link;
                     self.vPostImg = self.domain_url + data.data.video_cover;
 

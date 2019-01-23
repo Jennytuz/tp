@@ -7,9 +7,6 @@ import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import infiniteScroll from 'vue-infinite-scroll'
 import BaiduMap from 'vue-baidu-map'
-import VueBus from 'vue-bus';
-
-Vue.use(VueBus);
 Vue.use(infiniteScroll);
 Vue.use(BaiduMap, {
     ak:'3Z118EsGzhwSSckxiiZAGuOAbh3FVdbQ'

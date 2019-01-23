@@ -4,6 +4,7 @@
     .about-tag li.active{ border-bottom: 1px solid #ff7200;}
 
     .about-list{ margin-top: 48px;}
+    .about-list:not(:first-child){display: none;}
     .profile,.contact,.team{  padding-bottom: 40px; margin-bottom: 40px; padding-left: 3%; padding-right: 3%;}
     .profile .hkLight { font-size: 11px;color:#969696; line-height: 1.8;letter-spacing: 1.5px;}
 
@@ -36,14 +37,13 @@
         <top-nav></top-nav>
         <body-frame>
             <section style="font-size: 0; margin: 0 -3%;" ref="banner">
-                <img :src="aboutData.domain_url+aboutData.cover">
+                <img :src="aboutData.domain_url+aboutData.cover" width="100%">
             </section>
             <ul class="about-tag" ref="aboutTag">
                 <li :class="activeIndex == 1 ? 'active':''" @click="setList(0)">公司简介</li>
                 <li :class="activeIndex == 2 ? 'active':''" @click="setList(1)">业务范围</li>
                 <li :class="activeIndex == 3 ? 'active':''" @click="setList(2)">我们的团队</li>
                 <li :class="activeIndex == 4 ? 'active':''" @click="setList(3)">联系方式</li>
-
             </ul>
 
             <section class="about-list profile">
@@ -76,7 +76,7 @@
                     <!-- <div class="content">{{aboutData.team}}</div> -->
                     <ul class="">
                         <li class="member-item" v-for="(item,index) in teamList" :key="index">
-                            <img :src="aboutData.domain_url+item.cover">
+                            <img :src="aboutData.domain_url+item.cover" width="100%">
                             <div class="title">
                                 <span>{{item.title}}</span>
                                 <span>{{item.name}}</span>
@@ -125,6 +125,7 @@
         components:{TopNav,BodyFrame,BMap},
         mounted(){
             this.$store.dispatch('doGetAbout');
+            this.setList(0)
         },
         data(){
             return{

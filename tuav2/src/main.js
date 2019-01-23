@@ -8,9 +8,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import axios from 'axios'
 import infiniteScroll from 'vue-infinite-scroll'
 import BaiduMap from 'vue-baidu-map'
-import VueBus from 'vue-bus';
 
-Vue.use(VueBus);
 Vue.use(infiniteScroll)
 Vue.use(BaiduMap, {
     ak:'3Z118EsGzhwSSckxiiZAGuOAbh3FVdbQ'

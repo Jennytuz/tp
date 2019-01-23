@@ -1,5 +1,5 @@
 <style>
-    .works-item{ width: 270px; height:324px;margin: 0 30px 28px 0px;display: block; box-sizing: border-box;  overflow: hidden; position: relative;cursor: pointer;}
+    .works-item{ width: 270px; height:324px;margin: 0 34px 28px 0px;display: block; box-sizing: border-box;  overflow: hidden; position: relative;cursor: pointer;}
     .works-item:nth-child(12n-1),.works-item:nth-child(12n-2),.works-item:nth-child(12n-3),.works-item:nth-child(12n-4),.works-item:nth-child(12n-5),.works-item:nth-child(12n){margin-bottom: 5px;}
     .works-item:nth-child(6n){margin-right: 0;}
     .works-item .img{width: 270px;height: 270px;background-size: cover; background-position: center center;}

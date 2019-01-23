@@ -1,9 +1,9 @@
 <style>
 .container {width: 1800px;height:677px;overflow: hidden}
 .list {display: flex;flex-wrap: wrap;}
-.button-prev,.button-next {margin: 5px}
-.button-prev{ }  
-.button-next{ }  
+.button-prev,.button-next {position: absolute;margin: 5px}
+.button-prev{left: 47%; }  
+.button-next{left: 50%; }  
 </style>
 
 <template>
@@ -20,7 +20,7 @@
                                 :key="item.id" class="slide"></work-item>
                     </div>
                 </section>
-                <div class="flex_v_c" style="justify-content:center">
+                <div class="flex_v_c" style="justify-content:center;position:relative;margin:50px 0;">
                     <div class="button-prev" v-show="showPrev" @click="prevPage">
                         <img src="../assets/images/arrow-up.png" width="30" alt="">
                     </div>
@@ -46,6 +46,7 @@
         components:{TopNav,SecondNav,BottomNav,WorkItem,BodyFrame},
         mounted(){
             this.getListData(this.$store.state.cateID);
+            
         },
         data(){
             return{
@@ -96,6 +97,8 @@
                     if(load == 'refresh'){
                         self.proList = data.data.list;
                         self.idList = data.data.list.map(function(val){return val.id;});
+                        self.$store.commit('setIdList',self.idList);
+                        console.log(this.$store.state.idList)
                     }else if(load == 'loadmore'){
                         if(data.data.list.length >0){
                             data.data.list.map((item)=>{
@@ -103,6 +106,8 @@
                                 self.idList.push(item.id);
                             })
                         }
+                        self.$store.commit('setIdList',self.idList);
+                        console.log(this.$store.state.idList)
                     }
                     if(self.proList.length == data.data.nums){
                         self.isListEnd = true;
@@ -136,11 +141,12 @@
                 this.initBtn()
             },
             nextPage(){
+                this.currentPage ++;
                 this.loadMore()
                 this.showPrev = true;
-                this.currentPage ++;
                 var el = document.getElementById('list')
                 el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 1 ) +'px, 0px); transition-duration: 500ms;';
+                this.initBtn()
             },
         },
         computed:{
@@ -149,11 +155,10 @@
             },
             activeIndex(){
                 return this.$store.state.navActiveIndex
+            },
+            idList(){
+                return this.$store.state.idList
             }
-        },
-        destroyed(){
-            this.$bus.$emit('getIdList',this.idList);
-            this.$bus.$emit('once');
         }
 
     }

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
+import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
             }
         ],
         cateID:[0,0],
+        idList:[],
         isGuide:true,
         audio:{},
         aboutData:{},
@@ -32,6 +34,9 @@ const store = new Vuex.Store({
         setAudio(state,data){
             state.audio = data;
         },
+        setIdList(state,data){
+            state.idList = data;
+        },
         setCateID(state,data){
             state.cateID = data;
         },
@@ -41,7 +46,7 @@ const store = new Vuex.Store({
     },
     actions: {
         doGetAbout (context) {
-            axios.get('http://tau.pc-online.cc/admin/api/ajax_about').then((res)=>{
+            axios.get('http://taupai.com/index.php/admin/api/ajax_about').then((res)=>{
                 let data = res.data;
                 context.state.aboutData = data;
             }).catch((error)=>{
@@ -72,6 +77,9 @@ const store = new Vuex.Store({
                 console.log(error);
             })
         }
-    }
+    },
+    plugins: [createPersistedState({
+        storage: window.sessionStorage
+    })]
 });
 export default store
