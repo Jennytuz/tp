@@ -121,6 +121,7 @@
                         }
                     }
                 },
+                idList:[],
                 swiper:null,
                 activeIndex:0
             }

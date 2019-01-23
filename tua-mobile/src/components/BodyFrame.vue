@@ -44,7 +44,7 @@
                 </div>
                 <ul class="first-level hkLight">
                     <li>
-                        <a href="/">
+                        <a href="/" @click="doHideMenu">
                         首页<span>HOME</span>
                         </a>
                     </li>
