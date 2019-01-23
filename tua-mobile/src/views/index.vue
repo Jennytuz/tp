@@ -104,6 +104,9 @@
                 }catch(err){
                     return []
                 }
+            },
+            loadingImg(){
+                return this.$store.state.aboutData.loading
             }
         },
         data(){
