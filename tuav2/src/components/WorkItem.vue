@@ -9,6 +9,14 @@
     .works-item p{max-width:50%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .works-item .time{ padding-top: 10px; color: #fff;position: relative; font-size: 8px;}
     .works-item .time span{ display: block; margin-bottom: 4px;}
+    @media screen and (max-width:1920px) {
+        .works-item{width:203px;height:250px;margin-right: 30px;}
+        .works-item .img {width:203px;height:203px;}
+        .works-item h3 {font-size: 11px;}
+        .works-item p {font-size: 8px;}
+        .works-item .left-word{display: inline-block;transform: scale(.8,.8); transform-origin: top left;}
+        .works-item .right-word{display: inline-block;transform: scale(.8,.8); transform-origin: top right;}
+    }
 </style>
 
 <template>
@@ -19,9 +27,9 @@
             <p class="f10">{{data.title_ext}}</p>
         </div>
         <div class="time hkLight flex_sb">
-            <span>TIME&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{new Date(parseInt(data.ctime)).format('MM/yyyy')}}</span>
+            <span class="left-word">TIME&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{new Date(parseInt(data.ctime)).format('MM/yyyy')}}</span>
             <div>
-            <span v-if="data.cate2 != ''">{{data.catename}}</span>
+            <span class="right-word" v-if="data.cate2 != ''">{{data.catename}}</span>
             </div>
         </div>
     </div>

@@ -1,5 +1,11 @@
+<style>
+    #BMap {height: 243px;width:100%}
+    @media screen and (max-width:1920px) { 
+        #BMap {height: 192px}
+    }
+</style>
 <template>
-  <div id="BMap" style="width:100%;height:243px">
+  <div id="BMap">
     <div id="allmap" style="height:100%;"></div>
   </div>
 </template>

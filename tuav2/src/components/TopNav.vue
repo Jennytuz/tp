@@ -13,6 +13,10 @@
     .top-nav section nav .first-level>li .second-level li{ margin: 0 10px; border-bottom: 1px solid #fff;}
     .top-nav section nav .first-level>li .second-level li:last-child{ border-bottom: none;}
     .top-nav section nav .first-level>li .second-level li a{ font-size: 14px; padding: 10px 0; color: #fff; text-align: center; display: block;}
+
+    @media screen and (max-width:1920px) { 
+        .top-nav section{ max-width: 1370px;}
+    }
 </style>
 
 <template>

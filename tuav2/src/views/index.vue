@@ -16,7 +16,7 @@
     .banner-item .detail h2 {font-size: 37px;}
     .banner-item .detail p {font-size: 21px}
     .banner-item .detail .cate-name {position: absolute;top: 16px;right: 16px;}
-    .banner-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical; line-height: 1.7;}
+    .banner-item .detail .desc {max-height: 130px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical; line-height: 1;}
     .banner-item .time{ padding-top: 15px;color: rgb(127,127,127);position: relative; font-size: 14px;}
     .banner-item .time:before{ content: ''; width: 12px; height: 1px; background-color: #9f9f9f; position: absolute; top: 0; left: 0;}
     .banner-item .time span{ margin-right: 30px;}
@@ -54,6 +54,16 @@
     .swiper-button-prev {left:120px!important;}
     .swiper-button-next {right:60px!important;}
     .swiper-button-disabled {display: none;}
+
+    @media screen and (max-width:1920px) {
+        .banner-item {width:438px}
+        .banner-item .bgimg{ height: 548px;}
+        .banner-item .item-mask h2 {font-size: 30px;}
+        .banner-item .item-mask p {font-size: 16px;}
+        .recommend-container .recommend-item{ height: 94px!important;}
+        .swiper-frame-index {width: 1370px;}
+        .more-container {width: 1120px;}
+    }
 </style>
 
 <template>
@@ -167,7 +177,7 @@
                 activeIndex:0,
                 idList:[],
                 recommendSwiperOpt:{
-                    width: 1500,
+                    width: 1070,
                     spaceBetween: 30,
                     slidesPerView:6,
                     slidesPerGroup:6,

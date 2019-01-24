@@ -2,7 +2,7 @@
     .swiper-frame{ position: relative; margin-bottom: 10px; margin-right: -3%;}
     .swiper-item {width: calc(100vw - 6%);height: 422px;background-size: cover;background-repeat: no-repeat;background-position: center center;}
     .swiper-item a {height: 100%;width: 100%;display: block;}
-    .swiper-item .infos .title{ font-size: 30px; margin-top: 10px;}
+    .swiper-item .infos .title{ font-size: 28px; margin-top: 10px;font-weight:500 }
     .swiper-item .infos h4 {font-size: 14px;font-weight: normal;}
     .swiper-item .item-mask {color: white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 165px;position: absolute;bottom: 0px;width: 100%;padding: 12px;display: flex;flex-direction: column;justify-content: flex-end;}
     

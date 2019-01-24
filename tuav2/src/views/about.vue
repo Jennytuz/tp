@@ -9,14 +9,14 @@
 
     .about-content {max-height:500px;overflow: scroll;}
     .profile,.contact,.team{ margin-top: 68px; width: 480px}
-    .profile .hkLight{ font-size: 14px; line-height: 1.8; letter-spacing: 3px;color:#969696;}
+    .profile .hkLight{ font-size: 14px; line-height: 1.5; letter-spacing: 3px;color:#969696;}
     .about-title p{ font-size: 14px; margin-bottom: 25px; font-weight: bold; letter-spacing: 3px;}
     .about-title h3{ font-size: 40px; letter-spacing: 3px;margin-bottom: 68px;}
     .about-title h3 span{ font-size: 12px; display: block; transform: scale(0.7,0.7); transform-origin: 0 0; letter-spacing: 3px;}
 
     .contact .infos li{ font-size: 12px; margin-bottom: 20px; display: flex;}
-    .contact .infos li p:first-child{ width: 225px;}
-    .contact .infos li p{ line-height: 1.8;}
+    .contact .infos li p:first-child{ width: 225px;color:#fff;}
+    .contact .infos li p{ line-height: 1.8;color: #969696;}
     .contact .wechat{ margin-top: 58px;}
     .contact .wechat p{ margin-top: 30px; font-size: 14px; line-height: 1.5;}
     .contact .wechat p span{ color: #c29832; display: block;}
@@ -28,6 +28,7 @@
     /* .member-item:nth-child(2n){margin-right: 0px} */
     .member-item div{margin-top: 20px; color:#fff;}
     .member-item p{ color:#969696;font-size: 10px;margin-top: 17px;line-height: 1.5;}
+    .member-item img {width: 194px;height: 194px;}
     .item-list {display: flex;flex-wrap: wrap;max-height: 500px;overflow-y: scroll}
     .services{ border-bottom: none; margin-bottom: 0;}
     .pro-tag-list{ }
@@ -37,6 +38,15 @@
     /*.pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}*/
     .pro-tag-list li a{ display: flex; align-items: flex-end;margin-bottom: 40px}
     .pro-tag-list li div{ color: #fff; font-size: 32px; margin-left: 40px;}
+    @media screen and (max-width:1920px) { 
+        .about_img {width: 946px;height: 533px;}
+        .profile,.contact,.team {width: 370px}
+        .about-tag li {margin-right: 50px}
+        .member-item{ width: 153px; }
+        .member-item img {width: 153px;height: 153px;}
+        .contact .infos li p:first-child{ width: 145px;}
+        .about-title h3{ font-size: 30px;}
+    }
 </style>
 
 <template>
@@ -101,7 +111,7 @@
                         <!-- <div class="content">{{aboutData.team}}</div> -->
                         <ul class="item-list">
                             <li class="member-item" v-for="(item,index) in teamList" :key="index">
-                                <img :src="aboutData.domain_url+item.cover" width="194" height="194">
+                                <img :src="aboutData.domain_url+item.cover">
                                 <div class="f14 flex_sb flex_v_c"><span>{{item.title}}</span><span>{{item.name}}</span></div>
                                 <p>{{item.intro}}</p>
                             </li>

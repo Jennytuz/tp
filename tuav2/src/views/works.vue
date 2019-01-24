@@ -4,6 +4,11 @@
 .button-prev,.button-next {position: absolute;margin: 5px}
 .button-prev{left: 47%; }  
 .button-next{left: 50%; }  
+.works-contain {height:800px;position:relative}
+@media screen and (max-width:1920px) {
+    .container{width: 1370px;height: 531px;}
+    .works-contain {height:531px; }
+}
 </style>
 
 <template>
@@ -11,8 +16,8 @@
         <top-nav @getID="getListData"></top-nav>
         <second-nav @getID="getListData"></second-nav>
         <body-frame style="padding-bottom: 80px">
-            <div style="height:800px;position:relative">
-                <section class="container">
+            <div class="works-contain">
+                <section class="container" id="workContain">
                     <div id="list" class="list">
                         <work-item v-for="item in proList"
                                 :data="item"
@@ -20,7 +25,7 @@
                                 :key="item.id" class="slide"></work-item>
                     </div>
                 </section>
-                <div class="flex_v_c" style="justify-content:center;position:relative;margin:50px 0;">
+                <div class="flex_v_c" style="justify-content:center;position:relative;margin:40px 0 20px;">
                     <div class="button-prev" v-show="showPrev" @click="prevPage">
                         <img src="../assets/images/arrow-up.png" width="30" alt="">
                     </div>
@@ -133,8 +138,9 @@
                 }
             },
             prevPage(){
-                var el = document.getElementById('list')
-                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 2) +'px, 0px); transition-duration: 500ms;';
+                var el = document.getElementById('list');
+                var h = document.getElementById('workContain').offsetHeight;
+                el.style.cssText = 'transform: translate3d(0, -'+ h * (this.currentPage - 2) +'px, 0px); transition-duration: 500ms;';
                 this.currentPage --;
                 this.initBtn()
             },
@@ -143,7 +149,8 @@
                 this.loadMore()
                 this.showPrev = true;
                 var el = document.getElementById('list')
-                el.style.cssText = 'transform: translate3d(0, -'+ 682 * (this.currentPage - 1 ) +'px, 0px); transition-duration: 500ms;';
+                var h = document.getElementById('workContain').offsetHeight;
+                el.style.cssText = 'transform: translate3d(0, -'+ h * (this.currentPage - 1 ) +'px, 0px); transition-duration: 500ms;';
                 this.initBtn()
             },
         },
