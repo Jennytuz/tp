@@ -12,6 +12,7 @@
     .detail-infos{ width: 680px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
     .detail-infos .sub-title {margin-bottom: 20px;}
+    .detail-infos .main_desc {line-height: 1.3}
     .detail-infos p{ font-size: 12px;  line-height: 1.8;color:#969696; width:465px;margin-bottom: 25px;padding-right: 12px;margin-right: 60px;max-height: 152px;overflow: scroll;}
     .detail-infos .time{ padding-top: 15px; position: relative; font-size: 14px; margin-bottom: 25px;}
     .detail-infos .time span{ margin-right: 30px;}
@@ -51,7 +52,7 @@
                 <div class="animation-box sub-title f20"><span>{{detailData.title_ext}}</span></div>
                 
                 <div>
-                    <p class="hkLight" v-html="detailData.goods_desc"></p>
+                    <p class="hkLight main_desc" v-html="detailData.goods_desc"></p>
                 </div>
 
                 <div class="f14 author-title" >制作名单 :</div>

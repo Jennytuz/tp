@@ -10,7 +10,7 @@
     <div>
         <top-nav @getID="getListData"></top-nav>
         <second-nav @getID="getListData"></second-nav>
-        <body-frame>
+        <body-frame style="padding-bottom: 80px">
             <div style="height:800px;position:relative">
                 <section class="container">
                     <div id="list" class="list">

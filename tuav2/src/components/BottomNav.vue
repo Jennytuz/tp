@@ -1,5 +1,5 @@
 <style>
-    .bottom-nav{ max-width: 1800px; padding:0px 60px 30px; overflow: hidden;}
+    .bottom-nav{ max-width: 1800px; padding:0px 60px 30px; overflow: hidden;position: fixed;bottom: 0;background-color: #000;z-index: 4;}
     .bottom-nav section{ width: 1800px; position: relative;display: flex;}
     .bottom-nav .infos{ width:100%;display: flex; margin-top: 40px;}
     .bottom-nav .infos li{  position: relative; display: flex;}
