@@ -22,7 +22,7 @@
             <nav>
                 <ul class="first-level hkLight f14">
                     <li>
-                        <a href="/index">首页
+                        <a href="javascript:;" @click="gotoPage('/index',-4)">首页
                             <span>HOME</span>
                         </a>
                     </li>

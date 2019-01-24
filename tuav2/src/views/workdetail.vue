@@ -2,12 +2,12 @@
     .swiper-frame{ width:1045px;position: relative;display: none;}
     .swiper-frame.show{display: block;}
     .swiper-container {width: 1040px;position: static;margin: 0 auto;}
-    .swiper-button-next,.swiper-button-prev {background-image: none}
+    .swiper-button-next,.swiper-button-prev {background-image: none!important;}
     /* .arrow.left:after {border-width: 9px;border-left:none;border-right-color: #000;top: 15px;} */
     /* .arrow.left:before {border-width: 14px;border-left:none;border-right-color: #fff;top: 10px;} */
-    .swiper-button-prev{ left: -30px; }
-    .swiper-button-next{ right: -25px; }
-    .swiper-slide {height: 708px;background-size: contain;background-repeat: no-repeat;background-position: center center;}
+    .swiper-button-prev{ left: -30px!important; }
+    .swiper-button-next{ right: -25px!important; }
+    .swiper-slide {height: 708px!important;background-size: contain;background-repeat: no-repeat;background-position: center center;}
     .swiper-slide.audio {width: 614px;height: 614px;background-size: cover}
     .detail-infos{ width: 680px;color:white;}
     .detail-infos h3{ font-size: 40px; letter-spacing: 1.3px;}
@@ -24,8 +24,8 @@
     .qrcode_container {text-align: center; width:121px;height:140px;position: absolute;bottom: 120px;left: 400px;}
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
-    .back_btn {position: absolute;left: -9px;top: 0;}
-    .next-btn,.prev-btn{top: 50%;position: absolute;cursor:pointer}
+    .back_btn {position: absolute;left: -9px!important;top: 0;}
+    .next-btn,.prev-btn{top: 50%!important;position: absolute;cursor:pointer}
     .next-btn{right: 0;}
     .prev-btn{left: 0;}
     @keyframes scaleAnim {
@@ -172,7 +172,7 @@
                 let self = this;
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-                self.$ajax.get('index.php/admin/api_v2/product_info',{
+                self.$ajax.get('/index.php/admin/api_v2/product_info',{
                     params: {
                         id: id
                     }

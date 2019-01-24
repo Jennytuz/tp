@@ -1,6 +1,6 @@
 <style>
     .body-frame {padding-top: 57px;}
-    .img {background-size: contain; background-position: top right;background-repeat: no-repeat; width: 1260px;height: 710px}
+    .about_img {background-size: contain; background-position: top right;background-repeat: no-repeat; width: 1260px;height: 710px}
     section {color: #fff;}
     .about-tag{ display: flex; align-items: center; z-index: 500;color: #fff;}
     .about-tag li{ margin-right: 70px; font-size: 12px; cursor: pointer;}
@@ -124,7 +124,7 @@
                     </div>
                 </section>
             </section>
-            <section class="img" :style="{backgroundImage:'url('+aboutData.domain_url+aboutData.cover+')'}"></section>
+            <section class="about_img" :style="{backgroundImage:'url('+aboutData.domain_url+aboutData.cover+')'}"></section>
         </body-frame>
         <bottom-nav @clickWechat="backContact"></bottom-nav>
     </div>

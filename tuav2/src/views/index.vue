@@ -1,13 +1,13 @@
 <style>
-    .swiper-frame-index{ position: relative; margin-bottom: 20px;}
+    .swiper-frame-index{ position: relative; margin-bottom: 20px;width: 1800px}
     .banner-item {width:584px}
     .banner-item .link{  display: block; font-size: 28px; letter-spacing: 1.3px; margin-top: 10px; color: #000; white-space:nowrap; text-overflow: ellipsis; overflow: hidden;}
     .banner-item .link:hover{ color: #7f7f7f;}
-    .banner-item .img{overflow: hidden; height: 730px;background-size: cover; background-position: center center;}
-    .banner-item .img a{ position: relative; font-size: 0; display: block;height: 100%}
-    .banner-item .img:hover .detail{transform: translateY(0); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
-    .banner-item .img:hover .detail h2 {top: 16px;opacity: 1}
-    .banner-item .img:hover .item-mask {display: none}
+    .banner-item .bgimg{overflow: hidden; height: 730px;background-size: cover; background-position: center center;}
+    .banner-item .bgimg a{ position: relative; font-size: 0; display: block;height: 100%}
+    .banner-item .bgimg:hover .detail{transform: translateY(0); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+    .banner-item .bgimg:hover .detail h2 {top: 16px;opacity: 1}
+    .banner-item .bgimg:hover .item-mask {display: none}
     .banner-item .item-mask {color:white;background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));height: 365px;position:absolute;bottom: 0px;width: 100%;padding: 16px;display: flex;flex-direction: column;justify-content: flex-end;}
     .banner-item .item-mask h2 {font-size: 37px;}
     .banner-item .item-mask p {font-size: 21px;}
@@ -32,10 +32,10 @@
     .banner-frame-index .right a{ margin-left: 255px;}
     .banner-frame-index .right img{ margin-left: -40px;}
 
-    .recommend-item{ height: 124px;}
-    .recommend-item .imgs{display: block; height: 100%;background-size: cover; background-position: center center;}
-    .recommend-item .imgs:after{ content: ''; background-color: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
-    .recommend-item:hover .imgs:after{ background-color: rgba(0,0,0,0);}
+    .recommend-container .recommend-item{ height: 124px!important;}
+    .recommend-container .recommend-item .imgs{display: block; height: 100%;background-size: cover; background-position: center center;background-repeat: no-repeat}
+    .recommend-container .recommend-item .imgs:after{ content: ''; background-color: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+    .recommend-container .recommend-item:hover .imgs:after{ background-color: rgba(0,0,0,0);}
 
     .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;background-size:cover;background-repeat: no-repeat }
     .slide-fade-enter-active {
@@ -50,9 +50,9 @@
     }
     .more-container {width: 1500px;}
     .swiper-container{position: static;}
-    .swiper-button-prev,.swiper-button-next {top:53%;background-image: none;}
-    .swiper-button-prev {left:120px;}
-    .swiper-button-next {right:60px;}
+    .swiper-button-prev,.swiper-button-next {top:53%;background-image: none!important;}
+    .swiper-button-prev {left:120px!important;}
+    .swiper-button-next {right:60px!important;}
     .swiper-button-disabled {display: none;}
 </style>
 
@@ -63,7 +63,7 @@
             <div class="swiper-frame-index flex_sb">
                     <!-- slides -->
                         <section class="banner-item" v-for="(item,index) in bannerList" v-if="index<3">
-                            <div class="img" :style="{backgroundImage:'url('+mainUrl+item.banner_cover+')'}">
+                            <div class="bgimg" :style="{backgroundImage:'url('+mainUrl+item.banner_cover+')'}">
                                 <router-link :to="'/works/detail/'+item.id">
                                 <div class="item-mask">
                                     <h2>{{item.title}}</h2>
@@ -85,7 +85,7 @@
                             </div>
                         </section>
             </div>
-            <div class="flex_sb" style="position:relative">
+            <div class="flex_sb recommend-container" style="position:relative">
                 <div class="recommend-title">MORE</div>
                 <swiper class="more-container" :options="recommendSwiperOpt" ref="mySwiper">
                     <swiper-slide class="recommend-item" v-for="item in recommendList">
@@ -141,7 +141,7 @@
             },
             bannerList(){
                 try{
-                    return this.$store.state.indexData.banner.list.slice(3)
+                    return this.$store.state.indexData.banner.list.slice(0,3)
                 }catch(err){
                     return []
                 }

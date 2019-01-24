@@ -9,6 +9,7 @@
     .detail-infos h3{ font-size: 25px;  margin-bottom: 5px;font-weight: 500;}
     .detail-infos h4 {font-size: 12px;font-weight: 500;}
     .detail-infos p{ font-size: 11px; letter-spacing: 1.5px; line-height: 1.8; margin-top: 20px;color: #969696;}
+    .detail-infos #desc {line-height: 1.3;}
     .detail-infos .time{ padding-top: 15px; color: #fff; position: relative; font-size: 10px; margin-bottom: 15px;}
     .detail-infos .time span{ margin-right: 30px;}
     .detail-infos .author-list{ width: 100%; margin:32px 0;}
@@ -54,7 +55,7 @@
                 <h3>{{detailData.title}} </h3>
                 <h4>{{detailData.title_ext}}</h4>
                 <div>
-                    <p class="hkLight" v-html="detailData.goods_desc"></p>
+                    <p class="hkLight" id="desc" v-html="detailData.goods_desc"></p>
                 </div>
                 
                 <ul class="author-list" v-if="detailData.author != ''">
@@ -115,7 +116,7 @@
                 let self = this;
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-                self.$ajax.get('index.php/admin/api_v2/product_info',{
+                self.$ajax.get('/index.php/admin/api_v2/product_info',{
                     params: {
                         id: id
                     }

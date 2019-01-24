@@ -44,7 +44,7 @@
                 </div>
                 <ul class="first-level hkLight">
                     <li>
-                        <a href="/" @click="doHideMenu">
+                        <a href="javascript:;" @click="gotoPage('/index',-4)">
                         首页<span>HOME</span>
                         </a>
                     </li>
@@ -105,6 +105,10 @@
             }
         },
         methods:{
+            goHome(){
+                this.$router.push('/index');
+                this.doHideMenu();
+            },
             getList(index,id,id2){
                 this.$store.commit('setNavActiveIndex',index);
                 this.$store.commit('setCateID',[id,id2]);
