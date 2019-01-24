@@ -52,7 +52,7 @@
                 let self = this;
                 if(self.isListEnd) return;
                 self.isLoading = true;
-                self.$ajax.get('admin/api_v2/product_list',{
+                self.$ajax.get('index.php/admin/api_v2/product_list',{
                     params: {
                         page: self.pageNo,
                         pageSize:10,

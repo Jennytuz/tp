@@ -46,7 +46,7 @@ const store = new Vuex.Store({
     },
     actions: {
         doGetAbout (context) {
-            axios.get('api/ajax_about').then((res)=>{
+            axios.get('index.php/api/ajax_about').then((res)=>{
                 let data = res.data;
                 context.state.aboutData = data;
             }).catch((error)=>{
@@ -54,7 +54,7 @@ const store = new Vuex.Store({
             })
         },
         doGetCate (context) {
-            axios.get('admin/api_v2/cate_list').then((res)=>{
+            axios.get('index.php/admin/api_v2/cate_list').then((res)=>{
                 let data = res.data;
                 context.state.cateList = data;
             }).catch((error)=>{
@@ -62,7 +62,7 @@ const store = new Vuex.Store({
             })
         },
         doGetIndex (context) {
-            axios.get('admin/api_v2/ajax_home').then((res)=>{
+            axios.get('index.php/admin/api_v2/ajax_home').then((res)=>{
                 let data = res.data;
                 context.state.indexData = data;
             }).catch((error)=>{
@@ -70,7 +70,7 @@ const store = new Vuex.Store({
             })
         },
         doGetAbout (context) {
-            axios.get('admin/api_v2/ajax_about').then((res)=>{
+            axios.get('index.php/admin/api_v2/ajax_about').then((res)=>{
                 let data = res.data;
                 context.state.aboutData = data;
             }).catch((error)=>{

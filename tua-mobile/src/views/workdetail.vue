@@ -115,7 +115,7 @@
                 let self = this;
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-                self.$ajax.get('admin/api_v2/product_info',{
+                self.$ajax.get('index.php/admin/api_v2/product_info',{
                     params: {
                         id: id
                     }
