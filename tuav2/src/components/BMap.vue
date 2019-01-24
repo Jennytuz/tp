@@ -1,6 +1,6 @@
 <style>
     #BMap {height: 243px;width:100%}
-    @media screen and (max-width:1920px) { 
+    @media screen and (max-width:1910px) { 
         #BMap {height: 192px}
     }
 </style>

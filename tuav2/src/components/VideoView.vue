@@ -4,7 +4,7 @@
     .postImg{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-repeat: no-repeat; background-position: center center; background-size: cover;}
     .postImg a{ position: absolute; top: 50%; left: 50%; margin: -40px 0 0 -40px;}
     .postImg .cover{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5);}
-    @media screen and (max-width:1920px) {
+    @media screen and (max-width:1910px) {
         .vframe{width: 814px;height: 458px;}
     }
 </style>

@@ -20,6 +20,6 @@
     }
     body{background-color: #000;color:#fff;}
     .body-frame{margin: 50px 3% 20px 3%;}
-
+    .main-title {font-family:'微软雅黑','Microsoft YaHei';font-weight: bold;}
     .item-list{ display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 60px;}
 </style>

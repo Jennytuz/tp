@@ -48,14 +48,14 @@
 
             <section class="about-list profile">
                 <div class="about-title">
-                    <h3>公司简介</h3>
+                    <h3 class="main-title">公司简介</h3>
                 </div>
                 <div class="hkLight" v-html="aboutData.intro"></div>
                 <div class="hkLight" v-html="aboutData.idea"></div>
             </section>
             <section class="about-list team services">
                 <div class="about-title">
-                    <h3>业务范围</h3>
+                    <h3 class="main-title">业务范围</h3>
                 </div>
                 <div>
                     <ul class="pro-tag-list">
@@ -70,7 +70,7 @@
             </section>
             <section class="about-list team" ref="team">
                 <div class="about-title">
-                    <h3>我们的团队</h3>
+                    <h3 class="main-title">我们的团队</h3>
                 </div>
                 <div>
                     <!-- <div class="content">{{aboutData.team}}</div> -->
@@ -88,7 +88,7 @@
             </section>
             <section class="about-list contact">
                 <div class="about-title">
-                    <h3>联系我们</h3>
+                    <h3 class="main-title">联系我们</h3>
                 </div>
                 <div style=" position: relative;">
                     <ul class="infos hkLight">

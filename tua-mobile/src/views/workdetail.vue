@@ -6,7 +6,7 @@
     .image-container img{width: 100%;margin-bottom: 3%;margin-top: 20px;}
     .audio_container {width:100%;position: relative;padding-bottom: 100%;background-position: center center;background-size: cover;}
     .detail-infos{ margin-top: 25px;color:#fff;position:relative;}
-    .detail-infos h3{ font-size: 25px;  margin-bottom: 5px;font-weight: 500;}
+    .detail-infos h3{ font-size: 25px;  margin-bottom: 5px;}
     .detail-infos h4 {font-size: 12px;font-weight: 500;}
     .detail-infos p{ font-size: 11px; letter-spacing: 1.5px; line-height: 1.8; margin-top: 20px;color: #969696;}
     .detail-infos #desc {line-height: 1.3;}
@@ -52,7 +52,7 @@
                              :postImg="vPostImg"></video-view>
             </div>
             <div class="detail-infos">
-                <h3>{{detailData.title}} </h3>
+                <h3 class="main-title">{{detailData.title}} </h3>
                 <h4>{{detailData.title_ext}}</h4>
                 <div>
                     <p class="hkLight" id="desc" v-html="detailData.goods_desc"></p>

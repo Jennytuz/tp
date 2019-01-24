@@ -36,7 +36,7 @@
         transform: translate(0,0)
         }
     }
-    @media screen and (max-width:1920px) {
+    @media screen and (max-width:1910px) {
         .detail-infos{ width: 420px;}
         .detail-infos h3{ font-size: 30px;}
         .detail-infos .sub-title {font-size: 16px;}
@@ -55,7 +55,7 @@
         <body-frame class="flex" style="padding:0 60px;overflow-x:visible;">
             <div class="detail-infos">
                 <div>
-                <h3 class="animation-box"><span>{{detailData.title}}</span></h3>
+                <h3 class="animation-box"><span class="main-title">{{detailData.title}}</span></h3>
                 </div>
                 <div class="animation-box sub-title"><span>{{detailData.title_ext}}</span></div>
                 

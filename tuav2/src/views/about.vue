@@ -38,7 +38,7 @@
     /*.pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}*/
     .pro-tag-list li a{ display: flex; align-items: flex-end;margin-bottom: 40px}
     .pro-tag-list li div{ color: #fff; font-size: 32px; margin-left: 40px;}
-    @media screen and (max-width:1920px) { 
+    @media screen and (max-width:1910px) { 
         .about_img {width: 946px;height: 533px;}
         .profile,.contact,.team {width: 370px}
         .about-tag li {margin-right: 50px}
@@ -63,7 +63,7 @@
 
                 <section class="about-list profile">
                     <div class="about-title">
-                        <h3>公司簡介</h3>
+                        <h3 class="main-title">公司簡介</h3>
                     </div>
                     <div class="about-content">
                         <div class="hkLight" v-html="aboutData.intro"></div>
@@ -73,7 +73,7 @@
 
                 <section class="about-list contact none">
                     <div class="about-title">
-                        <h3>聯繫方式</h3>
+                        <h3 class="main-title">聯繫方式</h3>
                     </div>
                     <div style="width: 625px; position: relative;">
                         <ul class="infos hkLight">
@@ -105,7 +105,7 @@
 
                 <section class="about-list team none">
                     <div class="about-title">
-                        <h3 style="margin-bottom:24px;">團隊成員</h3>
+                        <h3 style="margin-bottom:24px;" class="main-title">團隊成員</h3>
                     </div>
                     <div style="width: 480px;">
                         <!-- <div class="content">{{aboutData.team}}</div> -->
@@ -121,7 +121,7 @@
 
                 <section class="about-list team services none">
                     <div class="about-title">
-                        <h3>業務範圍</h3>
+                        <h3 class="main-title">業務範圍</h3>
                     </div>
                     <div style=" width: 480px;">
                         <ul class="pro-tag-list">

@@ -38,9 +38,9 @@
     }
 
     .body-frame{ width: 1800px; min-width: 1800px; margin: 60px auto 0px auto; position: relative;max-height: calc(100vh - 200px);overflow: scroll;}
-
+    .main-title {font-family:'微软雅黑','Microsoft YaHei';font-weight: bold;}
     .recommend-title{ font-size: 20px; padding: 8px 0;color:white;}
-    @media screen and (max-width:1920px) {
+    @media screen and (max-width:1910px) {
         .body-frame{width: 1370px;min-width:1370px}
     }
     /* .item-list{ margin: 0 -14px;} */

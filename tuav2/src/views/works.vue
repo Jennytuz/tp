@@ -5,7 +5,7 @@
 .button-prev{left: 47%; }  
 .button-next{left: 50%; }  
 .works-contain {height:800px;position:relative}
-@media screen and (max-width:1920px) {
+@media screen and (max-width:1910px) {
     .container{width: 1370px;height: 531px;}
     .works-contain {height:531px; }
 }

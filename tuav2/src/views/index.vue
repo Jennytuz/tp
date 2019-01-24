@@ -55,7 +55,7 @@
     .swiper-button-next {right:60px!important;}
     .swiper-button-disabled {display: none;}
 
-    @media screen and (max-width:1920px) {
+    @media screen and (max-width:1910px) {
         .banner-item {width:438px}
         .banner-item .bgimg{ height: 548px;}
         .banner-item .item-mask h2 {font-size: 30px;}
@@ -76,13 +76,13 @@
                             <div class="bgimg" :style="{backgroundImage:'url('+mainUrl+item.banner_cover+')'}">
                                 <router-link :to="'/works/detail/'+item.id">
                                 <div class="item-mask">
-                                    <h2>{{item.title}}</h2>
+                                    <h2 class="main-title">{{item.title}}</h2>
                                     <p>{{item.title_ext}}</p>
                                     <span class="f12 fr">{{item.catename}}</span>
                                 </div>
                                 <div class="detail ">
                                     <div>
-                                        <h2>{{item.title}}</h2>
+                                        <h2 class="main-title">{{item.title}}</h2>
                                         <p>{{item.title_ext}}</p>
                                         <span class="f12 cate-name">{{item.catename}}</span>
                                     </div>
