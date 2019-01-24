@@ -1,6 +1,7 @@
 <style>
 .container {width: 1800px;height:677px;overflow: hidden}
-.list {display: flex;flex-wrap: wrap;}
+.list {display: flex;flex-wrap: wrap;justify-content: space-between;}
+.list:after {content: "";flex: auto;}
 .button-prev,.button-next {position: absolute;margin: 5px}
 .button-prev{left: 47%; }  
 .button-next{left: 50%; }  

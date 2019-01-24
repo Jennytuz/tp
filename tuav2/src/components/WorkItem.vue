@@ -10,7 +10,7 @@
     .works-item .time{ padding-top: 10px; color: #fff;position: relative; font-size: 8px;}
     .works-item .time span{ display: block; margin-bottom: 4px;}
     @media screen and (max-width:1910px) {
-        .works-item{width:203px;height:250px;margin-right: 30px;}
+        .works-item{width:228px;height:250px;padding-right: 25px;margin-right: 0}
         .works-item .img {width:203px;height:203px;}
         .works-item h3 {font-size: 11px;}
         .works-item p {font-size: 8px;}
