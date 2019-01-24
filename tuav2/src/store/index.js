@@ -46,7 +46,7 @@ const store = new Vuex.Store({
     },
     actions: {
         doGetAbout (context) {
-            axios.get('http://taupai.com/index.php/admin/api/ajax_about').then((res)=>{
+            axios.get('api/ajax_about').then((res)=>{
                 let data = res.data;
                 context.state.aboutData = data;
             }).catch((error)=>{
