@@ -16,7 +16,7 @@
     <div>
         <top-nav @getID="getListData"></top-nav>
         <second-nav @getID="getListData"></second-nav>
-        <body-frame style="padding-bottom: 80px">
+        <body-frame>
             <div class="works-contain">
                 <section class="container" id="workContain">
                     <div id="list" class="list">

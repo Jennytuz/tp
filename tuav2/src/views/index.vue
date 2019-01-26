@@ -32,7 +32,7 @@
     .banner-frame-index .right a{ margin-left: 255px;}
     .banner-frame-index .right img{ margin-left: -40px;}
 
-    .recommend-container .recommend-item{ height: 124px!important;}
+    .recommend-container .recommend-item{ width:222px!important;height: 124px!important;}
     .recommend-container .recommend-item .imgs{display: block; height: 100%;background-size: cover; background-position: center center;background-repeat: no-repeat}
     .recommend-container .recommend-item .imgs:after{ content: ''; background-color: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
     .recommend-container .recommend-item:hover .imgs:after{ background-color: rgba(0,0,0,0);}
@@ -58,9 +58,9 @@
     @media screen and (max-width:1910px) {
         .banner-item {width:438px}
         .banner-item .bgimg{ height: 548px;}
-        .banner-item .item-mask h2 {font-size: 30px;}
+        .banner-item .item-mask h2,.banner-item .detail h2 {font-size: 30px;}
         .banner-item .item-mask p {font-size: 16px;}
-        .recommend-container .recommend-item{ height: 94px!important;}
+        .recommend-container .recommend-item{ width:167px!important;height: 94px!important;}
         .swiper-frame-index {width: 1370px;}
         .more-container {width: 1120px;}
     }
@@ -179,7 +179,7 @@
                 recommendSwiperOpt:{
                     width: 1070,
                     spaceBetween: 30,
-                    slidesPerView:6,
+                    slidesPerView:'auto',
                     slidesPerGroup:6,
                     navigation: {
                         nextEl: '.swiper-button-next',
