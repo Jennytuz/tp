@@ -1,12 +1,15 @@
 <style>
-    .bottom-nav{ max-width: 1800px; padding:0px 60px 30px; overflow: hidden;position: fixed;bottom: 0;background-color: #000;z-index: 4;}
-    .bottom-nav section{ width: 1800px; position: relative;display: flex;}
+    .bottom-nav{width:100%; padding:0px 60px 30px; overflow: hidden;position: fixed;bottom: 0;background-color: #000;z-index: 4;}
+    .bottom-nav section{ width: 1800px; position: relative;display: flex;margin:auto}
     .bottom-nav .infos{ width:100%;display: flex; margin-top: 40px;}
     .bottom-nav .infos li{  position: relative; display: flex;}
     .bottom-nav .infos li p{ font-size: 14px; line-height: 1.5; color: #707070;}
     .bottom-nav .infos li p:first-child{ margin-right: 40px;}
     .bottom-nav .copyright{ transform: scale(0.7,0.7); transform-origin:0 0; color: rgba(255,255,255,0.5); }
     .bottom-nav .icon-wechat{ position: absolute; top: 90px; right: 0; cursor: pointer;}
+    @media screen and (max-width:1910px) { 
+        .bottom-nav section{ width: 1370px;}
+    }
 </style>
 
 <template>
