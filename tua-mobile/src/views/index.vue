@@ -20,7 +20,7 @@
     .recommend-item .infos .time{display: flex; justify-content: space-between; padding-top: 10px; color: #fff; font-size: 10px;}
     .recommend-item .infos .time span{ margin-right: 10px;}
 
-    .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;}
+    .welcome{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #171918; z-index: 1100; display: flex; justify-content: center; align-items: center;background-size:cover;background-repeat: no-repeat }
     .welcome img{ width: 30%;}
     .slide-fade-enter-active {
         transition: all 1s ease;
@@ -72,7 +72,7 @@
         </body-frame>
 
         <transition name="slide-fade">
-        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ mainUrl+loadingImg +')'}"><img src="../assets/images/loading.gif"> </div>
+        <div class="welcome" v-if="isGuide" :style="{'backgroundImage':'url('+ mainUrl+loadingImg +')'}"> </div>
         </transition>
     </div>
 </template>

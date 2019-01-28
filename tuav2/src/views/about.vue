@@ -36,7 +36,7 @@
     /*.pro-tag-list li:nth-child(4n+2){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+3){ justify-content: center;}*/
     /*.pro-tag-list li:nth-child(4n+4){ justify-content: flex-end;}*/
-    .pro-tag-list li a{ display: flex; align-items: flex-end;margin-bottom: 40px}
+    .pro-tag-list li a{ display: flex; margin-bottom: 40px}
     .pro-tag-list li div{ color: #fff; font-size: 32px; margin-left: 40px;}
     @media screen and (max-width:1910px) { 
         .about_img {width: 946px;height: 533px;}
