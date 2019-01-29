@@ -27,7 +27,7 @@
             <p class="f10">{{data.title_ext}}</p>
         </div>
         <div class="time hkLight flex_sb">
-            <span class="left-word">TIME&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{new Date(parseInt(data.ctime)).format('MM/yyyy')}}</span>
+            <span class="left-word">DATE&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{new Date(parseInt(data.ctime)).format('MM/yyyy')}}</span>
             <div>
             <span class="right-word" v-if="data.cate2 != ''">{{data.catename}}</span>
             </div>
