@@ -42,7 +42,7 @@
         .swiper-frame{ width:824px;}
         .swiper-container {width: 820px}
         .detail-infos p {width: 410px;}
-        .detail-infos .main_desc {width: 400px}
+        .detail-infos .main_desc {width: 320px}
     }
     .animation-box {display:inline-block;width:auto;overflow:hidden}
     .animation-box span {display:inline-block;animation: scaleAnim 1s linear;}
