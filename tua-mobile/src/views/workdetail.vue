@@ -66,7 +66,7 @@
                 </ul>
                 <div class="time hkLight">
                     {{detailData.catename}}<br/>
-                    {{new Date(parseInt(detailData.ctime * 1000)).getMonth()+1}}/{{new Date(parseInt(detailData.ctime * 1000)).getYear()}}
+                    {{new Date(parseInt(detailData.ctime * 1000)).format('MM/yyyy')}}
                 </div>
                 <a :href="detailData.h5_link"
                    v-if="detailData.h5_link != ''"
