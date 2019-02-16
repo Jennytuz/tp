@@ -48,7 +48,7 @@
         /* .slide-fade-leave-active for below version 2.1.8 */ {
         opacity: 0;
     }
-    .more-container {width: 1500px;}
+    .more-container {width: 1500px!important;}
     .swiper-container{position: static;}
     .swiper-button-prev,.swiper-button-next {top:53%;background-image: none!important;}
     .swiper-button-prev {left:120px!important;}
@@ -62,7 +62,7 @@
         .banner-item .item-mask p {font-size: 16px;}
         .recommend-container .recommend-item{ width:167px!important;height: 94px!important;}
         .swiper-frame-index {width: 1370px;}
-        .more-container {width: 1120px;}
+        .more-container {width: 1120px!important;}
     }
 </style>
 

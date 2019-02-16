@@ -40,7 +40,7 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .body-frame{ width: 1800px; min-width: 1800px; margin: 60px auto 0px auto; position: relative;padding-bottom: 110px}
+    .body-frame{ width: 1800px; min-width: 1800px; margin: 60px auto 80px auto; position: relative;padding-bottom: 110px}
     .main-title {font-family:'yahei';}
     .recommend-title{ font-size: 20px; padding: 8px 0;color:white;}
     @media screen and (max-width:1910px) {

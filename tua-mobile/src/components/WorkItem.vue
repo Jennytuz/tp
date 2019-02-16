@@ -18,7 +18,7 @@
             <span>{{data.title}}</span> <span> {{data.title_ext}}</span>
         </div>
         <div class="time hkLight">
-            <span>DATE : {{new Date(parseInt(data.ctime)).format('MM/dd')}}</span>
+            <span>DATE : {{new Date(parseInt(data.ctime * 1000)).format('MM/dd')}}</span>
             <span>{{data.catename}}</span>
         </div>
     </a>

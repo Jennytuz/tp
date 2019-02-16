@@ -42,7 +42,9 @@
         .swiper-frame{ width:824px;}
         .swiper-container {width: 820px}
         .detail-infos p {width: 410px;}
-        .detail-infos .main_desc {width: 320px}
+        .detail-infos .main_desc {width: 320px;transform: scale(.8,.8); transform-origin: top left;margin-bottom: 0}
+        .detail-infos .author-title {font-size: 12px;}
+        .detail-infos .author-list,.detail-infos .time{transform: scale(.8,.8); transform-origin: top left;margin-bottom: 40px}
     }
     .animation-box {display:inline-block;width:auto;overflow:hidden}
     .animation-box span {display:inline-block;animation: scaleAnim 1s linear;}
@@ -71,7 +73,7 @@
                 </ul>
                 <div class="time hkLight">
                     <span v-if="detailData.cate !== ''">{{detailData.catename}}</span>
-                    <div style="margin-top:8px">{{new Date(parseInt(detailData.ctime)).format('MM/yyyy')}}</div>
+                    <div style="margin-top:8px">{{new Date(parseInt(detailData.ctime * 1000)).format('MM/yyyy')}}</div>
                 </div>
                 <div class="qrcode_container tr" v-if='detailData.h5_link'>
                     <qrcode :link='detailData.h5_link'></qrcode>
