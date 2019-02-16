@@ -24,7 +24,7 @@
     .qrcode_container .qrcode {width: 121px;height: 121px;border: 1px solid #606060;}
     .qrcode_container .f12 {color:#969696;}
     .back_btn {position: absolute;left: -9px!important;top: 0;}
-    .next-btn,.prev-btn{top: 50%!important;position: absolute;cursor:pointer}
+    .next-btn,.prev-btn{top: 25vh!important;position: absolute;cursor:pointer}
     .next-btn{right: 0;}
     .prev-btn{left: 0;}
     @keyframes scaleAnim {

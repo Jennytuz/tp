@@ -15,7 +15,7 @@
 <template>
     <div>
         <top-nav @getID="getListData"></top-nav>
-        <second-nav @getID="getListData"></second-nav>
+        <second-nav @getID="getListData" @goFirstPage="goFirstPage"></second-nav>
         <body-frame>
             <div class="works-contain">
                 <section class="container" id="workContain">
@@ -137,6 +137,12 @@
                 else {
                     this.showNext = true
                 }
+            },
+            goFirstPage(){
+                this.currentPage = 1;
+                var el = document.getElementById('list');
+                el.style.cssText = 'transform: translate3d(0, 0px, 0px); transition-duration: 500ms;';
+                this.initBtn()
             },
             prevPage(){
                 var el = document.getElementById('list');

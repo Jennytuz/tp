@@ -43,6 +43,7 @@
                 }else{
                     this.$emit('getID',[id,id2]);
                 }
+                this.$emit('goFirstPage', '')
             },
         },
         computed:{
