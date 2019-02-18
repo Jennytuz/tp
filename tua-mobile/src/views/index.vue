@@ -12,6 +12,7 @@
     .dots li.active{background-color: #FF7200;}
 
     .recommend-container {display: flex; justify-content: space-between;flex-wrap: wrap;}
+    .works-item .imgs {padding-bottom: 56%;}
     .recommend-item{ margin-bottom: 24px; width: calc((100vw - 6% - 10px)/2)}
     .recommend-item .imgs{ background-size: cover;background-repeat: no-repeat;background-position: center center;padding-bottom: 100%;}
     .recommend-item .infos{margin-top: 10px; display: flex; justify-content: space-between;font-size: 10px;color: #fff;}
@@ -59,6 +60,7 @@
             <div class="recommend-container">
                 <work-item v-for="item in recommendList"
                            :data="item"
+                           :class="itemClass"
                            :mainUrl="mainUrl"
                            :cover="item.recomm_cover"
                            :key="item.id"></work-item>
@@ -121,6 +123,7 @@
                         }
                     }
                 },
+                itemClass:'recommend',
                 idList:[],
                 swiper:null,
                 activeIndex:0

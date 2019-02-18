@@ -22,7 +22,7 @@
         -moz-osx-font-smoothing: grayscale;
     }
     body{background-color: #000;color:#fff;}
-    .body-frame{margin: 50px 3% 20px 3%;}
+    .body-frame{margin: 60px 3% 20px 3%;}
     .main-title {font-family:'yahei';}
     .item-list{ display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 60px;}
 </style>

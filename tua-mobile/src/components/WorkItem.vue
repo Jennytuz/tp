@@ -1,6 +1,7 @@
 <style>
     .works-item{ margin-bottom: 18px; width: calc((100vw - 6% - 10px)/2)}
     .works-item .imgs{ background-size: cover;background-repeat: no-repeat;background-position: center center;padding-bottom: 100%;}
+    .recommend .imgs{padding-bottom: 56%;}
     .works-item .infos{margin-top: 10px; display: flex; justify-content: space-between;font-size: 10px;color: #fff;}
     .works-item .infos span{ max-width: 50%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .works-item .infos span:last-child{display:inline-block;transform: scale(.8,.8); transform-origin: top right;}
@@ -13,7 +14,7 @@
 
 <template>
     <a href="javascript:;" class="works-item" @click="toDetail(data.id)">
-        <div class="imgs" :style="{'backgroundImage':'url('+mainUrl+cover +')'}"></div>
+        <div class="imgs" :class="itemClass" :style="{'backgroundImage':'url('+mainUrl+cover +')'}"></div>
         <div class="infos">
             <span>{{data.title}}</span> <span> {{data.title_ext}}</span>
         </div>
@@ -27,7 +28,7 @@
 <script type="es6">
     export default{
         name: 'App',
-        props:['data','mainUrl','cover','idList',],
+        props:['data','mainUrl','cover','idList','itemClass'],
         data(){
             return{
 

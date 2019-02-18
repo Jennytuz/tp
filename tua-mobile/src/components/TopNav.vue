@@ -1,6 +1,6 @@
 <style>
     .top-nav{ width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; background-color: #000;}
-    .top-nav section{ height: 50px; display: flex; justify-content: space-between; align-items: center; padding: 0 3%;}
+    .top-nav section{ height: 55px; display: flex; justify-content: space-between; align-items: center; padding: 0 3%;}
     .top-nav section .logo{ width: 80px;}
     .top-nav section a{ width: 30px; display: flex;flex-direction: column; align-items: flex-end;}
     .top-nav section a span {display: block;height:1px;border-top: 2px solid #fff;margin-bottom: 4px;}
@@ -12,7 +12,7 @@
 <template>
     <header class="top-nav">
         <section>
-            <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png"> </div>
+            <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png" width="87"> </div>
             <a href="javascript:;" @click="doShowMenu"><span></span><span></span><span></span> </a>
         </section>
     </header>

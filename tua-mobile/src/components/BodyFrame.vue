@@ -8,12 +8,11 @@
     .nav-frame .btn-close span:first-child{ transform: rotate(-45deg);position: relative;left: 22px}
     .nav-frame nav{ width: 100%; position: absolute; top: 0; right: 0; bottom: 0; background-color: #000; padding-left:3%;overflow-y: scroll;}
     .nav-frame nav a{font-size:16px;letter-spacing: 15px;color: #fff;}
-    .nav-frame nav a span{font-size:9px;letter-spacing: 5px;transform: scale(0.9,0.8);display: inline-block;}
+    .nav-frame nav ul a span{font-size:9px;letter-spacing: 5px;transform: scale(0.7,0.6);transform-origin:bottom left;display: inline-block;}
     .nav-frame nav .first-level {margin-top: 50px}
     .nav-frame nav .first-level>li {margin-bottom: 20px}
-    .nav-frame nav .first-level>li>a{ font-size: 16px;  display: block;padding: 15px 0 15px 20px;}
-    .nav-frame nav .first-level>li .second-level{ margin-left: 40px; }
-    .nav-frame nav .first-level>li .second-level li a{ padding: 15px 0 15px 10px; color: #fff; display: block;}
+    .nav-frame nav .first-level li a{ font-size: 16px;  display: block;padding: 15px 0 15px 20px;}
+    .nav-frame nav .first-level li .second-level li a{font-weight: 300; color: #fff; display: block;}
 
     .fade-enter-active, .fade-leave-active {
         transition: opacity 0.3s;
@@ -39,7 +38,7 @@
         <div class="nav-frame" v-if="showMenu" @touchmove.prevent="move($event)">
             <nav @touchmove.stop="move($event)">
                 <div class="header">
-                    <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png"> </div>
+                    <div class="logo" @click="gotoPage('/index',-4)"><img src="../assets/images/logo-bottom.png" width="87"> </div>
                     <a href="javascript:;" class="btn-close" @click="doHideMenu"><span></span><span></span></a>
                 </div>
                 <ul class="first-level hkLight">
